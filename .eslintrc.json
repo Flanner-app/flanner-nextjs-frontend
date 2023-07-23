@@ -1,3 +1,89 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "@typescript-eslint/no-unused-vars": "error",
+    "eqeqeq": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "semi": ["error", "never"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "indent": [
+      "error",
+      2,
+      { "SwitchCase": 1, "offsetTernaryExpressions": true }
+    ],
+    "block-spacing": ["error", "always"],
+    "linebreak-style": ["error", "unix"],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 1
+      }
+    ],
+    "array-callback-return": "error",
+    "no-await-in-loop": "error",
+    "no-constant-binary-expression": "error",
+    "no-duplicate-imports": "error",
+    "no-new-native-nonconstructor": "error",
+    "no-self-compare": "error",
+    "no-template-curly-in-string": "error",
+    "no-unmodified-loop-condition": "error",
+    "no-unreachable-loop": "error",
+    "no-use-before-define": "error",
+    "require-atomic-updates": "error",
+    "camelcase": "error",
+    "default-case": ["error", { "commentPattern": "^skip\\sdefault" }],
+    "default-case-last": ["error"],
+    "default-param-last": ["error"],
+    "dot-notation": "error",
+    "func-style": [
+      "error",
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    "max-depth": ["error", 5],
+    "max-params": ["error", 4],
+    "multiline-comment-style": ["error", "separate-lines"],
+    "no-continue": "error",
+    "no-confusing-arrow": "error",
+    "no-delete-var": "error",
+    "no-empty-function": "error",
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignoreArrayIndexes": true,
+        "ignoreDefaultValues": true,
+        "ignore": [-1, 0, 1, 100]
+      }
+    ],
+    "no-shadow": "error",
+    "no-useless-catch": "error",
+    "no-useless-rename": "error",
+    "no-void": "error",
+    "object-shorthand": ["error", "consistent"],
+    "prefer-destructuring": "error",
+    "radix": "error",
+    "spaced-comment": "error",
+    "yoda": "error",
+    "array-bracket-spacing": ["error", "never"],
+    "dot-location": ["error", "property"],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "ignoreUrls": true,
+        "ignoreRegExpLiterals": true,
+        "ignorePattern": "d=\"([\\s\\S]*?)\""
+      }
+    ],
+    "space-in-parens": ["error", "never"],
+    "@next/next/no-html-link-for-pages": ["error", "src/app"],
+    "import/no-anonymous-default-export": ["off"]
+  }
 }
