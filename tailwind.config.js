@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,12 +10,13 @@ module.exports = {
   ],
   theme: {
     colors: {
-      bg: 'rgba(248, 242, 225, 1)',
+      yellow: 'rgba(248, 242, 225, 1)',
+      white: '#ffffff',
       primary: {
         light: '#d1beda',
         dark: '#490572',
         hover: '#693589',
-        regular: '983794',
+        regular: '#983794',
       },
       secondary: {
         dark: '#351D4F',
@@ -32,6 +36,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        heebo: ['var(--font-heebo)', ...defaultTheme.fontFamily.sans],
+        archivo: ['var(--font-archivo)', ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
