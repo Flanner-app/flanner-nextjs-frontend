@@ -1,11 +1,12 @@
 import clsx from 'clsx'
-import { ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type ButtonProps = {
+  size: 'S' | 'M'
   appearence: 'solid' | 'outline' | 'ghost'
   className?: string
   children: ReactNode
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
 const getClasses = (appearence: ButtonProps['appearence']) => {
   switch (appearence) {
@@ -17,13 +18,14 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
         'hover:bg-primary-hover hover:text-white',
       ]
     case 'ghost':
-      return ['bg-transparent', 'hover:bg-primary-hover hover:text-white']
+      return ['bg-transparent', 'hover:bg-primary-light']
     default:
       return []
   }
 }
 
 const Button = ({
+  size,
   appearence,
   className,
   children,
@@ -32,7 +34,8 @@ const Button = ({
   return (
     <button
       className={clsx(
-        'rounded-xl p-4 font-medium transition-colors',
+        'flex items-center justify-center gap-2 rounded-xl p-4 font-medium transition-colors',
+        { 'p-4': size === 'M', 'p-3': size === 'S' },
         className,
         getClasses(appearence),
       )}

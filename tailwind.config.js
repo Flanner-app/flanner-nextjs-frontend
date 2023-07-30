@@ -10,7 +10,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-      yellow: 'rgba(248, 242, 225, 1)',
+      yellow: {
+        regular: '#F8F2E1',
+        dark: '#FFEDBA',
+      },
       white: '#ffffff',
       primary: {
         light: '#d1beda',
