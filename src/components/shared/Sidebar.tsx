@@ -42,7 +42,7 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Link href="/auth">
+      <Link href="/login">
         <Button appearence="solid" size="M" className="w-full leading-none">
           <LogIn size={20} />
           {isOpen && <>Login</>}
