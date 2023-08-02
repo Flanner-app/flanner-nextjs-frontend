@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Heebo, Archivo_Black as Archivo } from 'next/font/google'
+import Sidebar from '@/components/shared/Sidebar'
 
 import './globals.css'
 
@@ -30,7 +31,9 @@ export default function RootLayout({
           archivoBlack.variable,
         )}
       >
-        {children}
+        <div className="flex h-full">
+          <Sidebar /> {children}
+        </div>
       </body>
     </html>
   )
