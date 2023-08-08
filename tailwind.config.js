@@ -3,11 +3,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
       yellow: {
@@ -43,11 +39,15 @@ module.exports = {
         heebo: ['var(--font-heebo)', ...defaultTheme.fontFamily.sans],
         archivo: ['var(--font-archivo)', ...defaultTheme.fontFamily.sans],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      minWidth: (theme) => ({
+        ...theme('spacing'),
+      }),
+      maxWidth: (theme) => ({
+        ...theme('spacing'),
+      }),
+      minHeight: (theme) => ({
+        ...theme('spacing'),
+      }),
     },
   },
   plugins: [],
