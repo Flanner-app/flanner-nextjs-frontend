@@ -6,11 +6,12 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
+      black: '#000000',
+      white: '#ffffff',
       yellow: {
         regular: '#F8F2E1',
         dark: '#FFEDBA',
       },
-      white: '#ffffff',
       primary: {
         light: '#d1beda',
         dark: '#490572',

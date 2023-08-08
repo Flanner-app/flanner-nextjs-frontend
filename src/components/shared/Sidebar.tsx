@@ -1,13 +1,14 @@
 'use client'
 
-import Link from 'next/link'
+import { useState } from 'react'
 import clsx from 'clsx'
 import { ChevronsLeft, LogIn } from 'react-feather'
 import Button from './Button'
-import { useState } from 'react'
+import Modal from './Modal'
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <div
@@ -42,12 +43,18 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Link href="/login">
-        <Button appearence="solid" size="M" className="w-full leading-none">
-          <LogIn size={20} />
-          {isOpen && <>Login</>}
-        </Button>
-      </Link>
+      <Button
+        appearence="solid"
+        size="M"
+        className="w-full leading-none"
+        onClick={() => setIsModalOpen(true)}
+      >
+        <LogIn size={20} />
+        {isOpen && <>Login</>}
+      </Button>
+      <Modal isOpen={isModalOpen} close={() => setIsModalOpen(false)}>
+        hey
+      </Modal>
     </div>
   )
 }
