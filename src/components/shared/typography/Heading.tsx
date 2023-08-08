@@ -24,7 +24,13 @@ const Heading = ({ as, type, children, className }: HeadingProps) => {
   const Component = as
 
   return (
-    <Component className={clsx(classes[type], className, 'font-bold')}>
+    <Component
+      className={clsx(
+        classes[type],
+        className,
+        'font-rubik font-bold text-primary-dark',
+      )}
+    >
       {children}
     </Component>
   )
