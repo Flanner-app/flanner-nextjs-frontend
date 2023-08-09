@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body
         className={clsx(
-          'h-full bg-yellow-regular font-heebo',
+          'h-full bg-yellow-light font-heebo',
           heebo.variable,
           archivoBlack.variable,
         )}
