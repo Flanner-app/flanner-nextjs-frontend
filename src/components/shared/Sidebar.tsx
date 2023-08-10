@@ -25,9 +25,9 @@ const Sidebar = () => {
         )}
       >
         {isOpen && (
-          <span className="text-center font-archivo text-3xl font-bold text-black-regular">
+          <h1 className="text-primary-dark font-rubik text-10xl font-extrabold leading-none">
             Flanner
-          </span>
+          </h1>
         )}
         <Button
           appearence="ghost"
