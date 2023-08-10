@@ -44,13 +44,13 @@ const Sidebar = () => {
         </Button>
       </div>
       <Button
-          appearence="black"
-          className="w-full leading-none"
-          containsIconOnly={!isOpen}
-        >
-          <LogIn size={20} />
-          {isOpen && <>Login</>}
-        </Button>
+        appearence="black"
+        className="w-full leading-none"
+        containsIconOnly={!isOpen}
+      >
+        <LogIn size={20} />
+        {isOpen && <>Login</>}
+      </Button>
       <Modal isOpen={isModalOpen} close={() => setIsModalOpen(false)}>
         hey
       </Modal>
