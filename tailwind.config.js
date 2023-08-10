@@ -6,29 +6,17 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
-      black: '#000000',
       white: '#ffffff',
       yellow: {
-        regular: '#F8F2E1',
+        light: '#F8F2E1',
+        regular: '#FFC800',
+        hover: '#FFDE66',
         dark: '#FFEDBA',
       },
-      primary: {
-        light: '#d1beda',
-        dark: '#490572',
-        hover: '#693589',
-        regular: '#983794',
-      },
-      secondary: {
-        dark: '#351D4F',
-        light: '#eeebf8',
-      },
-      gray: {
-        100: '#f8f8f8',
-        200: '#DDDDDD',
-        300: '#AAAAAA',
-        400: '#737373',
-        500: '#444444',
-        600: '#222222',
+      black: {
+        default: '#000000',
+        regular: '#151515',
+        hover: '#444444',
       },
       utility: {
         error: '#d0011b',
