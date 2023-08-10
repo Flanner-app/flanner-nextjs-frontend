@@ -35,18 +35,6 @@ module.exports = {
       '5xl': '1.75rem', // 28px
       '6xl': '2rem', // 32px
       '7xl': '2.125rem', // 34px
-      '8xl': '2.25rem', // 36px
-      '9xl': '2.375rem', // 38px
-      '10xl': '2.5rem', // 40px
-      '11xl': '2.625rem', // 42px
-      '12xl': '2.75rem', // 44px
-      '13xl': '3rem', // 48px
-      '14xl': '3.25rem', // 52px
-      '15xl': '3.375rem', // 54px
-      '16xl': '3.5rem', // 56px
-      '17xl': '3.75rem', // 60px
-      '18xl': '4.25rem', // 68px
-      '19xl': '4.5rem', // 72px
     },
     extend: {
       fontFamily: {
