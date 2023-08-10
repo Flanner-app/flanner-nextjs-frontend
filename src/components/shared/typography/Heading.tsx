@@ -8,11 +8,11 @@ type HeadingProps = {
   className?: string
 }
 
-const displayClasses = 'leading-tight text-10xl md:text-13xl xl:text-17xl'
+const displayClasses = 'leading-tight text-4xl md:text-6xl xl:text-7xl'
 
-const headlineClasses = 'leading-tight text-5xl md:text-6xl xl:text-8xl'
+const headlineClasses = 'leading-tight text-2xl md:text-4xl xl:text-5xl'
 
-const titleClasses = 'leading-snug text-xl md:text-3xl xl:text-4xl'
+const titleClasses = 'leading-snug text-lg md:text-xl xl:text-2xl'
 
 const classes = {
   display: displayClasses,
