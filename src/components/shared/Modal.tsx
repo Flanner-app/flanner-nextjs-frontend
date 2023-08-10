@@ -1,15 +1,19 @@
 import clsx from 'clsx'
 import { Fragment, ReactNode } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import Heading from './typography/Heading'
+import { X } from 'react-feather'
+import Button from './Button'
 
 type ModalProps = {
   isOpen: boolean
   close: () => void
+  title: string
   className?: string
   children: ReactNode
 }
 
-const Modal = ({ isOpen, close, className, children }: ModalProps) => {
+const Modal = ({ isOpen, close, title, className, children }: ModalProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog onClose={close} as="div" className="relative z-10">
@@ -22,7 +26,7 @@ const Modal = ({ isOpen, close, className, children }: ModalProps) => {
           leaveFrom="opacity-50"
           leaveTo="opacity-0"
         >
-          <div className="bg-black fixed inset-0 bg-opacity-50" />
+          <div className="fixed inset-0 bg-black-regular bg-opacity-50" />
         </Transition.Child>
 
         <div className="fixed inset-0 h-full min-h-full">
@@ -43,11 +47,19 @@ const Modal = ({ isOpen, close, className, children }: ModalProps) => {
             >
               <Dialog.Panel
                 className={clsx(
-                  'min-h-40 w-full overflow-hidden bg-white',
-                  'p-6 sm:max-w-lg sm:rounded-3xl',
+                  'min-h-40 w-full overflow-hidden bg-yellow-light backdrop-blur-md',
+                  'bg-opacity-75 p-6 sm:max-w-lg sm:rounded-3xl',
                   className,
                 )}
               >
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <Heading as="h3" type="display">
+                    {title}
+                  </Heading>
+                  <Button appearence="ghost" containsIconOnly onClick={close}>
+                    <X size={16} />
+                  </Button>
+                </div>
                 {children}
               </Dialog.Panel>
             </Transition.Child>
