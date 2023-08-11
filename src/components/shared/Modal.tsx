@@ -33,7 +33,7 @@ const Modal = ({ isOpen, close, title, className, children }: ModalProps) => {
           <div
             className={clsx(
               'flex h-full min-h-full sm:items-center',
-              'text-center sm:justify-center sm:p-4',
+              'sm:justify-center sm:p-4',
             )}
           >
             <Transition.Child
@@ -47,15 +47,13 @@ const Modal = ({ isOpen, close, title, className, children }: ModalProps) => {
             >
               <Dialog.Panel
                 className={clsx(
-                  'min-h-40 w-full overflow-hidden bg-yellow-light backdrop-blur-md',
-                  'bg-opacity-75 p-6 sm:max-w-lg sm:rounded-3xl',
+                  'min-h-40 w-full overflow-hidden bg-yellow-dark backdrop-blur-md',
+                  'bg-opacity-70 p-6 sm:max-w-lg sm:rounded-3xl',
                   className,
                 )}
               >
-                <div className="mb-6 flex items-start justify-between gap-4">
-                  <Heading as="h3" type="display">
-                    {title}
-                  </Heading>
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <h3 className="font-rubik text-6xl font-bold">{title}</h3>
                   <Button appearence="ghost" containsIconOnly onClick={close}>
                     <X size={16} />
                   </Button>
