@@ -1,15 +1,18 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
-import { Heebo, Archivo_Black as Archivo } from 'next/font/google'
+import { Poppins, Rubik } from 'next/font/google'
 import Sidebar from '@/components/shared/Sidebar'
 
 import './globals.css'
 
-const heebo = Heebo({ subsets: ['latin'], variable: '--font-heebo' })
-const archivoBlack = Archivo({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: '400',
-  variable: '--font-archivo',
+  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700'],
+})
+const rubik = Rubik({
+  subsets: ['latin'],
+  variable: '--font-rubik',
 })
 
 export const metadata: Metadata = {
@@ -26,9 +29,9 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body
         className={clsx(
-          'h-full bg-yellow-light font-heebo',
-          heebo.variable,
-          archivoBlack.variable,
+          'h-full bg-yellow-regular font-poppins',
+          poppins.variable,
+          rubik.variable,
         )}
       >
         <div className="flex h-full">
