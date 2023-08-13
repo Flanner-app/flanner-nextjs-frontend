@@ -3,11 +3,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
       white: '#ffffff',
@@ -39,12 +35,22 @@ module.exports = {
       '5xl': '1.75rem', // 28px
       '6xl': '2rem', // 32px
       '7xl': '2.125rem', // 34px
+      '10xl': '2.5rem', // 40px
     },
     extend: {
       fontFamily: {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
         rubik: ['var(--font-rubik)', ...defaultTheme.fontFamily.sans],
       },
+      minWidth: (theme) => ({
+        ...theme('spacing'),
+      }),
+      maxWidth: (theme) => ({
+        ...theme('spacing'),
+      }),
+      minHeight: (theme) => ({
+        ...theme('spacing'),
+      }),
     },
   },
   plugins: [],

@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import clsx from 'clsx'
-import { ChevronsLeft, LogIn } from 'react-feather'
+import Image from 'next/image'
+import { ChevronsLeft, Facebook, LogIn, Twitter } from 'react-feather'
 import Button from './Button'
+import Modal from './Modal'
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <div
@@ -24,7 +26,7 @@ const Sidebar = () => {
         )}
       >
         {isOpen && (
-          <h1 className="text-10xl text-primary-dark font-rubik font-extrabold leading-none">
+          <h1 className="font-rubik text-10xl font-extrabold leading-none">
             Flanner
           </h1>
         )}
@@ -42,16 +44,43 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Link href="/login">
-        <Button
-          appearence="black"
-          className="w-full leading-none"
-          containsIconOnly={!isOpen}
-        >
-          <LogIn size={20} />
-          {isOpen && <>Login</>}
-        </Button>
-      </Link>
+      <Button
+        appearence="black"
+        className="w-full leading-none"
+        containsIconOnly={!isOpen}
+        onClick={() => setIsModalOpen(true)}
+      >
+        <LogIn size={20} />
+        {isOpen && <>Login</>}
+      </Button>
+      <Modal
+        isOpen={isModalOpen}
+        close={() => setIsModalOpen(false)}
+        title="Use the Fridge!"
+      >
+        <span className="mb-6 inline-block text-base text-black-hover">
+          You can login using any of these
+        </span>
+        <div className="mx-auto flex flex-col gap-2 sm:flex-row">
+          <Button appearence="black" className="w-full">
+            <Image
+              alt=""
+              height={24}
+              width={24}
+              src="/images/icons/google.svg"
+            />
+            Google
+          </Button>
+          <Button appearence="black" className="w-full">
+            <Facebook size={24} />
+            Facebook
+          </Button>
+          <Button appearence="black" className="w-full">
+            <Twitter size={24} />
+            Twitter
+          </Button>
+        </div>
+      </Modal>
     </div>
   )
 }

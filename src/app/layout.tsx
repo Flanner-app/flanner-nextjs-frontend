@@ -22,14 +22,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  loginModal,
 }: {
   children: React.ReactNode
+  loginModal: React.ReactNode
 }) {
   return (
     <html lang="en" className="h-full">
       <body
         className={clsx(
-          'h-full bg-yellow-regular font-poppins',
+          'h-full bg-yellow-light font-poppins',
           poppins.variable,
           rubik.variable,
         )}
@@ -37,6 +39,7 @@ export default function RootLayout({
         <div className="flex h-full">
           <Sidebar /> {children}
         </div>
+        {loginModal}
       </body>
     </html>
   )
