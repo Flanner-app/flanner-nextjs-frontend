@@ -1,10 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { ChevronsLeft, LogIn } from 'react-feather'
 import Button from './Button'
-import { useState } from 'react'
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,9 +24,9 @@ const Sidebar = () => {
         )}
       >
         {isOpen && (
-          <span className="text-center font-archivo text-3xl font-bold text-primary-dark">
+          <h1 className="font-rubik text-10xl font-extrabold leading-none text-primary-dark">
             Flanner
-          </span>
+          </h1>
         )}
         <Button
           appearence="ghost"

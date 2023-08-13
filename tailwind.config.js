@@ -38,15 +38,23 @@ module.exports = {
         success: '#5fb846',
       },
     },
+    fontSize: {
+      xs: '0.75rem', // 12px
+      sm: '0.875rem', // 14px
+      base: '1rem', // 16px
+      lg: '1.125rem', // 18px
+      xl: '1.25rem', // 20px
+      '2xl': '1.375rem', // 22px
+      '3xl': '1.5rem', // 24px
+      '4xl': '1.625rem', // 26px
+      '5xl': '1.75rem', // 28px
+      '6xl': '2rem', // 32px
+      '7xl': '2.125rem', // 34px
+    },
     extend: {
       fontFamily: {
-        heebo: ['var(--font-heebo)', ...defaultTheme.fontFamily.sans],
-        archivo: ['var(--font-archivo)', ...defaultTheme.fontFamily.sans],
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
+        rubik: ['var(--font-rubik)', ...defaultTheme.fontFamily.sans],
       },
     },
   },
