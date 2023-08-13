@@ -2,40 +2,47 @@ import clsx from 'clsx'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type ButtonProps = {
-  size: 'S' | 'M'
-  appearence: 'solid' | 'outline' | 'ghost'
+  appearence: 'yellow' | 'black' | 'outline' | 'ghost'
   className?: string
   children: ReactNode
+  containsIconOnly?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const getClasses = (appearence: ButtonProps['appearence']) => {
   switch (appearence) {
-    case 'solid':
-      return ['bg-primary-regular text-white', 'hover:bg-primary-hover']
+    case 'yellow':
+      return 'bg-yellow-regular text-black-regular hover:bg-yellow-hover'
     case 'outline':
       return [
-        'bg-transparent border border-primary-regular text-black',
-        'hover:bg-primary-hover hover:text-white',
+        'bg-transparent border border-black-regular text-black-default',
+        'hover:bg-black-hover hover:text-white active:bg-black-regular',
+        'active:text-white',
       ]
+    case 'black':
+      return 'bg-black-regular text-white hover:bg-black-hover active:bg-black-regular'
     case 'ghost':
-      return ['bg-transparent', 'hover:bg-primary-light']
+      return [
+        'bg-transparent text-black-regular hover:bg-black-hover',
+        'hover:text-white active:bg-black-regular active:text-white',
+      ]
     default:
-      return []
+      return ''
   }
 }
 
 const Button = ({
-  size,
   appearence,
   className,
   children,
+  containsIconOnly,
   ...restProps
 }: ButtonProps) => {
   return (
     <button
       className={clsx(
-        'flex items-center justify-center gap-2 rounded-xl p-4 font-medium transition-colors',
-        { 'p-4': size === 'M', 'p-3': size === 'S' },
+        'flex items-center justify-center gap-2 rounded-full font-semibold leading-snug',
+        'py-3 transition-colors',
+        { 'px-3': containsIconOnly, 'px-4': !containsIconOnly },
         className,
         getClasses(appearence),
       )}

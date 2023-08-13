@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <div
       className={clsx(
-        'h-full border-r border-primary-light p-4 shadow-sm',
+        'h-full border-r border-black-regular p-4 shadow-sm',
         'flex flex-col justify-between bg-yellow-dark',
         isOpen ? 'w-64' : 'w-auto',
       )}
@@ -24,26 +24,30 @@ const Sidebar = () => {
         )}
       >
         {isOpen && (
-          <h1 className="font-rubik text-10xl font-extrabold leading-none text-primary-dark">
+          <h1 className="text-10xl text-primary-dark font-rubik font-extrabold leading-none">
             Flanner
           </h1>
         )}
         <Button
           appearence="ghost"
-          size="S"
           onClick={() => setIsOpen((prev) => !prev)}
+          containsIconOnly
         >
           <ChevronsLeft
             size={20}
             className={clsx(
-              'transform text-primary-dark transition-transform',
+              'transform transition-transform',
               !isOpen && 'rotate-180',
             )}
           />
         </Button>
       </div>
       <Link href="/login">
-        <Button appearence="solid" size="M" className="w-full leading-none">
+        <Button
+          appearence="black"
+          className="w-full leading-none"
+          containsIconOnly={!isOpen}
+        >
           <LogIn size={20} />
           {isOpen && <>Login</>}
         </Button>

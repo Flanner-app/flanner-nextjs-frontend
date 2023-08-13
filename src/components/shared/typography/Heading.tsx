@@ -28,7 +28,7 @@ const Heading = ({ as, type, children, className }: HeadingProps) => {
       className={clsx(
         classes[type],
         className,
-        'font-rubik font-bold text-primary-dark',
+        'text-primary-dark font-rubik font-bold',
       )}
     >
       {children}
