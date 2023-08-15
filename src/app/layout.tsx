@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Poppins, Rubik } from 'next/font/google'
 import Sidebar from '@/components/shared/Sidebar'
+import FridgeSidebar from '@/components/groceries/FridgeSidebar'
 
 import './globals.css'
 
@@ -37,7 +38,7 @@ export default function RootLayout({
         )}
       >
         <div className="flex h-full">
-          <Sidebar /> {children}
+          <Sidebar /> {children} <FridgeSidebar />
         </div>
         {loginModal}
       </body>
