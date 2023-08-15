@@ -1,0 +1,202 @@
+[
+    [
+        {
+            "item": "apples",
+            "icon": "🍎"
+        },
+        {
+            "item": "bananas",
+            "icon": "🍌"
+        },
+        {
+            "item": "cherry",
+            "icon": "🍒"
+        },
+        {
+            "item": "coconut",
+            "icon": "🥥"
+        },
+        {
+            "item": "eggs",
+            "icon": "🥚"
+        },
+        {
+            "item": "grapes",
+            "icon": "🍇"
+        },
+        {
+            "item": "lemons",
+            "icon": "🍋"
+        },
+        {
+            "item": "peach",
+            "icon": "🍑"
+        },
+        {
+            "item": "spinach",
+            "icon": "🥬"
+        },
+        {
+            "item": "watermelon",
+            "icon": "🍉"
+        }
+    ],
+    [
+        {
+            "item": "avocado",
+            "icon": "🥑"
+        },
+        {
+            "item": "bell peppers",
+            "icon": "🫑"
+        },
+        {
+            "item": "broccoli",
+            "icon": "🥦"
+        },
+        {
+            "item": "carrots",
+            "icon": "🥕"
+        },
+        {
+            "item": "corn",
+            "icon": "🌽"
+        },
+        {
+            "item": "cucumber",
+            "icon": "🥒"
+        },
+        {
+            "item": "eggplant",
+            "icon": "🍆"
+        },
+        {
+            "item": "mushrooms",
+            "icon": "🍄"
+        },
+        {
+            "item": "onions",
+            "icon": "🧅"
+        },
+        {
+            "item": "pepper",
+            "icon": "🌶️"
+        },
+        {
+            "item": "potatoes",
+            "icon": "🥔"
+        },
+        {
+            "item": "tomatoes",
+            "icon": "🍅"
+        }
+    ],
+    [
+        {
+            "item": "bacon",
+            "icon": "🥓"
+        },
+        {
+            "item": "beef",
+            "icon": "🥩"
+        },
+        {
+            "item": "chicken",
+            "icon": "🐔"
+        },
+        {
+            "item": "chicken legs",
+            "icon": "🍗"
+        },
+        {
+            "item": "crab",
+            "icon": "🦀"
+        },
+        {
+            "item": "fish",
+            "icon": "🐟"
+        },
+        {
+            "item": "lobster",
+            "icon": "🦞"
+        },
+        {
+            "item": "pork",
+            "icon": "🐖"
+        },
+        {
+            "item": "shrimp",
+            "icon": "🦐"
+        },
+        {
+            "item": "squid",
+            "icon": "🦑"
+        },
+        {
+            "item": "turkey",
+            "icon": "🦃"
+        }
+    ],
+    [
+        {
+            "item": "bread",
+            "icon": "🥖"
+        },
+        {
+            "item": "cheese",
+            "icon": "🧀"
+        },
+        {
+            "item": "herbs",
+            "icon": "🌿"
+        },
+        {
+            "item": "olive oil",
+            "icon": "🫒"
+        },
+        {
+            "item": "rice",
+            "icon": "🍚"
+        },
+        {
+            "item": "salt",
+            "icon": "🧂"
+        },
+        {
+            "item": "spaghetti",
+            "icon": "🍝"
+        },
+        {
+            "item": "wine",
+            "icon": "🍷"
+        },
+        {
+            "item": "chestnut",
+            "icon": "🌰"
+        },
+        {
+            "item": "almonds",
+            "icon": "🥜"
+        },
+        {
+            "item": "kiwi",
+            "icon": "🥝"
+        },
+        {
+            "item": "limes",
+            "icon": "🍈"
+        },
+        {
+            "item": "mango",
+            "icon": "🥭"
+        },
+        {
+            "item": "peanuts",
+            "icon": "🥜"
+        },
+        {
+            "item": "pear",
+            "icon": "🍐"
+        }
+    ]
+]
