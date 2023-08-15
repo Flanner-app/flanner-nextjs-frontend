@@ -22,6 +22,16 @@ module.exports = {
         error: '#d0011b',
         success: '#5fb846',
       },
+      tones: {
+        yellow: '#FDFCDC',
+        peach: '#FFE4D3',
+        coral: '#FFDADA',
+        rose: '#FFDADA',
+        lavender: '#EDDFFE',
+        babyBlue: '#A6E2E3',
+        powderBlue: '#D0E2DC',
+        mint: '#E5FDE2',
+      },
     },
     fontSize: {
       xs: '0.75rem', // 12px
