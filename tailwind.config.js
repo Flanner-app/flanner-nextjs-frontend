@@ -6,7 +6,8 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
-      white: '#ffffff',
+      white: '#FFFFFF',
+      transparent: 'transparent',
       yellow: {
         light: '#F8F2E1',
         regular: '#FFC800',
@@ -24,8 +25,7 @@ module.exports = {
       },
       tones: {
         yellow: '#FDFCDC',
-        peach: '#FFE4D3',
-        coral: '#FFDADA',
+        coral: '#FFE4D3',
         rose: '#FFDADA',
         lavender: '#EDDFFE',
         babyBlue: '#A6E2E3',

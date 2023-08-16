@@ -41,7 +41,7 @@ const Button = ({
     <button
       className={clsx(
         'flex items-center justify-center gap-2 rounded-full font-semibold leading-snug',
-        'py-3 transition-colors',
+        'py-3 outline-none transition-colors',
         { 'px-3': containsIconOnly, 'px-4': !containsIconOnly },
         className,
         getClasses(appearence),
