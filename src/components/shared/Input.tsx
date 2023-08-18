@@ -11,17 +11,18 @@ type InputProps = {
   error?: string
   value: string
   className?: string
+  wrapperClassName?: string
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'value'>
 
-const isNumberStringValid = (str: string, decimalsCount = 0) => {
+const isNumberStringValid = (str: string, decimalCount = 0) => {
   if (!str) return true
   if (!/^[0-9.-]*$/.test(str)) return false
   if (str.lastIndexOf('-') > 0) return false
-  if (decimalsCount === 0 && str.lastIndexOf('.') > 0) return false
+  if (decimalCount === 0 && str.lastIndexOf('.') > 0) return false
   if (str.startsWith('.')) return false
   if (str.indexOf('.') > 0 && !/[0-9]\./.test(str)) return false
   if (str.indexOf('.') !== str.lastIndexOf('.')) return false
-  if (str.split('.')[1]?.length > decimalsCount) return false
+  if (str.split('.')[1]?.length > decimalCount) return false
 
   return true
 }
@@ -34,6 +35,7 @@ const Input = ({
   error,
   value,
   className,
+  wrapperClassName,
   onChange,
   ...inputProps
 }: InputProps) => {
@@ -60,7 +62,7 @@ const Input = ({
   }
 
   return (
-    <div className="">
+    <div className={wrapperClassName}>
       <label
         className={clsx(
           'block rounded-xl bg-white shadow-sm transition-colors',

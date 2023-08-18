@@ -9,9 +9,9 @@ const Fridge = () => {
         'grid grid-cols-3 gap-3 md:grid-cols-2 lg:grid-cols-3',
       )}
     >
-      <FridgeItem name="watermelon" icon="🥥" quantity={10} />
-      <FridgeItem name="bell peppers" icon="🥥" quantity={10} />
-      <FridgeItem name="watermelon" icon="🥥" quantity={10} />
+      <FridgeItem name="watermelon" icon="🥥" quantity={10} units="items" />
+      <FridgeItem name="bell peppers" icon="🥥" quantity={10} units="items" />
+      <FridgeItem name="watermelon" icon="🥥" quantity={10} units="items" />
     </div>
   )
 }
