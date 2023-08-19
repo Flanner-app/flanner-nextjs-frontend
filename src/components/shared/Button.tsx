@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type ButtonProps = {
-  appearence: 'yellow' | 'black' | 'outline' | 'ghost'
+  appearence: 'yellow' | 'black' | 'outline' | 'critical' | 'ghost'
   className?: string
   children: ReactNode
   containsIconOnly?: boolean
@@ -20,6 +20,11 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
       ]
     case 'black':
       return 'bg-black-regular text-white hover:bg-black-hover active:bg-black-regular'
+    case 'critical':
+      return [
+        'border border-utility-error bg-transparent text-utility-error',
+        'hover:bg-utility-error hover:text-white active:bg-utility-error',
+      ]
     case 'ghost':
       return [
         'bg-transparent text-black-regular hover:bg-black-hover',
