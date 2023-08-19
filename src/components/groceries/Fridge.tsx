@@ -1,7 +1,68 @@
+'use client'
+
 import clsx from 'clsx'
+import { useState } from 'react'
 import FridgeItem from './FridgeItem'
 
+export type FridgeItemType = {
+  id: string
+  name: string
+  icon: string
+  quantity: number
+  units: 'grams' | 'kg' | 'tblsp' | 'cup' | 'ml' | 'pieces' | 'items'
+}
+
+const mockItems: Array<FridgeItemType> = [
+  {
+    id: 'sdfsdf',
+    name: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+  {
+    id: 'sdfsdfff',
+    name: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+  {
+    id: 'sdkiidffff',
+    name: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+  {
+    id: 'sdfPuicCenalffff',
+    name: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+]
+
 const Fridge = () => {
+  const [items, setItems] = useState<Array<FridgeItemType>>(mockItems)
+
+  const updateItems = (
+    id: string,
+    quantity: number,
+    units: FridgeItemType['units'],
+  ) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: quantity,
+          units: units,
+        }
+      } else return item
+    })
+    setItems(newItems)
+  }
+
   return (
     <div
       className={clsx(
@@ -9,9 +70,17 @@ const Fridge = () => {
         'grid grid-cols-3 gap-3 md:grid-cols-2 lg:grid-cols-3',
       )}
     >
-      <FridgeItem name="watermelon" icon="🥥" quantity={10} units="items" />
-      <FridgeItem name="bell peppers" icon="🥥" quantity={10} units="items" />
-      <FridgeItem name="watermelon" icon="🥥" quantity={10} units="items" />
+      {items.map((item) => (
+        <FridgeItem
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          icon={item.icon}
+          quantity={item.quantity}
+          units={item.units}
+          onUpdate={updateItems}
+        />
+      ))}
     </div>
   )
 }

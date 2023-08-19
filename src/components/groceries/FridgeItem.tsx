@@ -4,15 +4,24 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { X } from 'react-feather'
 import FridgeItemModal from './FridgeItemModal'
+import { FridgeItemType } from './Fridge'
 
 export type FridgeItemProps = {
-  name: string
-  icon: string
-  quantity: number
-  units: 'grams' | 'kg' | 'tblsp' | 'cup' | 'ml' | 'pieces' | 'items'
-}
+  onUpdate: (
+    id: string,
+    quantity: number,
+    units: FridgeItemProps['units'],
+  ) => void
+} & FridgeItemType
 
-const FridgeItem = ({ name, icon, quantity, units }: FridgeItemProps) => {
+const FridgeItem = ({
+  id,
+  name,
+  icon,
+  quantity,
+  units,
+  onUpdate,
+}: FridgeItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const count = `${quantity} ${units}`
@@ -25,8 +34,8 @@ const FridgeItem = ({ name, icon, quantity, units }: FridgeItemProps) => {
     quantityArg: string,
     unitsArg: FridgeItemProps['units'],
   ) => {
-    // todo: item update logic
-    console.log(parseFloat(quantityArg), unitsArg)
+    onUpdate(id, parseFloat(quantityArg), unitsArg)
+    // todo: item update logic (DB)
   }
 
   return (
