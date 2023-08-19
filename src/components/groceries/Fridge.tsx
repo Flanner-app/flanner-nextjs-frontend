@@ -46,7 +46,7 @@ const mockItems: Array<FridgeItemType> = [
 const Fridge = () => {
   const [items, setItems] = useState<Array<FridgeItemType>>(mockItems)
 
-  const updateItems = (
+  const updateItem = (
     id: string,
     quantity: number,
     units: FridgeItemType['units'],
@@ -60,6 +60,11 @@ const Fridge = () => {
         }
       } else return item
     })
+    setItems(newItems)
+  }
+
+  const deleteItem = (id: string) => {
+    const newItems = items.filter((item) => item.id !== id)
     setItems(newItems)
   }
 
@@ -78,7 +83,8 @@ const Fridge = () => {
           icon={item.icon}
           quantity={item.quantity}
           units={item.units}
-          onUpdate={updateItems}
+          onUpdate={updateItem}
+          onDelete={deleteItem}
         />
       ))}
     </div>

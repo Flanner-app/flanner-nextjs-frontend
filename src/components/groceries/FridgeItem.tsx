@@ -12,6 +12,7 @@ export type FridgeItemProps = {
     quantity: number,
     units: FridgeItemProps['units'],
   ) => void
+  onDelete: (id: string) => void
 } & FridgeItemType
 
 const FridgeItem = ({
@@ -21,14 +22,11 @@ const FridgeItem = ({
   quantity,
   units,
   onUpdate,
+  onDelete,
 }: FridgeItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const count = `${quantity} ${units}`
-
-  const deleteItem = (e: React.MouseEvent) => {
-    e.stopPropagation()
-  }
 
   const updateItem = (
     quantityArg: string,
@@ -36,6 +34,12 @@ const FridgeItem = ({
   ) => {
     onUpdate(id, parseFloat(quantityArg), unitsArg)
     // todo: item update logic (DB)
+  }
+
+  const deleteItem = (itemId: string, e?: React.MouseEvent) => {
+    e && e.stopPropagation()
+    // todo: item delete logic (DB)
+    onDelete(itemId)
   }
 
   return (
@@ -52,7 +56,7 @@ const FridgeItem = ({
         <div className="absolute right-1 top-1">
           <div
             className="cursor-pointer rounded-full p-1 transition-colors hover:bg-white"
-            onClick={deleteItem}
+            onClick={(e) => deleteItem(id, e)}
           >
             <X size={12} />
           </div>
@@ -64,11 +68,13 @@ const FridgeItem = ({
         <span className="text-xs font-medium leading-none">{count}</span>
       </div>
       <FridgeItemModal
+        itemId={id}
         isOpen={isModalOpen}
         close={() => setIsModalOpen(false)}
         quantity={quantity}
         units={units}
         updateItem={updateItem}
+        deleteItem={deleteItem}
       />
     </>
   )

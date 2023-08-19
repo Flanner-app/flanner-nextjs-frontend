@@ -6,13 +6,16 @@ import Modal from '../shared/Modal'
 import { FridgeItemProps } from './FridgeItem'
 import Select from '../shared/Select'
 import Button from '../shared/Button'
+import { Trash } from 'react-feather'
 
 type FridgeItemModalProps = {
+  itemId: string
   isOpen: boolean
   close: () => void
   quantity: FridgeItemProps['quantity']
   units: FridgeItemProps['units']
   updateItem: (quantity: string, units: FridgeItemProps['units']) => void
+  deleteItem: (id: string) => void
 }
 
 type ItemData = {
@@ -31,11 +34,13 @@ const measurements: Array<FridgeItemModalProps['units']> = [
 ]
 
 const FridgeItemModal = ({
+  itemId,
   isOpen,
   close,
   quantity,
   units,
   updateItem,
+  deleteItem,
 }: FridgeItemModalProps) => {
   const [data, setData] = useState<ItemData>({
     quantity: quantity.toString(),
@@ -82,8 +87,13 @@ const FridgeItemModal = ({
         />
       </div>
       <div className="flex justify-between gap-4">
-        <Button appearence="outline" className="w-full" onClick={close}>
-          Cancel
+        <Button
+          appearence="critical"
+          className="w-full"
+          onClick={() => deleteItem(itemId)}
+        >
+          <Trash size={20} />
+          Delete
         </Button>
         <Button
           appearence="black"
