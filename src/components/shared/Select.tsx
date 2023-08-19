@@ -10,7 +10,7 @@ type SelectProps = {
   name: string
   value: string
   className?: string
-  onChange: (value: FridgeItemProps['units']) => void
+  onChange: (value: string) => void
 }
 
 const Select = ({

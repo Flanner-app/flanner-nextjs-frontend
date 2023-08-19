@@ -47,11 +47,11 @@ const FridgeItemModal = ({
     units: units,
   })
 
-  const onSelectUnit = (value: FridgeItemProps['units']) => {
-    if (measurements.includes(value)) {
+  const onSelectUnit = (value: string) => {
+    if (measurements.includes(value as FridgeItemProps['units'])) {
       setData((prevData) => ({
         ...prevData,
-        units: value,
+        units: value as FridgeItemProps['units'],
       }))
     }
   }
