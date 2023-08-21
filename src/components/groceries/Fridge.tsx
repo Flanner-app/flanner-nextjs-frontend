@@ -2,7 +2,10 @@
 
 import clsx from 'clsx'
 import { useState } from 'react'
+import { Plus } from 'react-feather'
 import FridgeItem from './FridgeItem'
+import Button from '../shared/Button'
+import AddItemModal from './AddItemModal'
 
 export type FridgeItemType = {
   id: string
@@ -45,6 +48,7 @@ const mockItems: Array<FridgeItemType> = [
 
 const Fridge = () => {
   const [items, setItems] = useState<Array<FridgeItemType>>(mockItems)
+  const [showAddItem, setShowAddItem] = useState(false)
 
   const updateItem = (
     id: string,
@@ -71,22 +75,33 @@ const Fridge = () => {
   return (
     <div
       className={clsx(
-        'rounded-2xl border border-black-regular/10 bg-tones-lavender p-4',
-        'grid grid-cols-3 gap-3 md:grid-cols-2 lg:grid-cols-3',
+        'flex flex-col gap-4 rounded-2xl border border-black-regular/10 p-4',
+        'bg-tones-lavender',
       )}
     >
-      {items.map((item) => (
-        <FridgeItem
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          icon={item.icon}
-          quantity={item.quantity}
-          units={item.units}
-          onUpdate={updateItem}
-          onDelete={deleteItem}
-        />
-      ))}
+      <div className="grid grid-cols-3 gap-3 md:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => (
+          <FridgeItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            icon={item.icon}
+            quantity={item.quantity}
+            units={item.units}
+            onUpdate={updateItem}
+            onDelete={deleteItem}
+          />
+        ))}
+      </div>
+      <Button
+        appearence="yellow"
+        className="w-full"
+        onClick={() => setShowAddItem(true)}
+      >
+        <Plus size={20} />
+        Add Items
+      </Button>
+      <AddItemModal isOpen={showAddItem} close={() => setShowAddItem(false)} />
     </div>
   )
 }

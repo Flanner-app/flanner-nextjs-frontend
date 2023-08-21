@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import clsx from 'clsx'
 import { Listbox, Transition } from '@headlessui/react'
-import { FridgeItemProps } from '../groceries/FridgeItem'
 
 type SelectProps = {
   valueList: string[]
