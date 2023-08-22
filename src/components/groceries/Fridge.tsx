@@ -94,6 +94,7 @@ const Fridge = () => {
         ))}
       </div>
       <Button
+        size="M"
         appearence="yellow"
         className="w-full"
         onClick={() => setShowAddItem(true)}

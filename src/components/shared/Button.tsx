@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type ButtonProps = {
   appearence: 'yellow' | 'black' | 'outline' | 'critical' | 'ghost'
+  size: 'S' | 'M' | 'L'
   className?: string
   children: ReactNode
   containsIconOnly?: boolean
@@ -37,6 +38,7 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
 
 const Button = ({
   appearence,
+  size,
   className,
   children,
   containsIconOnly,
@@ -44,10 +46,15 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      data-icon-only={containsIconOnly}
       className={clsx(
         'flex items-center justify-center gap-2 rounded-full font-semibold leading-snug',
-        'py-3 outline-none transition-colors',
-        { 'px-3': containsIconOnly, 'px-4': !containsIconOnly },
+        'outline-none transition-colors',
+        {
+          'p-3 text-sm': size === 'S',
+          'p-4 text-base data-[icon-only=false]:px-5': size === 'M',
+          'p-4.5 text-base data-[icon-only=false]:px-6': size === 'L',
+        },
         className,
         getClasses(appearence),
       )}

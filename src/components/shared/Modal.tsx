@@ -53,7 +53,12 @@ const Modal = ({ isOpen, close, title, className, children }: ModalProps) => {
               >
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <h3 className="font-rubik text-6xl font-bold">{title}</h3>
-                  <Button appearence="ghost" containsIconOnly onClick={close}>
+                  <Button
+                    size="S"
+                    appearence="ghost"
+                    containsIconOnly
+                    onClick={close}
+                  >
                     <X size={16} />
                   </Button>
                 </div>

@@ -53,6 +53,9 @@ module.exports = {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
         rubik: ['var(--font-rubik)', ...defaultTheme.fontFamily.sans],
       },
+      spacing: {
+        4.5: '1.125rem',
+      },
       minWidth: (theme) => ({
         ...theme('spacing'),
       }),

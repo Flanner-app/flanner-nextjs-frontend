@@ -31,6 +31,7 @@ const Sidebar = () => {
           </h1>
         )}
         <Button
+          size="S"
           appearence="ghost"
           onClick={() => setIsOpen((prev) => !prev)}
           containsIconOnly
@@ -45,6 +46,7 @@ const Sidebar = () => {
         </Button>
       </div>
       <Button
+        size="M"
         appearence="black"
         className="w-full leading-none"
         containsIconOnly={!isOpen}
@@ -62,7 +64,7 @@ const Sidebar = () => {
           You can login using any of these
         </span>
         <div className="mx-auto flex flex-col gap-2 sm:flex-row">
-          <Button appearence="black" className="w-full">
+          <Button size="M" appearence="black" className="w-full">
             <Image
               alt=""
               height={24}
@@ -71,11 +73,11 @@ const Sidebar = () => {
             />
             Google
           </Button>
-          <Button appearence="black" className="w-full">
+          <Button size="M" appearence="black" className="w-full">
             <Facebook size={24} />
             Facebook
           </Button>
-          <Button appearence="black" className="w-full">
+          <Button size="M" appearence="black" className="w-full">
             <Twitter size={24} />
             Twitter
           </Button>
