@@ -41,24 +41,26 @@ const Autocomplete = <T extends GroceryItem>({
           <Combobox.Button
             as="div"
             className={clsx(
-              'flex w-full flex-col gap-0.5 rounded-xl bg-white',
+              'flex min-h-14 w-full flex-col rounded-xl bg-white',
               'justify-center px-4 py-2 shadow-sm transition-colors hover:bg-white/75',
               'box-border cursor-pointer active:bg-white',
               open && '!bg-white',
               className,
             )}
           >
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex flex-col gap-0.5">
-                <span className="text-xs">{label}</span>
+            <div className="flex w-full items-center justify-between gap-4">
+              <div className="flex grow flex-col gap-1.5">
+                <span className="inline-block text-xs leading-none">
+                  {label}
+                </span>
                 <Combobox.Input
-                  className="w-full bg-transparent text-sm outline-none"
+                  className="h-5 w-full bg-transparent text-sm leading-none outline-none"
                   displayValue={(displayValue: T) => displayValue.label}
                   onChange={(e) => onChangeQuery(e.target.value)}
                   placeholder={placeholder}
                 />
               </div>
-              <Button appearence="ghost" containsIconOnly>
+              <Button size="S" appearence="ghost" containsIconOnly>
                 <ChevronDown
                   size={16}
                   className={open ? 'rotate-180' : 'rotate-0'}

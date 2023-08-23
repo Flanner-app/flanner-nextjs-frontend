@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import clsx from 'clsx'
 import { Listbox, Transition } from '@headlessui/react'
+import Button from './Button'
+import { ChevronDown } from 'react-feather'
 
 type SelectProps = {
   valueList: string[]
@@ -28,21 +30,38 @@ const Select = ({
           <Listbox.Button
             as="div"
             className={clsx(
-              'flex h-full w-full flex-col gap-0.5 rounded-xl bg-white shadow-sm transition-colors',
-              'justify-center px-4 py-2 hover:bg-white/75 active:bg-white',
-              'box-border cursor-pointer',
+              'h-full w-full rounded-xl bg-white shadow-sm transition-colors',
+              'min-h-14 px-4 py-2 hover:bg-white/75 active:bg-white',
+              'box-border flex cursor-pointer items-center justify-between gap-4',
               open && 'bg-white',
               className,
             )}
           >
-            <Listbox.Label className="cursor-pointer text-xs">
-              {label}
-            </Listbox.Label>
-            {value ? (
-              <span className="text-sm text-black-default">{value}</span>
-            ) : (
-              <span className="text-sm text-black-hover/50">{placeholder}</span>
-            )}
+            <div className="flex h-full w-full flex-col gap-1.5">
+              <Listbox.Label
+                className="cursor-pointer text-xs leading-none"
+                as="span"
+              >
+                {label}
+              </Listbox.Label>
+              <div className="flex h-5 grow items-center">
+                {value ? (
+                  <span className="text-sm leading-none text-black-default">
+                    {value}
+                  </span>
+                ) : (
+                  <span className="text-sm leading-none text-black-hover/50">
+                    {placeholder}
+                  </span>
+                )}
+              </div>
+            </div>
+            <Button size="S" appearence="ghost" containsIconOnly>
+              <ChevronDown
+                size={16}
+                className={open ? 'rotate-180' : 'rotate-0'}
+              />
+            </Button>
           </Listbox.Button>
           <Transition
             as={Fragment}

@@ -67,25 +67,27 @@ const Input = ({
         className={clsx(
           'block rounded-xl bg-white shadow-sm transition-colors',
           'px-4 py-2 hover:bg-white/75 hover:focus-within:bg-white',
-          'active:bg-white',
+          'min-h-14 active:bg-white',
           'box-border cursor-text',
           error && 'border border-utility-error/50',
           className,
         )}
       >
-        <span className="mb-0.5 text-xs">{label}</span>
-        <input
-          type="text"
-          className={clsx(
-            'block w-full p-0 text-black-default placeholder-black-hover/50',
-            'bg-transparent text-sm outline-none focus:ring-0',
-          )}
-          inputMode={getInputMode}
-          placeholder={placeholder}
-          value={value}
-          onChange={handleChange}
-          {...inputProps}
-        />
+        <div className="flex h-full flex-col gap-1.5">
+          <span className="inline-block text-xs leading-none">{label}</span>
+          <input
+            type="text"
+            className={clsx(
+              'block w-full p-0 text-black-default placeholder-black-hover/50',
+              'h-5 bg-transparent text-sm leading-none outline-none focus:ring-0',
+            )}
+            inputMode={getInputMode}
+            placeholder={placeholder}
+            value={value}
+            onChange={handleChange}
+            {...inputProps}
+          />
+        </div>
       </label>
       {!!error && (
         <span className="pl-2 text-xs text-utility-error">{error}</span>
