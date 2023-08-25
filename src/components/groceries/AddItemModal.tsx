@@ -116,8 +116,11 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
     >
       <div className="flex flex-col gap-4">
         {items.map((item, index) => (
-          <div className="flex w-full items-center gap-4" key={item.id}>
-            <div className="grid w-full grid-cols-3 items-center gap-4">
+          <div
+            className="flex w-full items-start gap-5 sm:items-center"
+            key={item.id}
+          >
+            <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-4">
               <Autocomplete<SelectionGroceryItem>
                 valueList={groceryList}
                 label="Select item"
