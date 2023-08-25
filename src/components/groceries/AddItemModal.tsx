@@ -112,7 +112,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
       isOpen={isOpen}
       close={onClose}
       title="Add fresh groceries"
-      className="overflow-visible sm:max-w-2xl"
+      className="overflow-visible sm:!max-w-2xl"
     >
       <div className="flex flex-col gap-4">
         {items.map((item, index) => (

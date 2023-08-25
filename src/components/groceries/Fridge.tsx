@@ -79,9 +79,17 @@ const Fridge = () => {
   return (
     <div
       className={clsx(
-        'flex flex-col gap-4 rounded-2xl border border-black-regular/10 p-4',
-        'bg-tones-lavender',
+        'relative flex flex-col gap-4 rounded-2xl border border-black-regular/10 p-4',
+        'bg-tones-lavender bg-cover bg-top',
+        { 'min-h-80': items.length === 0 },
       )}
+      style={
+        items.length === 0
+          ? {
+              backgroundImage: 'url("/images/fridge-placeholder.webp")',
+            }
+          : {}
+      }
     >
       <div className="grid grid-cols-3 gap-3 md:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
@@ -100,7 +108,7 @@ const Fridge = () => {
       <Button
         size="M"
         appearence="yellow"
-        className="w-full"
+        className="mb-0 mt-auto w-full"
         onClick={() => setShowAddItem(true)}
       >
         <Plus size={20} />

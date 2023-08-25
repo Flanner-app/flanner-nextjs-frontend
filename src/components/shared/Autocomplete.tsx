@@ -33,7 +33,7 @@ const Autocomplete = <T extends SelectionGroceryItem>({
     'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
     'sm:scrollbar-w-1 sm:scrollbar',
   ]
-  console.log(value)
+
   return (
     <Combobox value={value} onChange={onChange} name={name}>
       {({ open }) => (
