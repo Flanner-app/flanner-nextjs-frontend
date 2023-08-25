@@ -3,7 +3,7 @@ import { Fragment, ReactNode } from 'react'
 import { ChevronDown } from 'react-feather'
 import { Combobox, Transition } from '@headlessui/react'
 import Button from './Button'
-import { GroceryItem } from '../groceries/AddItemModal'
+import { SelectionGroceryItem } from '../groceries/AddItemModal'
 
 type AutocompleteProps<T> = {
   valueList: T[]
@@ -17,7 +17,7 @@ type AutocompleteProps<T> = {
   children?: ReactNode
 }
 
-const Autocomplete = <T extends GroceryItem>({
+const Autocomplete = <T extends SelectionGroceryItem>({
   valueList,
   label,
   placeholder,
@@ -33,7 +33,7 @@ const Autocomplete = <T extends GroceryItem>({
     'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
     'sm:scrollbar-w-1 sm:scrollbar',
   ]
-
+  console.log(value)
   return (
     <Combobox value={value} onChange={onChange} name={name}>
       {({ open }) => (
@@ -58,6 +58,7 @@ const Autocomplete = <T extends GroceryItem>({
                   displayValue={(displayValue: T) => displayValue.label}
                   onChange={(e) => onChangeQuery(e.target.value)}
                   placeholder={placeholder}
+                  autoComplete="off"
                 />
               </div>
               <Button size="S" appearence="ghost" containsIconOnly>
@@ -82,7 +83,7 @@ const Autocomplete = <T extends GroceryItem>({
             <Combobox.Options
               as="div"
               className={clsx(
-                'absolute mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
+                'absolute z-20 mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
               )}
             >
               <ul

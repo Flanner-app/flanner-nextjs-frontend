@@ -9,7 +9,7 @@ import AddItemModal from './AddItemModal'
 
 export type FridgeItemType = {
   id: string
-  name: string
+  label: string
   icon: string
   quantity: number
   units: 'grams' | 'kg' | 'tblsp' | 'cup' | 'ml' | 'pieces' | 'items'
@@ -18,28 +18,28 @@ export type FridgeItemType = {
 const mockItems: Array<FridgeItemType> = [
   {
     id: 'sdfsdf',
-    name: 'Watermelon',
+    label: 'Watermelon',
     icon: '🥥',
     quantity: 10,
     units: 'items',
   },
   {
     id: 'sdfsdfff',
-    name: 'Watermelon',
+    label: 'Watermelon',
     icon: '🥥',
     quantity: 10,
     units: 'items',
   },
   {
     id: 'sdkiidffff',
-    name: 'Watermelon',
+    label: 'Watermelon',
     icon: '🥥',
     quantity: 10,
     units: 'items',
   },
   {
     id: 'sdfPuicCenalffff',
-    name: 'Watermelon',
+    label: 'Watermelon',
     icon: '🥥',
     quantity: 10,
     units: 'items',
@@ -72,6 +72,10 @@ const Fridge = () => {
     setItems(newItems)
   }
 
+  const onAddItems = (newItems: FridgeItemType[]) => {
+    setItems((prevState) => [...prevState, ...newItems])
+  }
+
   return (
     <div
       className={clsx(
@@ -84,7 +88,7 @@ const Fridge = () => {
           <FridgeItem
             key={item.id}
             id={item.id}
-            name={item.name}
+            label={item.label}
             icon={item.icon}
             quantity={item.quantity}
             units={item.units}
@@ -102,7 +106,11 @@ const Fridge = () => {
         <Plus size={20} />
         Add Items
       </Button>
-      <AddItemModal isOpen={showAddItem} close={() => setShowAddItem(false)} />
+      <AddItemModal
+        onAddItems={onAddItems}
+        isOpen={showAddItem}
+        close={() => setShowAddItem(false)}
+      />
     </div>
   )
 }

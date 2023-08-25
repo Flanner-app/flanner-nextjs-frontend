@@ -82,7 +82,7 @@ const Select = ({
             <Listbox.Options
               as="div"
               className={clsx(
-                'absolute mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
+                'absolute z-20 mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
                 scrollbarClasses,
               )}
             >

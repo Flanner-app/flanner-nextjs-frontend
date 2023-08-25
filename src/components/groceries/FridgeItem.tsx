@@ -17,7 +17,7 @@ export type FridgeItemProps = {
 
 const FridgeItem = ({
   id,
-  name,
+  label,
   icon,
   quantity,
   units,
@@ -63,7 +63,7 @@ const FridgeItem = ({
         </div>
         <div className="text-5xl">{icon}</div>
         <span className="rounded-md bg-white/50 p-1 text-sm font-bold capitalize leading-none">
-          {name}
+          {label}
         </span>
         <span className="text-xs font-medium leading-none">{count}</span>
       </div>

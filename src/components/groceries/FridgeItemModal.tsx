@@ -8,7 +8,7 @@ import Select from '../shared/Select'
 import Button from '../shared/Button'
 import { Trash } from 'react-feather'
 
-type FridgeItemModalProps = {
+export type FridgeItemModalProps = {
   itemId: string
   isOpen: boolean
   close: () => void
@@ -23,7 +23,7 @@ type ItemData = {
   units: FridgeItemModalProps['units']
 }
 
-const measurements: Array<FridgeItemModalProps['units']> = [
+export const measurements: Array<FridgeItemModalProps['units']> = [
   'grams',
   'kg',
   'tblsp',
@@ -88,6 +88,7 @@ const FridgeItemModal = ({
       </div>
       <div className="flex justify-between gap-4">
         <Button
+          size="M"
           appearence="critical"
           className="w-full"
           onClick={() => deleteItem(itemId)}
@@ -96,6 +97,7 @@ const FridgeItemModal = ({
           Delete
         </Button>
         <Button
+          size="M"
           appearence="black"
           className="w-full"
           onClick={() => {
