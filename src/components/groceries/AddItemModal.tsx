@@ -9,7 +9,7 @@ import Modal from '../shared/Modal'
 import Autocomplete from '../shared/Autocomplete'
 import Button from '../shared/Button'
 import Select from '../shared/Select'
-import { FridgeItemModalProps, measurements } from './FridgeItemModal'
+import { measurements } from './FridgeItemModal'
 import Input from '../shared/Input'
 import { FridgeItemType } from './Fridge'
 
@@ -18,10 +18,10 @@ export type SelectionGroceryItem = {
   icon: string
 }
 
-export type GroceryItem = {
+type GroceryItem = {
   label: string
   icon: string
-  units: FridgeItemModalProps['units']
+  units: FridgeItemType['units']
   quantity: number
 }
 

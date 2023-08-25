@@ -1,20 +1,20 @@
 'use client'
 
 import { useState } from 'react'
+import { Trash } from 'react-feather'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
-import { FridgeItemProps } from './FridgeItem'
 import Select from '../shared/Select'
 import Button from '../shared/Button'
-import { Trash } from 'react-feather'
+import { FridgeItemType } from './Fridge'
 
-export type FridgeItemModalProps = {
+type FridgeItemModalProps = {
   itemId: string
   isOpen: boolean
   close: () => void
-  quantity: FridgeItemProps['quantity']
-  units: FridgeItemProps['units']
-  updateItem: (quantity: string, units: FridgeItemProps['units']) => void
+  quantity: FridgeItemType['quantity']
+  units: FridgeItemType['units']
+  updateItem: (quantity: string, units: FridgeItemType['units']) => void
   deleteItem: (id: string) => void
 }
 
@@ -48,10 +48,10 @@ const FridgeItemModal = ({
   })
 
   const onSelectUnit = (value: string) => {
-    if (measurements.includes(value as FridgeItemProps['units'])) {
+    if (measurements.includes(value as FridgeItemType['units'])) {
       setData((prevData) => ({
         ...prevData,
-        units: value as FridgeItemProps['units'],
+        units: value as FridgeItemType['units'],
       }))
     }
   }

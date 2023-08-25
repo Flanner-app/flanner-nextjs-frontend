@@ -6,7 +6,7 @@ import { X } from 'react-feather'
 import FridgeItemModal from './FridgeItemModal'
 import { FridgeItemType } from './Fridge'
 
-export type FridgeItemProps = {
+type FridgeItemProps = {
   onUpdate: (
     id: string,
     quantity: number,
