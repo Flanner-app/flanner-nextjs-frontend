@@ -23,6 +23,11 @@ const Select = ({
   className,
   onChange,
 }: SelectProps) => {
+  const scrollbarClasses = [
+    'scrollbar-track-transparent scrollbar-none',
+    'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
+    'sm:scrollbar-w-1 sm:scrollbar',
+  ]
   return (
     <Listbox value={value} onChange={onChange} name={name}>
       {({ open }) => (
@@ -75,24 +80,34 @@ const Select = ({
             leaveTo="opacity-0 scale-95"
           >
             <Listbox.Options
-              as="ul"
-              className="absolute mt-1 w-full rounded-xl bg-white p-2 outline-none"
+              as="div"
+              className={clsx(
+                'absolute mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
+                scrollbarClasses,
+              )}
             >
-              {valueList.map((item) => (
-                <Listbox.Option value={item} key={item} as={Fragment}>
-                  {({ selected }) => (
-                    <li
-                      className={clsx(
-                        'cursor-pointer px-2 py-1 font-medium hover:bg-yellow-light',
-                        'mb-0.5 rounded-lg transition-colors',
-                        selected && '!bg-yellow-dark',
-                      )}
-                    >
-                      {item}
-                    </li>
-                  )}
-                </Listbox.Option>
-              ))}
+              <ul
+                className={clsx(
+                  'max-h-64 w-full overflow-auto bg-white px-2 py-2',
+                  scrollbarClasses,
+                )}
+              >
+                {valueList.map((item) => (
+                  <Listbox.Option value={item} key={item} as={Fragment}>
+                    {({ selected }) => (
+                      <li
+                        className={clsx(
+                          'cursor-pointer px-2 py-1 font-medium hover:bg-yellow-light',
+                          'mb-0.5 rounded-lg transition-colors',
+                          selected && '!bg-yellow-dark',
+                        )}
+                      >
+                        {item}
+                      </li>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </ul>
             </Listbox.Options>
           </Transition>
         </div>

@@ -82,12 +82,12 @@ const Autocomplete = <T extends GroceryItem>({
             <Combobox.Options
               as="div"
               className={clsx(
-                'absolute mt-1 h-fit w-full overflow-hidden rounded-xl',
+                'absolute mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
               )}
             >
               <ul
                 className={clsx(
-                  'max-h-60 w-full overflow-auto bg-white px-2 py-2',
+                  'max-h-64 w-full overflow-auto bg-white px-2 py-2',
                   scrollbarClasses,
                 )}
               >
