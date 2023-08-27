@@ -1,17 +1,14 @@
 'use client'
 
-import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { Plus, Trash } from 'react-feather'
-import { Combobox } from '@headlessui/react'
-import staticGroceries from './staticGroceries.json'
 import Modal from '../shared/Modal'
-import Autocomplete from '../shared/Autocomplete'
 import Button from '../shared/Button'
 import Select from '../shared/Select'
 import { measurements } from './FridgeItemModal'
 import Input from '../shared/Input'
 import { FridgeItemType } from './Fridge'
+import AddItemAutocomplete from './AddItemAutocomplete'
 
 export type SelectionGroceryItem = {
   label: string
@@ -36,8 +33,6 @@ const getRandomId = () => {
 }
 
 const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
-  const [query, setQuery] = useState('')
-  const [groceryList, setGroceryList] = useState(staticGroceries)
   const [items, setItems] = useState<FridgeItemType[]>([
     { id: getRandomId(), label: '', icon: '', units: 'items', quantity: 1 },
   ])
@@ -45,7 +40,6 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
 
   const onClose = () => {
     close()
-    setQuery('')
     setItems([{ id: '', label: '', icon: '', units: 'items', quantity: 1 }])
   }
 
@@ -108,17 +102,6 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
   }
 
   useEffect(() => {
-    if (query === '') {
-      setGroceryList(staticGroceries)
-    } else {
-      const newItems = staticGroceries.filter((item) =>
-        item.label.toLowerCase().includes(query.toLocaleLowerCase()),
-      )
-      setGroceryList(newItems)
-    }
-  }, [query])
-
-  useEffect(() => {
     const isDisabled = items.some((item) => {
       return Object.values(item).some((fieldValue) => !fieldValue)
     })
@@ -139,25 +122,13 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
             key={item.id}
           >
             <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-4">
-              <Autocomplete<SelectionGroceryItem>
-                valueList={groceryList}
+              <AddItemAutocomplete
                 label="Select item"
                 placeholder="Type it in!"
-                name="grocery input"
+                name={'grocery input ' + index}
                 onChange={(value) => editItem(index, 'label', value)}
                 value={{ label: item.label, icon: item.icon }}
-                onChangeQuery={setQuery}
-              >
-                <Combobox.Option
-                  className={clsx(
-                    'w-full bg-transparent px-1 py-2 text-center text-sm hover:bg-black-hover',
-                    'cursor-pointer rounded-lg transition-colors hover:text-white',
-                  )}
-                  value={{ label: query, icon: '' }}
-                >
-                  Add {query}
-                </Combobox.Option>
-              </Autocomplete>
+              />
               <Select
                 label="Measure in"
                 name="add item units select"

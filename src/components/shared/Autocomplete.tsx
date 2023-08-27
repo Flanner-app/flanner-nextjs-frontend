@@ -5,7 +5,7 @@ import { Combobox, Transition } from '@headlessui/react'
 import Button from './Button'
 import { SelectionGroceryItem } from '../groceries/AddItemModal'
 
-type AutocompleteProps<T> = {
+export type AutocompleteProps<T> = {
   valueList: T[]
   label: string
   placeholder?: string
