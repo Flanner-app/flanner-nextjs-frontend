@@ -41,6 +41,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
   const [items, setItems] = useState<FridgeItemType[]>([
     { id: getRandomId(), label: '', icon: '', units: 'items', quantity: 1 },
   ])
+  const [disableSave, setDisableSave] = useState(true)
 
   const onClose = () => {
     close()
@@ -76,6 +77,11 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
         label: typedValue.label,
         icon: typedValue.icon,
       }
+    } else if (property === 'quantity') {
+      editedItem = {
+        ...updatedItems[index],
+        [property]: parseFloat(value.toString()) || 0,
+      }
     } else {
       editedItem = {
         ...updatedItems[index],
@@ -96,6 +102,11 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
     }
   }
 
+  const onSave = () => {
+    onAddItems(items)
+    onClose()
+  }
+
   useEffect(() => {
     if (query === '') {
       setGroceryList(staticGroceries)
@@ -106,6 +117,13 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
       setGroceryList(newItems)
     }
   }, [query])
+
+  useEffect(() => {
+    const isDisabled = items.some((item) => {
+      return Object.values(item).some((fieldValue) => !fieldValue)
+    })
+    setDisableSave(isDisabled)
+  }, [items])
 
   return (
     <Modal
@@ -178,10 +196,8 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
             className="w-1/2"
             appearence="black"
             size="M"
-            onClick={() => {
-              onAddItems(items)
-              onClose()
-            }}
+            onClick={onSave}
+            disabled={disableSave}
           >
             Save
           </Button>
