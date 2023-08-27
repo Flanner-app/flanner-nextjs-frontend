@@ -1,6 +1,36 @@
 import clsx from 'clsx'
-import Heading from '../shared/typography/Heading'
-import Fridge from './Fridge'
+import Fridge, { FridgeItemType } from './Fridge'
+
+const mockItems: Array<FridgeItemType> = [
+  {
+    id: 'sdfsdf',
+    label: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+  {
+    id: 'sdfsdfff',
+    label: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+  {
+    id: 'sdkiidffff',
+    label: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+  {
+    id: 'sdfPuicCenalffff',
+    label: 'Watermelon',
+    icon: '🥥',
+    quantity: 10,
+    units: 'items',
+  },
+]
 
 const FridgeSidebar = () => {
   return (
@@ -11,13 +41,7 @@ const FridgeSidebar = () => {
         'md:max-w-80',
       )}
     >
-      <div className="flex items-baseline gap-3">
-        <Heading as="h2" type="display">
-          Fridge
-        </Heading>
-        <span className="text-sm text-black-hover">12 Items</span>
-      </div>
-      <Fridge />
+      <Fridge itemList={mockItems} />
     </div>
   )
 }

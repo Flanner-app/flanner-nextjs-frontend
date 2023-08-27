@@ -40,7 +40,9 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
 
   const onClose = () => {
     close()
-    setItems([{ id: '', label: '', icon: '', units: 'items', quantity: 1 }])
+    setItems([
+      { id: getRandomId(), label: '', icon: '', units: 'items', quantity: 1 },
+    ])
   }
 
   const onAddItem = () => {
