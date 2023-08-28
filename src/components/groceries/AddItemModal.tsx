@@ -119,40 +119,42 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
     >
       <div className="flex flex-col gap-4">
         {items.map((item, index) => (
-          <div
-            className="flex w-full items-start gap-5 sm:items-center"
-            key={item.id}
-          >
-            <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-4">
-              <AddItemAutocomplete
-                label="Select item"
-                placeholder="Type it in!"
-                name={'grocery input ' + index}
-                onChange={(value) => editItem(index, 'label', value)}
-                value={{ label: item.label, icon: item.icon }}
-              />
-              <Select
-                label="Measure in"
-                name="add item units select"
-                value={item.units}
-                valueList={measurements}
-                onChange={(value) => editItem(index, 'units', value)}
-              />
-              <Input
-                label="Quantity"
-                placeholder="Amount..."
-                value={item.quantity.toString() || ''}
-                onChange={(e) => editItem(index, 'quantity', e.target.value)}
-                type="number"
-              />
+          <div className="flex items-center gap-2" key={item.id}>
+            <span className="pointer-events-none select-none text-4xl">
+              {item.icon || '❔'}
+            </span>
+            <div className="flex w-full items-start gap-5 sm:items-center">
+              <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-4">
+                <AddItemAutocomplete
+                  label="Select item"
+                  placeholder="Type it in!"
+                  name={'grocery input ' + index}
+                  onChange={(value) => editItem(index, 'label', value)}
+                  value={{ label: item.label, icon: item.icon }}
+                />
+                <Select
+                  label="Measure in"
+                  name="add item units select"
+                  value={item.units}
+                  valueList={measurements}
+                  onChange={(value) => editItem(index, 'units', value)}
+                />
+                <Input
+                  label="Quantity"
+                  placeholder="Amount..."
+                  value={item.quantity.toString() || ''}
+                  onChange={(e) => editItem(index, 'quantity', e.target.value)}
+                  type="number"
+                />
+              </div>
+              <Button
+                appearence="ghost"
+                size="S"
+                onClick={() => removeItem(index)}
+              >
+                <Trash size={16} />
+              </Button>
             </div>
-            <Button
-              appearence="ghost"
-              size="S"
-              onClick={() => removeItem(index)}
-            >
-              <Trash size={16} />
-            </Button>
           </div>
         ))}
         <div className="flex gap-2">
