@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Fridge, { FridgeItemType } from './Fridge'
+import Button from '../shared/Button'
 
 const mockItems: Array<FridgeItemType> = [
   {
@@ -37,11 +38,14 @@ const FridgeSidebar = () => {
     <div
       className={clsx(
         'h-full border-l border-black-regular p-4 shadow-sm',
-        'flex w-full flex-col gap-4 bg-yellow-dark lg:max-w-md',
+        'flex w-full flex-col justify-between gap-4 bg-yellow-dark lg:max-w-md',
         'md:max-w-80',
       )}
     >
       <Fridge itemList={mockItems} />
+      <Button appearence="black" size="L">
+        Generate recipes!
+      </Button>
     </div>
   )
 }

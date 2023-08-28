@@ -47,7 +47,7 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <div className="flex items-baseline gap-3">
         <Heading as="h2" type="display">
           Fridge
@@ -97,7 +97,7 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
           close={() => setShowAddItem(false)}
         />
       </div>
-    </>
+    </div>
   )
 }
 
