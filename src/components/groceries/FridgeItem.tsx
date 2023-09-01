@@ -46,10 +46,10 @@ const FridgeItem = ({
     <>
       <div
         className={clsx(
-          'w-fit rounded-xl border border-black-regular/10 bg-yellow-dark p-3',
+          'w-fit rounded-xl border-2 border-black-regular bg-yellow-dark p-3',
           'flex aspect-square w-full flex-col items-center justify-between gap-2',
           'relative cursor-pointer text-center leading-none transition-colors',
-          'hover:border-black-regular/25 hover:bg-tones-coral',
+          'hover:bg-tones-rose',
         )}
         onClick={() => setIsModalOpen(true)}
       >

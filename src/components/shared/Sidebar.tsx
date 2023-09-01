@@ -14,7 +14,7 @@ const Sidebar = () => {
   return (
     <div
       className={clsx(
-        'h-full border-r border-black-regular p-4 shadow-sm',
+        'h-full border-r-2 border-black-regular p-4 shadow-sm',
         'flex flex-col justify-between bg-yellow-dark',
         isOpen ? 'w-64' : 'w-auto',
       )}
@@ -64,7 +64,7 @@ const Sidebar = () => {
           You can login using any of these
         </span>
         <div className="mx-auto flex flex-col gap-2 sm:flex-row">
-          <Button size="M" appearence="black" className="w-full">
+          <Button size="S" appearence="yellow" className="w-full">
             <Image
               alt=""
               height={24}
@@ -73,11 +73,11 @@ const Sidebar = () => {
             />
             Google
           </Button>
-          <Button size="M" appearence="black" className="w-full">
+          <Button size="S" appearence="yellow" className="w-full">
             <Facebook size={24} />
             Facebook
           </Button>
-          <Button size="M" appearence="black" className="w-full">
+          <Button size="S" appearence="yellow" className="w-full">
             <Twitter size={24} />
             Twitter
           </Button>

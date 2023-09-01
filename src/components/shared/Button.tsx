@@ -12,11 +12,14 @@ type ButtonProps = {
 const getClasses = (appearence: ButtonProps['appearence']) => {
   switch (appearence) {
     case 'yellow':
-      return 'bg-yellow-regular text-black-regular hover:bg-yellow-hover'
+      return [
+        'bg-yellow-regular text-black-regular hover:bg-yellow-hover',
+        'border-2 border-black-regular',
+      ]
     case 'outline':
       return [
-        'bg-transparent border border-black-regular text-black-default',
-        'hover:bg-black-hover hover:text-white active:bg-black-regular',
+        'bg-transparent border-2 border-black-regular text-black-default',
+        'hover:bg-black-hover hover:border-black-hover hover:text-white active:bg-black-regular',
         'active:text-white',
       ]
     case 'black':

@@ -13,7 +13,7 @@ module.exports = {
         light: '#F8F2E1',
         regular: '#FFC800',
         hover: '#FFDE66',
-        dark: '#FFEDBA',
+        dark: '#FFEAB9',
       },
       black: {
         default: '#000000',
@@ -27,7 +27,7 @@ module.exports = {
       tones: {
         yellow: '#FDFCDC',
         coral: '#FFE4D3',
-        rose: '#FFDADA',
+        rose: '#FED3DC',
         lavender: '#EDDFFE',
         babyBlue: '#A6E2E3',
         powderBlue: '#D0E2DC',
