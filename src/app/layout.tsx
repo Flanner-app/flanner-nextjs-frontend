@@ -23,8 +23,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  authModal,
 }: {
   children: React.ReactNode
+  authModal: React.ReactNode
 }) {
   return (
     <html lang="en" className="h-full">
@@ -36,7 +38,7 @@ export default function RootLayout({
         )}
       >
         <div className="flex h-full">
-          <Sidebar /> {children} <FridgeSidebar />
+          <Sidebar /> {children} <FridgeSidebar /> {authModal}
         </div>
       </body>
     </html>

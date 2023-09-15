@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import clsx from 'clsx'
-import Image from 'next/image'
+import Link from 'next/link'
 import { ChevronsLeft, Facebook, LogIn, Twitter } from 'react-feather'
 import Button from './Button'
 import Modal from './Modal'
@@ -45,16 +45,17 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Button
-        size="M"
-        appearence="black"
-        className="w-full leading-none"
-        containsIconOnly={!isOpen}
-        onClick={() => setIsModalOpen(true)}
-      >
-        <LogIn size={20} />
-        {isOpen && <>Login</>}
-      </Button>
+      <Link href="/auth">
+        <Button
+          size="M"
+          appearence="black"
+          className="w-full leading-none"
+          containsIconOnly={!isOpen}
+        >
+          <LogIn size={20} />
+          {isOpen && <>Login</>}
+        </Button>
+      </Link>
       <Modal
         isOpen={isModalOpen}
         close={() => setIsModalOpen(false)}
@@ -65,12 +66,8 @@ const Sidebar = () => {
         </span>
         <div className="mx-auto flex flex-col gap-2 sm:flex-row">
           <Button size="S" appearence="yellow" className="w-full">
-            <Image
-              alt=""
-              height={24}
-              width={24}
-              src="/images/icons/google.svg"
-            />
+            {/* eslint-disable-next-line */}
+            <img src="/images/icons/google.svg" alt="" width={24} height={24} />
             Google
           </Button>
           <Button size="S" appearence="yellow" className="w-full">
