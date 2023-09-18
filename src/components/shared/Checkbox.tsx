@@ -42,7 +42,7 @@ const Checkbox = ({ label, isChecked, className, onChange }: CheckboxProps) => {
       </div>
       <span
         className={clsx(
-          'text-sm leading-none text-black-regular group-hover:text-black-hover',
+          'text-base leading-none text-black-regular group-hover:text-black-hover',
           'transition-colors',
         )}
       >

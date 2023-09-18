@@ -1,7 +1,5 @@
-import InitialAuthStep from '@/components/authFlow/InitialStep'
-
 const AuthModal = () => {
-  return <InitialAuthStep />
+  return <></>
 }
 
 export default AuthModal
