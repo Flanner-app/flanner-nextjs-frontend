@@ -9,11 +9,10 @@ type CheckboxProps = {
 }
 
 const Checkbox = ({ label, isChecked, className, onChange }: CheckboxProps) => {
-  console.log(label)
   return (
     <label
       className={clsx(
-        'group relative flex w-fit cursor-pointer items-center gap-2',
+        'group relative flex w-fit cursor-pointer items-center gap-3',
         className,
       )}
     >
@@ -25,14 +24,30 @@ const Checkbox = ({ label, isChecked, className, onChange }: CheckboxProps) => {
       />
       <div
         className={clsx(
-          'flex h-5 w-5 items-center justify-center rounded-md shadow-sm',
-          'rotate-45 border bg-white transition-shadow',
+          'flex items-center justify-center rounded-md p-0.5 shadow-sm',
+          'rotate-45 border border-black-regular bg-white transition-colors',
+          'group-hover:border-black-hover group-hover:bg-white/50',
+          { '!border-black-regular !bg-yellow-regular': isChecked },
         )}
       >
-        {isChecked && (
-          <Check size={14} className="-rotate-45 text-black-default" />
-        )}
+        <Check
+          size={12}
+          className={clsx(
+            '-rotate-45 text-black-default opacity-0 transition-opacity duration-75',
+            {
+              'opacity-100': isChecked,
+            },
+          )}
+        />
       </div>
+      <span
+        className={clsx(
+          'text-sm leading-none text-black-regular group-hover:text-black-hover',
+          'transition-colors',
+        )}
+      >
+        {label}
+      </span>
     </label>
   )
 }
