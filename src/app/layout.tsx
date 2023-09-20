@@ -1,8 +1,6 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Poppins, Rubik } from 'next/font/google'
-import Sidebar from '@/components/shared/Sidebar'
-import FridgeSidebar from '@/components/groceries/FridgeSidebar'
 
 import './globals.css'
 
@@ -21,7 +19,7 @@ export const metadata: Metadata = {
   description: 'The Fridge app',
 }
 
-export default function RootLayout({
+export default function Layout({
   children,
   authModal,
 }: {
@@ -37,9 +35,8 @@ export default function RootLayout({
           rubik.variable,
         )}
       >
-        <div className="flex h-full">
-          <Sidebar /> {children} <FridgeSidebar /> {authModal}
-        </div>
+        {children}
+        {authModal}
       </body>
     </html>
   )
