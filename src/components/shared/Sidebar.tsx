@@ -45,31 +45,36 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Link href="/auth">
-        <Button
-          size="M"
-          appearence="black"
-          className="w-full leading-none"
-          containsIconOnly={!isOpen}
-        >
-          <LogIn size={20} />
-          {isOpen && <>Login</>}
-        </Button>
-      </Link>
-      <Modal
-        isOpen={isModalOpen}
-        close={() => setIsModalOpen(false)}
-        title="Use the Fridge!"
+      <Button
+        size="M"
+        appearence="black"
+        className="w-full leading-none"
+        containsIconOnly={!isOpen}
+        onClick={() => setIsModalOpen(true)}
       >
+        <LogIn size={20} />
+        {isOpen && <>Login</>}
+      </Button>
+      <Modal isOpen={isModalOpen} close={() => setIsModalOpen(false)}>
+        <h3 className="max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold">
+          Use the Fridge!
+        </h3>
         <span className="mb-6 inline-block text-base text-black-hover">
           You can login using any of these
         </span>
         <div className="mx-auto flex flex-col gap-2 sm:flex-row">
-          <Button size="S" appearence="yellow" className="w-full">
-            {/* eslint-disable-next-line */}
-            <img src="/images/icons/google.svg" alt="" width={24} height={24} />
-            Google
-          </Button>
+          <Link href="auth/preferences">
+            <Button size="S" appearence="yellow" className="w-full">
+              {/* eslint-disable-next-line */}
+              <img
+                src="/images/icons/google.svg"
+                alt=""
+                width={24}
+                height={24}
+              />
+              Google
+            </Button>
+          </Link>
           <Button size="S" appearence="yellow" className="w-full">
             <Facebook size={24} />
             Facebook

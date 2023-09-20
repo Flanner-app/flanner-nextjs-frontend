@@ -5,6 +5,7 @@ import Checkbox from '../shared/Checkbox'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 import { ChevronRight } from 'react-feather'
+import Link from 'next/link'
 
 const PREFERENCES = [
   'Low calories',
@@ -54,7 +55,8 @@ const PreferencesAuthStep = () => {
         onChange={(e) => setOtherPreferences(e.target.value)}
         onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
       />
-      <div className="flex justify-end">
+      {/* todo: insert other preferences inso selected on continue */}
+      <Link href={'appliances'}>
         <Button
           size="M"
           appearence={
@@ -73,7 +75,7 @@ const PreferencesAuthStep = () => {
             'Skip'
           )}
         </Button>
-      </div>
+      </Link>
     </div>
   )
 }

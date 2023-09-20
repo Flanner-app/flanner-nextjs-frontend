@@ -49,6 +49,9 @@ module.exports = {
       '10xl': '2.5rem', // 40px
     },
     extend: {
+      screens: {
+        xs: '375px',
+      },
       fontFamily: {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
         rubik: ['var(--font-rubik)', ...defaultTheme.fontFamily.sans],
@@ -60,6 +63,7 @@ module.exports = {
         ...theme('spacing'),
       }),
       maxWidth: (theme) => ({
+        ...theme('width'),
         ...theme('spacing'),
       }),
       minHeight: (theme) => ({

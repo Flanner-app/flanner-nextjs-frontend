@@ -31,7 +31,12 @@ const AuthModalLayout = ({ children }: { children: ReactNode }) => {
   }, [])
 
   return (
-    <Modal isOpen={showModal} close={() => setShowModal(false)} title="title">
+    <Modal
+      paddings="none"
+      isOpen={showModal}
+      close={() => setShowModal(false)}
+      className="max-h-[80vh] sm:!max-w-3xl"
+    >
       {children}
     </Modal>
   )

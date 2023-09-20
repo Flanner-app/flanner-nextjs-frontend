@@ -1,7 +1,7 @@
 import PreferencesAuthStep from '@/components/authFlow/PreferencesStep'
 
-const PreferencesModal = () => {
+const PreferencesAuthModal = () => {
   return <PreferencesAuthStep />
 }
 
-export default PreferencesModal
+export default PreferencesAuthModal

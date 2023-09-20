@@ -1,5 +1,11 @@
+import AppliancesStepContent from '@/components/authFlow/AppliancesStep'
+
 const AuthModal = () => {
-  return <></>
+  return (
+    <>
+      <AppliancesStepContent />
+    </>
+  )
 }
 
 export default AuthModal
