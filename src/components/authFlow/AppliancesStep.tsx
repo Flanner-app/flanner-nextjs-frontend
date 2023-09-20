@@ -60,17 +60,12 @@ const AppliancesStepContent = () => {
       <div className="p-6 pt-0">
         <Button
           size="M"
-          appearence={selectedAppliances.length !== 0 ? 'yellow' : 'outline'}
+          appearence="yellow"
           className="w-full"
+          disabled={selectedAppliances.length === 0}
         >
-          {selectedAppliances.length !== 0 ? (
-            <>
-              Continue
-              <ChevronRight size={20} />
-            </>
-          ) : (
-            'Skip'
-          )}
+          Continue
+          <ChevronRight size={20} />
         </Button>
       </div>
     </div>

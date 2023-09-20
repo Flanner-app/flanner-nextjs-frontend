@@ -1,4 +1,4 @@
-import InitialAuthStep from '@/components/authFlow/PreferencesStep'
+import InitialAuthStep from '@/components/authFlow/InitialStep'
 
 const AuthPage = () => {
   return <InitialAuthStep />

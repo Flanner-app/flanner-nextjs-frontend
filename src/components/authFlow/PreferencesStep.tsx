@@ -35,7 +35,15 @@ const PreferencesAuthStep = () => {
   }
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 p-6">
+      <div className="flex flex-col">
+        <h3 className="max-w-5/6 font-rubik text-6xl font-bold">
+          Use the Fridge!
+        </h3>
+        <span className="inline-block text-base text-black-hover">
+          You can change these later
+        </span>
+      </div>
       <div className="grid grid-cols-2 gap-4">
         {PREFERENCES.map((item) => (
           <div className="col-span-1" key={item}>
@@ -56,7 +64,7 @@ const PreferencesAuthStep = () => {
         onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
       />
       {/* todo: insert other preferences inso selected on continue */}
-      <Link href={'appliances'}>
+      <Link href="appliances">
         <Button
           size="M"
           appearence={

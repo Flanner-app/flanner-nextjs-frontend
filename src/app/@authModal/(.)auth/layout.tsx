@@ -1,23 +1,28 @@
 'use client'
 
 import Modal from '@/components/shared/Modal'
+import useAuthStore from '@/store/useAuthStore'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState, ReactNode } from 'react'
 
 const AuthModalLayout = ({ children }: { children: ReactNode }) => {
-  const [showModal, setShowModal] = useState(false)
   const [observeClose, setObserveClose] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+
+  const [authMeta, setAuthMeta] = useAuthStore((state) => [
+    state.meta,
+    state.setMeta,
+  ])
 
   const router = useRouter()
   const pathname = usePathname()
 
   useEffect(() => {
-    if (observeClose && !showModal) {
+    if (observeClose && !authMeta.isAuthModalOpen) {
       const modalTransitionDuration = 150
       setTimeout(() => setIsClosing(true), modalTransitionDuration)
     }
-  }, [observeClose, showModal])
+  }, [observeClose, authMeta.isAuthModalOpen])
 
   useEffect(() => {
     if (isClosing) {
@@ -26,15 +31,15 @@ const AuthModalLayout = ({ children }: { children: ReactNode }) => {
   }, [pathname, isClosing, router])
 
   useEffect(() => {
-    setShowModal(true)
+    setAuthMeta({ isAuthModalOpen: true })
     setObserveClose(true)
-  }, [])
+  }, [setAuthMeta])
 
   return (
     <Modal
       paddings="none"
-      isOpen={showModal}
-      close={() => setShowModal(false)}
+      isOpen={authMeta.isAuthModalOpen}
+      close={() => setAuthMeta({ isAuthModalOpen: false })}
       className="max-h-[80vh] sm:!max-w-3xl"
     >
       {children}

@@ -1,9 +1,9 @@
-import AppliancesStepContent from '@/components/authFlow/AppliancesStep'
+import InitialAuthStep from '@/components/authFlow/InitialStep'
 
 const AuthModal = () => {
   return (
     <>
-      <AppliancesStepContent />
+      <InitialAuthStep />
     </>
   )
 }
