@@ -7,17 +7,26 @@ import Button from '../shared/Button'
 import { ChevronRight } from 'react-feather'
 
 const APPLIANCES = [
-  { label: 'Stove', imgSrc: '/images/cards/stove.webp' },
-  { label: 'Oven', imgSrc: '/images/cards/oven.webp' },
-  { label: 'Microwave Oven', imgSrc: '/images/cards/microwave.webp' },
-  { label: 'Blender', imgSrc: '/images/cards/blender.webp' },
-  { label: 'Toaster', imgSrc: '/images/cards/toaster.webp' },
-  { label: 'Food Processor', imgSrc: '/images/cards/food-processor.webp' },
-  { label: 'Mixer', imgSrc: '/images/cards/mixer.webp' },
-  { label: 'Crock-pot', imgSrc: '/images/cards/crock-pot.webp' },
-  { label: 'Grill', imgSrc: '/images/cards/grill.webp' },
-  { label: 'Waffle Maker', imgSrc: '/images/cards/waffle-maker.webp' },
-  { label: 'Juicer', imgSrc: '/images/cards/juicer.webp' },
+  { label: 'Stove', imgSrc: '/images/cards/appliances/stove.webp' },
+  { label: 'Oven', imgSrc: '/images/cards/appliances/oven.webp' },
+  {
+    label: 'Microwave Oven',
+    imgSrc: '/images/cards/appliances/microwave.webp',
+  },
+  { label: 'Blender', imgSrc: '/images/cards/appliances/blender.webp' },
+  { label: 'Toaster', imgSrc: '/images/cards/appliances/toaster.webp' },
+  {
+    label: 'Food Processor',
+    imgSrc: '/images/cards/appliances/food-processor.webp',
+  },
+  { label: 'Mixer', imgSrc: '/images/cards/appliances/mixer.webp' },
+  { label: 'Crock-pot', imgSrc: '/images/cards/appliances/crock-pot.webp' },
+  { label: 'Grill', imgSrc: '/images/cards/appliances/grill.webp' },
+  {
+    label: 'Waffle Maker',
+    imgSrc: '/images/cards/appliances/waffle-maker.webp',
+  },
+  { label: 'Juicer', imgSrc: '/images/cards/appliances/juicer.webp' },
 ]
 
 const scrollbarClasses = [
