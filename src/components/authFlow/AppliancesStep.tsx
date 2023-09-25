@@ -5,6 +5,7 @@ import SelectionCard from '../shared/SelectionCard'
 import clsx from 'clsx'
 import Button from '../shared/Button'
 import { ChevronRight } from 'react-feather'
+import { useRouter } from 'next/navigation'
 
 const APPLIANCES = [
   { label: 'Stove', imgSrc: '/images/cards/appliances/stove.webp' },
@@ -38,6 +39,8 @@ const scrollbarClasses = [
 const AppliancesStepContent = () => {
   const [selectedAppliances, setSelectedAppliances] = useState<string[]>([])
 
+  const router = useRouter()
+
   const onSelect = (value: string) => {
     if (selectedAppliances.includes(value)) {
       const newValueList = selectedAppliances.filter((item) => item !== value)
@@ -45,6 +48,10 @@ const AppliancesStepContent = () => {
     } else {
       setSelectedAppliances((prev) => [...prev, value])
     }
+  }
+
+  const handleRedirect = () => {
+    router.push('skill')
   }
 
   return (
@@ -72,6 +79,7 @@ const AppliancesStepContent = () => {
           appearence="yellow"
           className="w-full"
           disabled={selectedAppliances.length === 0}
+          onClick={handleRedirect}
         >
           Continue
           <ChevronRight size={20} />

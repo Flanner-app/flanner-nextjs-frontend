@@ -1,8 +1,17 @@
+'use client'
+
 import { Facebook, Twitter } from 'react-feather'
 import Button from '../shared/Button'
-import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 
 const InitialAuthStep = () => {
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const handleRedirect = () => {
+    router.push(`${pathname}/preferences`)
+  }
+
   return (
     <div className="p-6">
       <h3 className="max-w-5/6 font-rubik text-6xl font-bold">
@@ -12,13 +21,16 @@ const InitialAuthStep = () => {
         You can login using any of these
       </span>
       <div className="mx-auto mt-12 flex flex-col gap-2 sm:flex-row">
-        <Link href="auth/preferences" className="w-full">
-          <Button size="S" appearence="yellow" className="w-full">
-            {/* eslint-disable-next-line */}
-            <img src="/images/icons/google.svg" alt="" width={24} height={24} />
-            Google
-          </Button>
-        </Link>
+        <Button
+          size="S"
+          appearence="yellow"
+          className="w-full"
+          onClick={handleRedirect}
+        >
+          {/* eslint-disable-next-line */}
+          <img src="/images/icons/google.svg" alt="" width={24} height={24} />
+          Google
+        </Button>
         <Button size="S" appearence="yellow" className="w-full">
           <Facebook size={24} />
           Facebook

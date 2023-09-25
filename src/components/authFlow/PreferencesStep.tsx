@@ -5,7 +5,7 @@ import Checkbox from '../shared/Checkbox'
 import Input from '../shared/Input'
 import Button from '../shared/Button'
 import { ChevronRight } from 'react-feather'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const PREFERENCES = [
   'Low calories',
@@ -25,6 +25,8 @@ const PreferencesAuthStep = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([])
   const [otherPreferences, setOtherPreferences] = useState('')
 
+  const router = useRouter()
+
   const onCheckboxChange = (value: string) => {
     if (selectedPreferences.includes(value)) {
       const newValueList = selectedPreferences.filter((item) => item !== value)
@@ -32,6 +34,10 @@ const PreferencesAuthStep = () => {
     } else {
       setSelectedPreferences((prev) => [...prev, value])
     }
+  }
+
+  const handleRedirect = () => {
+    router.push('appliances')
   }
 
   return (
@@ -64,26 +70,25 @@ const PreferencesAuthStep = () => {
         onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
       />
       {/* todo: insert other preferences inso selected on continue */}
-      <Link href="appliances">
-        <Button
-          size="M"
-          appearence={
-            selectedPreferences.length !== 0 || otherPreferences
-              ? 'yellow'
-              : 'outline'
-          }
-          className="w-full"
-        >
-          {selectedPreferences.length !== 0 || otherPreferences ? (
-            <>
-              Continue
-              <ChevronRight size={20} />
-            </>
-          ) : (
-            'Skip'
-          )}
-        </Button>
-      </Link>
+      <Button
+        size="M"
+        appearence={
+          selectedPreferences.length !== 0 || otherPreferences
+            ? 'yellow'
+            : 'outline'
+        }
+        className="w-full"
+        onClick={handleRedirect}
+      >
+        {selectedPreferences.length !== 0 || otherPreferences ? (
+          <>
+            Continue
+            <ChevronRight size={20} />
+          </>
+        ) : (
+          'Skip'
+        )}
+      </Button>
     </div>
   )
 }

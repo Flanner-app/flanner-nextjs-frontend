@@ -43,7 +43,7 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Link href="/auth">
+      <Link href="/quick-auth">
         <Button
           size="M"
           appearence="black"
