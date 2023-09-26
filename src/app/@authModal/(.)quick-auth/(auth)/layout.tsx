@@ -40,7 +40,7 @@ const AuthModalLayout = ({ children }: { children: ReactNode }) => {
       paddings="none"
       isOpen={authMeta.isAuthModalOpen}
       close={() => setAuthMeta({ isAuthModalOpen: false })}
-      className="max-h-[80vh] sm:!max-w-3xl"
+      className="max-h-[80vh] shadow-2xl sm:!max-w-3xl"
     >
       {children}
     </Modal>

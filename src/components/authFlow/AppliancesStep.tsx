@@ -55,11 +55,24 @@ const AppliancesStepContent = () => {
   }
 
   return (
-    <div className="flex h-full flex-col gap-6">
-      <h3 className="max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold">
+    <div className="flex h-full flex-col md:gap-6">
+      <h3
+        className={clsx(
+          'mb-3 max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold leading-none',
+          'hidden sm:block',
+        )}
+      >
         Select Appliances
       </h3>
       <div className={clsx('h-full overflow-y-auto', scrollbarClasses)}>
+        <h3
+          className={clsx(
+            'mb-3 max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold leading-none',
+            'block sm:hidden',
+          )}
+        >
+          Select Appliances
+        </h3>
         <div className="grid max-h-full grid-cols-1 gap-4 px-6 xs:grid-cols-2 md:grid-cols-3">
           {APPLIANCES.map((item) => (
             <SelectionCard
@@ -73,11 +86,11 @@ const AppliancesStepContent = () => {
           ))}
         </div>
       </div>
-      <div className="p-6 pt-0">
+      <div className="p-3 sm:p-6">
         <Button
           size="M"
           appearence="yellow"
-          className="w-full"
+          className="mx-auto w-full md:w-1/2"
           disabled={selectedAppliances.length === 0}
           onClick={handleRedirect}
         >
