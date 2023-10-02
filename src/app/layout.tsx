@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Poppins, Rubik } from 'next/font/google'
 
 import './globals.css'
+import { AuthContextProvider } from '@/context/AuthContext'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -35,8 +36,10 @@ export default function Layout({
           rubik.variable,
         )}
       >
-        {children}
-        {authModal}
+        <AuthContextProvider>
+          {children}
+          {authModal}
+        </AuthContextProvider>
       </body>
     </html>
   )

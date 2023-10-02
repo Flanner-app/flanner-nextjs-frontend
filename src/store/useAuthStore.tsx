@@ -31,15 +31,15 @@ type AuthStore = {
   setData: ({ step, data }: SetDataType) => void
 }
 
-const epmtyPreferencesStepData: PreferencesStepData = {
+const emptyPreferencesStepData: PreferencesStepData = {
   preferences: [],
 }
 
-const epmtyAppliancesStepData: AppliancesStepData = {
+const emptyAppliancesStepData: AppliancesStepData = {
   appliances: [],
 }
 
-const epmtySkillStepData: SkillStepData = {
+const emptySkillStepData: SkillStepData = {
   skillLevel: '',
 }
 
@@ -55,9 +55,9 @@ const useAuthStore = create<AuthStore>()(
         },
       })),
 
-    preferences: epmtyPreferencesStepData,
-    appliances: epmtyAppliancesStepData,
-    skillLevel: epmtySkillStepData,
+    preferences: emptyPreferencesStepData,
+    appliances: emptyAppliancesStepData,
+    skillLevel: emptySkillStepData,
     setData: ({ step, data }) =>
       set((state) => ({
         ...state,

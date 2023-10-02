@@ -1,16 +1,19 @@
 'use client'
 
-import Button from '../shared/Button'
-import { usePathname, useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { usePathname, useRouter } from 'next/navigation'
+import Button from '../shared/Button'
+import { useAuth } from '@/context/AuthContext'
 
 const InitialAuthStep = ({ className }: { className?: string }) => {
+  const { signInWithGoogle: googleSignIn, logOut } = useAuth()
+
   const router = useRouter()
   const pathname = usePathname()
 
-  const handleRedirect = () => {
-    router.push(`${pathname}/preferences`)
+  const signInWithGoogle = async () => {
+    googleSignIn().then(() => router.push(`${pathname}/preferences`))
   }
 
   return (
@@ -19,14 +22,14 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
         Use the Fridge!
       </h3>
       <span className="inline-block text-base text-black-hover">
-        You can login using any of these
+        Soon, there will be more ways to do sign in
       </span>
       <div className="mx-auto mt-16 flex flex-col gap-3 md:flex-row md:gap-2">
         <Button
           size="S"
           appearence="white"
           className="w-full"
-          onClick={handleRedirect}
+          onClick={signInWithGoogle}
         >
           <Image
             width={24}
@@ -36,23 +39,8 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
           />
           Google
         </Button>
-        <Button size="S" appearence="white" className="w-full">
-          <Image
-            width={24}
-            height={24}
-            alt="google"
-            src="/images/icons/facebook.svg"
-          />
-          Facebook
-        </Button>
-        <Button size="S" appearence="white" className="w-full">
-          <Image
-            width={24}
-            height={24}
-            alt="google"
-            src="/images/icons/twitter.svg"
-          />
-          Twitter
+        <Button size="S" appearence="white" className="w-full" onClick={logOut}>
+          logout
         </Button>
       </div>
     </div>
