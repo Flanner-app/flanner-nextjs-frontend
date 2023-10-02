@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import { Trash } from 'react-feather'
+import { FridgeItemType } from './Fridge'
+import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
-import Button from '../shared/Button'
-import { FridgeItemType } from './Fridge'
 
 type FridgeItemModalProps = {
   itemId: string

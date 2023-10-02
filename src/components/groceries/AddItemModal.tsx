@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { Plus, Trash } from 'react-feather'
-import Modal from '../shared/Modal'
-import Button from '../shared/Button'
-import Select from '../shared/Select'
-import { measurements } from './FridgeItemModal'
-import Input from '../shared/Input'
-import { FridgeItemType } from './Fridge'
 import AddItemAutocomplete from './AddItemAutocomplete'
+import { FridgeItemType } from './Fridge'
+import { measurements } from './FridgeItemModal'
+import Button from '../shared/Button'
+import Input from '../shared/Input'
+import Modal from '../shared/Modal'
+import Select from '../shared/Select'
 
 export type SelectionGroceryItem = {
   label: string

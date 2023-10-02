@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import SelectionCard from '../shared/SelectionCard'
 import clsx from 'clsx'
-import Button from '../shared/Button'
-import { ChevronRight } from 'react-feather'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { ChevronRight } from 'react-feather'
+import Button from '../shared/Button'
+import SelectionCard from '../shared/SelectionCard'
 
 const APPLIANCES = [
   { label: 'Stove', imgSrc: '/images/cards/appliances/stove.webp' },

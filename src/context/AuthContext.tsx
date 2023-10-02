@@ -1,6 +1,5 @@
 'use client'
 
-import { auth } from '@/firebaseConfig'
 import {
   GoogleAuthProvider,
   User,
@@ -15,6 +14,7 @@ import {
   useEffect,
   useState,
 } from 'react'
+import { auth } from '@/firebaseConfig'
 
 type contextType = {
   user: User | null

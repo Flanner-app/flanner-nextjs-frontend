@@ -1,5 +1,5 @@
-import InitialAuthStep from '@/components/authFlow/InitialStep'
 import Image from 'next/image'
+import InitialAuthStep from '@/components/authFlow/InitialStep'
 
 const AuthPage = () => {
   return (

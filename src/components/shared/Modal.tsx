@@ -1,6 +1,6 @@
+import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment, ReactNode } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'react-feather'
 import Button from './Button'
 

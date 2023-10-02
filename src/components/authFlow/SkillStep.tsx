@@ -1,10 +1,10 @@
 'use client'
 
+import clsx from 'clsx'
 import { useState } from 'react'
+import { ChevronRight } from 'react-feather'
 import Button from '../shared/Button'
 import SelectionCard from '../shared/SelectionCard'
-import { ChevronRight } from 'react-feather'
-import clsx from 'clsx'
 
 const SKILL_LEVELS = [
   { label: 'Beginner', imgSrc: '/images/cards/skill/beginner.webp' },

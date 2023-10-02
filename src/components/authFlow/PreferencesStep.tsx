@@ -1,12 +1,12 @@
 'use client'
 
+import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { ChevronRight } from 'react-feather'
+import Button from '../shared/Button'
 import Checkbox from '../shared/Checkbox'
 import Input from '../shared/Input'
-import Button from '../shared/Button'
-import { ChevronRight } from 'react-feather'
-import { useRouter } from 'next/navigation'
-import clsx from 'clsx'
 
 const PREFERENCES = [
   'Low calories',

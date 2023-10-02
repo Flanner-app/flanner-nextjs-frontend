@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Poppins, Rubik } from 'next/font/google'
+import { AuthContextProvider } from '@/context/AuthContext'
 
 import './globals.css'
-import { AuthContextProvider } from '@/context/AuthContext'
 
 const poppins = Poppins({
   subsets: ['latin'],

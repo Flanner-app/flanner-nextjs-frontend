@@ -1,12 +1,15 @@
 'use client'
 
-import { useState } from 'react'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { ChevronsLeft, LogIn } from 'react-feather'
+import { useState } from 'react'
+import { ChevronsLeft, LogIn, LogOut } from 'react-feather'
+import { useAuth } from '@/context/AuthContext'
 import Button from './Button'
 
 const Sidebar = () => {
+  const { user, logOut } = useAuth()
+
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -43,17 +46,30 @@ const Sidebar = () => {
           />
         </Button>
       </div>
-      <Link href="/quick-auth">
+      {user ? (
         <Button
           size="M"
           appearence="black"
           className="w-full leading-none"
           containsIconOnly={!isOpen}
+          onClick={logOut}
         >
-          <LogIn size={20} />
-          {isOpen && <>Login</>}
+          <LogOut size={20} />
+          {isOpen && <>Logout</>}
         </Button>
-      </Link>
+      ) : (
+        <Link href="/quick-auth">
+          <Button
+            size="M"
+            appearence="black"
+            className="w-full leading-none"
+            containsIconOnly={!isOpen}
+          >
+            <LogIn size={20} />
+            {isOpen && <>Login</>}
+          </Button>
+        </Link>
+      )}
     </div>
   )
 }

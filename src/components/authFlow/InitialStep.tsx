@@ -3,11 +3,11 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import Button from '../shared/Button'
 import { useAuth } from '@/context/AuthContext'
+import Button from '../shared/Button'
 
 const InitialAuthStep = ({ className }: { className?: string }) => {
-  const { signInWithGoogle: googleSignIn, logOut } = useAuth()
+  const { signInWithGoogle: googleSignIn } = useAuth()
 
   const router = useRouter()
   const pathname = usePathname()
@@ -38,9 +38,6 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
             src="/images/icons/google.svg"
           />
           Google
-        </Button>
-        <Button size="S" appearence="white" className="w-full" onClick={logOut}>
-          logout
         </Button>
       </div>
     </div>

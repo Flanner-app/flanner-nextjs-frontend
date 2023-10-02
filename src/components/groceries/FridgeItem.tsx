@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import clsx from 'clsx'
+import { useState } from 'react'
 import { X } from 'react-feather'
-import FridgeItemModal from './FridgeItemModal'
 import { FridgeItemType } from './Fridge'
+import FridgeItemModal from './FridgeItemModal'
 
 type FridgeItemProps = {
   onUpdate: (

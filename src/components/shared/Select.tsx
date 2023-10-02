@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
-import clsx from 'clsx'
 import { Listbox, Transition } from '@headlessui/react'
-import Button from './Button'
+import clsx from 'clsx'
+import { Fragment } from 'react'
 import { ChevronDown } from 'react-feather'
+import Button from './Button'
 
 type SelectProps = {
   valueList: string[]

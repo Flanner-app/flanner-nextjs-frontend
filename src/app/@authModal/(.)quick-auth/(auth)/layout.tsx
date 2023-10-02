@@ -1,9 +1,9 @@
 'use client'
 
-import Modal from '@/components/shared/Modal'
-import useAuthStore from '@/store/useAuthStore'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState, ReactNode } from 'react'
+import useAuthStore from '@/store/useAuthStore'
+import Modal from '@/components/shared/Modal'
 
 const AuthModalLayout = ({ children }: { children: ReactNode }) => {
   const [observeClose, setObserveClose] = useState(false)

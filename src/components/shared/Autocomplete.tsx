@@ -1,7 +1,7 @@
+import { Combobox, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment, ReactNode } from 'react'
 import { ChevronDown } from 'react-feather'
-import { Combobox, Transition } from '@headlessui/react'
 import Button from './Button'
 import { SelectionGroceryItem } from '../groceries/AddItemModal'
 
