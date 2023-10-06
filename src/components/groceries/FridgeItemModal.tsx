@@ -61,9 +61,10 @@ const FridgeItemModal = ({
       isOpen={isOpen}
       close={close}
       title="Any Changes?"
-      className="flex flex-col gap-4 overflow-visible"
+      paddings="regular"
+      className="flex h-full flex-col overflow-visible sm:h-fit sm:!max-w-2xl sm:p-6"
     >
-      <div className="flex justify-between gap-4">
+      <div className="mt-6 flex justify-between gap-4">
         <Input
           type="number"
           label="Quantity"
@@ -86,7 +87,7 @@ const FridgeItemModal = ({
           onChange={onSelectUnit}
         />
       </div>
-      <div className="flex justify-between gap-4">
+      <div className="mb-0 mt-auto flex gap-2 pt-3 sm:pt-6">
         <Button
           size="M"
           appearence="critical"

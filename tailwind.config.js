@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
-import defaultTheme from 'tailwindcss/defaultTheme'
 import scrollbar from 'tailwind-scrollbar'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -69,6 +69,13 @@ module.exports = {
       minHeight: (theme) => ({
         ...theme('spacing'),
       }),
+      maxHeight: (theme) => ({
+        ...theme('spacing'),
+        600: '600px',
+      }),
+      boxShadow: {
+        outlined: '0 0 10px 2px rgba(0,0,0,0.1)',
+      },
     },
   },
   plugins: [scrollbar({ nocompatible: true })],

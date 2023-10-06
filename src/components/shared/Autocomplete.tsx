@@ -11,6 +11,7 @@ export type AutocompleteProps<T> = {
   placeholder?: string
   name: string
   value?: T
+  openToTop?: boolean
   className?: string
   onChange: (value: T) => void
   onChangeQuery: (query: string) => void
@@ -23,6 +24,7 @@ const Autocomplete = <T extends SelectionGroceryItem>({
   placeholder,
   name,
   value,
+  openToTop = false,
   className,
   onChange,
   onChangeQuery,
@@ -48,7 +50,7 @@ const Autocomplete = <T extends SelectionGroceryItem>({
               className,
             )}
           >
-            <div className="flex w-full items-center justify-between gap-4">
+            <div className="flex w-full items-center justify-between gap-2">
               <div className="flex grow flex-col gap-1.5">
                 <span className="inline-block text-xs leading-none">
                   {label}
@@ -84,6 +86,8 @@ const Autocomplete = <T extends SelectionGroceryItem>({
               as="div"
               className={clsx(
                 'absolute z-20 mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
+                'shadow-outlined',
+                { 'bottom-16': openToTop },
               )}
             >
               <ul

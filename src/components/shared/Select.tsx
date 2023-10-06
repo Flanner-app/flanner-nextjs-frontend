@@ -10,9 +10,16 @@ type SelectProps = {
   placeholder?: string
   name: string
   value: string
+  openToTop?: boolean
   className?: string
   onChange: (value: string) => void
 }
+
+const scrollbarClasses = [
+  'scrollbar-track-transparent scrollbar-none',
+  'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
+  'sm:scrollbar-w-1 sm:scrollbar',
+]
 
 const Select = ({
   valueList,
@@ -20,14 +27,10 @@ const Select = ({
   placeholder,
   name,
   value,
+  openToTop = false,
   className,
   onChange,
 }: SelectProps) => {
-  const scrollbarClasses = [
-    'scrollbar-track-transparent scrollbar-none',
-    'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
-    'sm:scrollbar-w-1 sm:scrollbar',
-  ]
   return (
     <Listbox value={value} onChange={onChange} name={name}>
       {({ open }) => (
@@ -37,7 +40,7 @@ const Select = ({
             className={clsx(
               'h-full w-full rounded-xl bg-white shadow-sm transition-colors',
               'min-h-14 px-4 py-2 hover:bg-white/75 active:bg-white',
-              'box-border flex cursor-pointer items-center justify-between gap-4',
+              'box-border flex cursor-pointer items-center justify-between gap-2',
               open && 'bg-white',
               className,
             )}
@@ -83,6 +86,8 @@ const Select = ({
               as="div"
               className={clsx(
                 'absolute z-20 mt-1 h-fit w-full overflow-hidden rounded-xl outline-none',
+                'shadow-outlined',
+                { 'bottom-16': openToTop },
                 scrollbarClasses,
               )}
             >

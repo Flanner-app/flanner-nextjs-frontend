@@ -48,53 +48,50 @@ const PreferencesAuthStep = () => {
   }
 
   return (
-    <div className="flex h-full flex-col md:h-fit md:gap-6">
-      <h3
-        className={clsx(
-          'mb-3 max-w-5/6 pt-6 font-rubik text-6xl font-bold leading-none',
-          'hidden px-6 sm:block',
-        )}
-      >
-        Select your preferences
-      </h3>
-      <span className="hidden px-6 text-base text-black-hover sm:block">
-        You can change these later
-      </span>
-      <div className={clsx('h-full overflow-y-auto', scrollbarClasses)}>
+    <>
+      <div className="mb-3 flex flex-col gap-3">
         <h3
           className={clsx(
-            'mb-3 max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold leading-none',
-            'block sm:hidden',
+            'max-w-5/6 pt-6 font-rubik text-6xl font-bold leading-none',
+            'px-6',
           )}
         >
           Select your preferences
         </h3>
-        <span className="block px-6 text-base text-black-hover sm:hidden">
+        <span className="block px-6 text-base text-black-hover">
           You can change these later
         </span>
-        <div className="mt-6 grid max-h-full grid-cols-1 gap-6 px-6 sm:grid-cols-2 md:gap-4">
-          {PREFERENCES.map((item) => (
-            <div className="col-span-1" key={item}>
-              <Checkbox
-                key={item}
-                label={item}
-                isChecked={selectedPreferences.includes(item)}
-                onChange={() => onCheckboxChange(item)}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="mb-4 px-6">
-          <Input
-            label="Other (allergies, intolerances, ...)"
-            placeholder="No peanuts"
-            value={otherPreferences}
-            onChange={(e) => setOtherPreferences(e.target.value)}
-            onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
-            className="mt-6 md:w-1/2"
-          />
-        </div>
       </div>
+
+      <div
+        className={clsx(
+          'mt-6 grid h-fit grid-cols-1 gap-6 overflow-y-auto px-6 py-1',
+          'sm:grid-cols-2 md:gap-4',
+          scrollbarClasses,
+        )}
+      >
+        {PREFERENCES.map((item) => (
+          <div className="col-span-1 h-fit" key={item}>
+            <Checkbox
+              key={item}
+              label={item}
+              isChecked={selectedPreferences.includes(item)}
+              onChange={() => onCheckboxChange(item)}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="mb-4 px-6">
+        <Input
+          label="Other (allergies, intolerances, ...)"
+          placeholder="No peanuts"
+          value={otherPreferences}
+          onChange={(e) => setOtherPreferences(e.target.value)}
+          onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
+          className="mt-6 md:w-1/2"
+        />
+      </div>
+
       <div className="p-3 sm:p-6">
         <Button
           size="M"
@@ -116,7 +113,7 @@ const PreferencesAuthStep = () => {
           )}
         </Button>
       </div>
-    </div>
+    </>
   )
 }
 

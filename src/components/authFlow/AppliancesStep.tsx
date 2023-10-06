@@ -55,38 +55,36 @@ const AppliancesStepContent = () => {
   }
 
   return (
-    <div className="flex h-full flex-col md:gap-6">
+    <>
       <h3
         className={clsx(
-          'mb-3 max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold leading-none',
-          'hidden sm:block',
+          'max-w-5/6 pt-6 font-rubik text-6xl font-bold leading-none',
+          'mb-3 px-6',
         )}
       >
         Select Appliances
       </h3>
-      <div className={clsx('h-full overflow-y-auto', scrollbarClasses)}>
-        <h3
-          className={clsx(
-            'mb-3 max-w-5/6 px-6 pt-6 font-rubik text-6xl font-bold leading-none',
-            'block sm:hidden',
-          )}
-        >
-          Select Appliances
-        </h3>
-        <div className="grid max-h-full grid-cols-1 gap-4 px-6 xs:grid-cols-2 md:grid-cols-3">
-          {APPLIANCES.map((item) => (
+
+      <div
+        className={clsx(
+          'mt-6 grid h-fit grid-cols-1 gap-4 overflow-y-auto px-6 xs:grid-cols-2 md:grid-cols-3',
+          scrollbarClasses,
+        )}
+      >
+        {APPLIANCES.map((item) => (
+          <div className="h-fit" key={item.label}>
             <SelectionCard
-              key={item.label}
               label={item.label}
               imgSrc={item.imgSrc}
               isSelected={selectedAppliances.includes(item.label)}
               onChange={() => onSelect(item.label)}
               className="col-span-1"
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-      <div className="p-3 sm:p-6">
+      <div className="grid max-h-full grid-cols-1 gap-4 px-6 xs:grid-cols-2 md:grid-cols-3"></div>
+      <div className="mb-0 mt-auto p-3 sm:p-6">
         <Button
           size="M"
           appearence="yellow"
@@ -98,7 +96,7 @@ const AppliancesStepContent = () => {
           <ChevronRight size={20} />
         </Button>
       </div>
-    </div>
+    </>
   )
 }
 

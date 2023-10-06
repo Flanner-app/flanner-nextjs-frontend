@@ -54,7 +54,7 @@ const Button = ({
       data-icon-only={containsIconOnly}
       className={clsx(
         'flex items-center justify-center gap-2 rounded-full font-semibold leading-snug',
-        'outline-none transition-[background-color,opacity] disabled:pointer-events-none',
+        'outline-none transition-[background-color,opacity,color] disabled:pointer-events-none',
         'disabled:opacity-50',
         {
           'p-3 text-sm': size === 'S',

@@ -18,7 +18,7 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
 
   return (
     <div className={clsx('p-6', className)}>
-      <h3 className="max-w-5/6 font-rubik text-6xl font-bold">
+      <h3 className="mb-3 max-w-5/6 font-rubik text-6xl font-bold leading-none">
         Use the Fridge!
       </h3>
       <span className="inline-block text-base text-black-hover">

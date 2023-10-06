@@ -8,6 +8,8 @@ type ModalProps = {
   isOpen: boolean
   close: () => void
   paddings?: 'none' | 'regular'
+  title?: string
+  showCloseBtn?: boolean
   className?: string
   children: ReactNode
 }
@@ -16,6 +18,8 @@ const Modal = ({
   isOpen,
   close,
   paddings,
+  title,
+  showCloseBtn = true,
   className,
   children,
 }: ModalProps) => {
@@ -58,15 +62,29 @@ const Modal = ({
                   className,
                 )}
               >
-                <Button
-                  size="S"
-                  appearence="ghost"
-                  containsIconOnly
-                  onClick={close}
-                  className="absolute right-6 top-6 z-10"
-                >
-                  <X size={16} />
-                </Button>
+                {(title || showCloseBtn) && (
+                  <div className="flex items-center justify-between gap-4">
+                    {title && (
+                      <h3
+                        className={clsx(
+                          'font-rubik text-6xl font-bold leading-none',
+                          'block',
+                        )}
+                      >
+                        {title}
+                      </h3>
+                    )}
+                    <Button
+                      size="S"
+                      appearence="ghost"
+                      containsIconOnly
+                      onClick={close}
+                      className={clsx(!title && 'absolute right-6 top-6 z-10')}
+                    >
+                      <X size={16} />
+                    </Button>
+                  </div>
+                )}
                 {children}
               </Dialog.Panel>
             </Transition.Child>
