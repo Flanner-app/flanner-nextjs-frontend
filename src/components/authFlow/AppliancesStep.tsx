@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { ChevronRight } from 'react-feather'
+import { ArrowLeft, ChevronRight } from 'react-feather'
 import Button from '../shared/Button'
 import SelectionCard from '../shared/SelectionCard'
 
@@ -84,11 +84,20 @@ const AppliancesStepContent = () => {
         ))}
       </div>
       <div className="grid max-h-full grid-cols-1 gap-4 px-6 xs:grid-cols-2 md:grid-cols-3"></div>
-      <div className="mb-0 mt-auto p-3 sm:p-6">
+      <div className="mb-0 mt-auto flex flex-col gap-3 p-3 sm:flex-row sm:p-6">
+        <Button
+          size="M"
+          appearence="black"
+          className="sm:w-1/2"
+          onClick={() => router.back()}
+        >
+          <ArrowLeft size={20} />
+          Back
+        </Button>
         <Button
           size="M"
           appearence="yellow"
-          className="mx-auto w-full md:w-1/2"
+          className="sm:w-1/2"
           disabled={selectedAppliances.length === 0}
           onClick={handleRedirect}
         >

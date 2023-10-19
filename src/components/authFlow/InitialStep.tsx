@@ -22,7 +22,7 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
         Use the Fridge!
       </h3>
       <span className="inline-block text-base text-black-hover">
-        Soon, there will be more ways to do sign in
+        Soon, there will be more ways to sign in
       </span>
       <div className="mx-auto mt-16 flex flex-col gap-3 md:flex-row md:gap-2">
         <Button

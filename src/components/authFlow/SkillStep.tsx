@@ -1,8 +1,9 @@
 'use client'
 
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { ChevronRight } from 'react-feather'
+import { ArrowLeft, ChevronRight } from 'react-feather'
 import Button from '../shared/Button'
 import SelectionCard from '../shared/SelectionCard'
 
@@ -20,6 +21,8 @@ const scrollbarClasses = [
 
 const SkillStepContent = () => {
   const [selectedSkill, setSelectedSkill] = useState('')
+
+  const router = useRouter()
 
   return (
     <>
@@ -51,14 +54,22 @@ const SkillStepContent = () => {
         ))}
       </div>
 
-      <div className="mb-0 mt-auto p-3 sm:p-6">
+      <div className="mb-0 mt-auto flex flex-col gap-3 p-3 sm:flex-row sm:p-6">
+        <Button
+          size="M"
+          appearence="black"
+          className="sm:w-1/2"
+          onClick={() => router.back()}
+        >
+          <ArrowLeft size={20} />
+          Back
+        </Button>
         <Button
           size="M"
           appearence="yellow"
-          className="mx-auto w-full sm:w-1/2"
+          className="sm:w-1/2"
           disabled={selectedSkill.length === 0}
-          // todo: add redirect
-          // onClick={handleRedirect}
+          onClick={() => router.push('/')}
         >
           Continue
           <ChevronRight size={20} />

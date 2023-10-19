@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { ChevronRight } from 'react-feather'
+import { ArrowLeft, ChevronRight } from 'react-feather'
 import Button from '../shared/Button'
 import Checkbox from '../shared/Checkbox'
 import Input from '../shared/Input'
@@ -92,7 +92,16 @@ const PreferencesAuthStep = () => {
         />
       </div>
 
-      <div className="p-3 sm:p-6">
+      <div className="flex flex-col gap-3 p-3 sm:flex-row sm:p-6 md:mt-12">
+        <Button
+          size="M"
+          appearence="black"
+          className="sm:w-1/2"
+          onClick={() => router.back()}
+        >
+          <ArrowLeft size={20} />
+          Back
+        </Button>
         <Button
           size="M"
           appearence={
@@ -100,7 +109,7 @@ const PreferencesAuthStep = () => {
               ? 'yellow'
               : 'outline'
           }
-          className="mx-auto w-full sm:w-1/2 md:mt-12"
+          className="sm:w-1/2"
           onClick={handleRedirect}
         >
           {selectedPreferences.length !== 0 || otherPreferences ? (
