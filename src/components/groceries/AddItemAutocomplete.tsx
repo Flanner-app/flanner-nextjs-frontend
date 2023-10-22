@@ -1,11 +1,11 @@
 'use client'
 
+import { Combobox } from '@headlessui/react'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { Combobox } from '@headlessui/react'
+import { SelectionGroceryItem } from './AddItemModal'
 import staticGroceries from './staticGroceries.json'
 import Autocomplete, { AutocompleteProps } from '../shared/Autocomplete'
-import { SelectionGroceryItem } from './AddItemModal'
 
 const AddItemAutocomplete = ({
   ...props

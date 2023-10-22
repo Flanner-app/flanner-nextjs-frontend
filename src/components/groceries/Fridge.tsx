@@ -3,9 +3,9 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 import { Plus } from 'react-feather'
+import AddItemModal from './AddItemModal'
 import FridgeItem from './FridgeItem'
 import Button from '../shared/Button'
-import AddItemModal from './AddItemModal'
 import Heading from '../shared/typography/Heading'
 
 export type FridgeItemType = {

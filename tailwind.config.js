@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
-import defaultTheme from 'tailwindcss/defaultTheme'
 import scrollbar from 'tailwind-scrollbar'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -49,6 +49,9 @@ module.exports = {
       '10xl': '2.5rem', // 40px
     },
     extend: {
+      screens: {
+        xs: '375px',
+      },
       fontFamily: {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
         rubik: ['var(--font-rubik)', ...defaultTheme.fontFamily.sans],
@@ -60,11 +63,20 @@ module.exports = {
         ...theme('spacing'),
       }),
       maxWidth: (theme) => ({
+        ...theme('width'),
         ...theme('spacing'),
       }),
       minHeight: (theme) => ({
         ...theme('spacing'),
       }),
+      maxHeight: (theme) => ({
+        ...theme('spacing'),
+        600: '600px',
+      }),
+      boxShadow: {
+        outlined: '0 0 10px 2px rgba(0,0,0,0.1)',
+        brutalism: '3px 3px 0px 0px rgba(0,0,0,1)',
+      },
     },
   },
   plugins: [scrollbar({ nocompatible: true })],

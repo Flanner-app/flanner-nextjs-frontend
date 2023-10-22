@@ -1,18 +1,28 @@
+import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment, ReactNode } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'react-feather'
 import Button from './Button'
 
 type ModalProps = {
   isOpen: boolean
   close: () => void
-  title: string
+  paddings?: 'none' | 'regular'
+  title?: string
+  showCloseBtn?: boolean
   className?: string
   children: ReactNode
 }
 
-const Modal = ({ isOpen, close, title, className, children }: ModalProps) => {
+const Modal = ({
+  isOpen,
+  close,
+  paddings,
+  title,
+  showCloseBtn = true,
+  className,
+  children,
+}: ModalProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog onClose={close} as="div" className="relative z-10">
@@ -46,22 +56,35 @@ const Modal = ({ isOpen, close, title, className, children }: ModalProps) => {
             >
               <Dialog.Panel
                 className={clsx(
-                  'min-h-40 w-full overflow-hidden bg-yellow-dark backdrop-blur-md',
-                  'bg-opacity-70 p-6 sm:max-w-lg sm:rounded-3xl',
+                  'min-h-full w-full overflow-hidden bg-yellow-dark backdrop-blur-md sm:min-h-40',
+                  'h-full bg-opacity-70 sm:max-w-lg sm:rounded-3xl',
+                  { 'p-6': paddings === 'regular' },
                   className,
                 )}
               >
-                <div className="mb-4 flex items-start justify-between gap-4">
-                  <h3 className="font-rubik text-6xl font-bold">{title}</h3>
-                  <Button
-                    size="S"
-                    appearence="ghost"
-                    containsIconOnly
-                    onClick={close}
-                  >
-                    <X size={16} />
-                  </Button>
-                </div>
+                {(title || showCloseBtn) && (
+                  <div className="flex items-center justify-between gap-4">
+                    {title && (
+                      <h3
+                        className={clsx(
+                          'font-rubik text-6xl font-bold leading-none',
+                          'block',
+                        )}
+                      >
+                        {title}
+                      </h3>
+                    )}
+                    <Button
+                      size="S"
+                      appearence="ghost"
+                      containsIconOnly
+                      onClick={close}
+                      className={clsx(!title && 'absolute right-6 top-6 z-10')}
+                    >
+                      <X size={16} />
+                    </Button>
+                  </div>
+                )}
                 {children}
               </Dialog.Panel>
             </Transition.Child>

@@ -1,8 +1,7 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Poppins, Rubik } from 'next/font/google'
-import Sidebar from '@/components/shared/Sidebar'
-import FridgeSidebar from '@/components/groceries/FridgeSidebar'
+import { AuthContextProvider } from '@/context/AuthContext'
 
 import './globals.css'
 
@@ -21,10 +20,12 @@ export const metadata: Metadata = {
   description: 'The Fridge app',
 }
 
-export default function RootLayout({
+export default function Layout({
   children,
+  authModal,
 }: {
   children: React.ReactNode
+  authModal: React.ReactNode
 }) {
   return (
     <html lang="en" className="h-full">
@@ -35,9 +36,10 @@ export default function RootLayout({
           rubik.variable,
         )}
       >
-        <div className="flex h-full">
-          <Sidebar /> {children} <FridgeSidebar />
-        </div>
+        <AuthContextProvider>
+          {children}
+          {authModal}
+        </AuthContextProvider>
       </body>
     </html>
   )
