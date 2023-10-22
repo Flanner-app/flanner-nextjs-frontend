@@ -1,17 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 
 import defaultTheme from 'tailwindcss/defaultTheme'
+import scrollbar from 'tailwind-scrollbar'
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
-      white: '#ffffff',
+      white: '#FFFFFF',
+      transparent: 'transparent',
       yellow: {
         light: '#F8F2E1',
         regular: '#FFC800',
         hover: '#FFDE66',
-        dark: '#FFEDBA',
+        dark: '#FFEAB9',
       },
       black: {
         default: '#000000',
@@ -21,6 +23,15 @@ module.exports = {
       utility: {
         error: '#d0011b',
         success: '#5fb846',
+      },
+      tones: {
+        yellow: '#FDFCDC',
+        coral: '#FFE4D3',
+        rose: '#FED3DC',
+        lavender: '#EDDFFE',
+        babyBlue: '#A6E2E3',
+        powderBlue: '#D0E2DC',
+        mint: '#E5FDE2',
       },
     },
     fontSize: {
@@ -42,6 +53,9 @@ module.exports = {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
         rubik: ['var(--font-rubik)', ...defaultTheme.fontFamily.sans],
       },
+      spacing: {
+        4.5: '1.125rem',
+      },
       minWidth: (theme) => ({
         ...theme('spacing'),
       }),
@@ -53,5 +67,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [],
+  plugins: [scrollbar({ nocompatible: true })],
 }
