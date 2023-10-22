@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { ChangeEvent, InputHTMLAttributes, useMemo } from 'react'
 
-type InputProps = {
+export type InputProps = {
   label: string
   placeholder: string
   type?: 'regular' | 'number'
