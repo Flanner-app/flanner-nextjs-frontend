@@ -163,7 +163,6 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
                   name="add item units select"
                   value={item.units}
                   valueList={measurements}
-                  openToTop={index > 1}
                   onChange={(value) => editItem(index, 'units', value)}
                 />
                 <Input
