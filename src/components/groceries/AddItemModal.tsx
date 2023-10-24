@@ -186,7 +186,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
       </div>
       <div className="flex gap-2 px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-6">
         <Button
-          className="w-1/2"
+          wrapperClassName="w-1/2"
           appearence="yellow"
           size="M"
           onClick={onAddItem}
@@ -195,7 +195,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
           Add more
         </Button>
         <Button
-          className="w-1/2"
+          wrapperClassName="w-1/2"
           appearence="black"
           size="M"
           onClick={onSave}

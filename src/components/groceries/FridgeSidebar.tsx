@@ -43,7 +43,7 @@ const FridgeSidebar = () => {
       )}
     >
       <Fridge itemList={mockItems} />
-      <Button appearence="black" size="L">
+      <Button appearence="yellow" size="L">
         Generate recipes!
       </Button>
     </div>

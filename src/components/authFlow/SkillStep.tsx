@@ -58,7 +58,7 @@ const SkillStepContent = () => {
         <Button
           size="M"
           appearence="black"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           onClick={() => router.back()}
         >
           <ArrowLeft size={20} />
@@ -67,7 +67,7 @@ const SkillStepContent = () => {
         <Button
           size="M"
           appearence="yellow"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           disabled={selectedSkill.length === 0}
           onClick={() => router.push('/')}
         >

@@ -84,7 +84,7 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
         </div>
         <Button
           size="M"
-          appearence="yellow"
+          appearence="black"
           className="mb-0 mt-auto w-full"
           onClick={() => setShowAddItem(true)}
         >

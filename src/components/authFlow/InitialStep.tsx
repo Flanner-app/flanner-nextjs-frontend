@@ -26,9 +26,9 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
       </span>
       <div className="mx-auto mt-16 flex flex-col gap-3 md:flex-row md:gap-2">
         <Button
-          size="S"
+          size="M"
           appearence="white"
-          className="w-full"
+          wrapperClassName="w-1/2"
           onClick={signInWithGoogle}
         >
           <Image

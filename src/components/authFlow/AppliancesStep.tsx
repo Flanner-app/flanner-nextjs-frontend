@@ -88,7 +88,7 @@ const AppliancesStepContent = () => {
         <Button
           size="M"
           appearence="black"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           onClick={() => router.back()}
         >
           <ArrowLeft size={20} />
@@ -97,7 +97,7 @@ const AppliancesStepContent = () => {
         <Button
           size="M"
           appearence="yellow"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           disabled={selectedAppliances.length === 0}
           onClick={handleRedirect}
         >

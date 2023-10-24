@@ -50,7 +50,7 @@ const Sidebar = () => {
         <Button
           size="M"
           appearence="black"
-          className="w-full leading-none"
+          wrapperClassName="w-full"
           containsIconOnly={!isOpen}
           onClick={logOut}
         >
@@ -62,7 +62,7 @@ const Sidebar = () => {
           <Button
             size="M"
             appearence="black"
-            className="w-full leading-none"
+            wrapperClassName="w-full"
             containsIconOnly={!isOpen}
           >
             <LogIn size={20} />

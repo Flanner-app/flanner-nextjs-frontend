@@ -79,7 +79,9 @@ const Modal = ({
                       appearence="ghost"
                       containsIconOnly
                       onClick={close}
-                      className={clsx(!title && 'absolute right-6 top-6 z-10')}
+                      wrapperClassName={clsx(
+                        !title && '!absolute right-6 top-6 z-10',
+                      )}
                     >
                       <X size={16} />
                     </Button>
