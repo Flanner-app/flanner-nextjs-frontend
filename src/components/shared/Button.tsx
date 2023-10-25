@@ -60,49 +60,52 @@ const Button = ({
   }
 
   return (
-    <button
-      className={clsx(
-        'group relative transition-[filter] disabled:pointer-events-none disabled:grayscale',
-        wrapperClassName,
-      )}
-      data-icon-only={containsIconOnly}
-      disabled={disabled}
-      {...restProps}
-    >
-      <span
+    <div className={clsx('group pl-1 pt-1', wrapperClassName)}>
+      <button
         className={clsx(
-          'flex items-center justify-center gap-2 rounded-xl font-semibold leading-none',
-          'outline-none transition-[opacity,color,bottom,right,background-color] duration-100',
-          'relative z-[2]',
-          {
-            [clsx(
-              'bottom-1 right-1 group-hover:bottom-0 group-hover:right-0',
-              'active:bottom-0 active:right-0',
-            )]: appearence !== 'ghost',
-            'border-2 bg-yellow-regular !text-black-default': disabled,
-            'aspect-square p-2.5 text-sm': size === 'S',
-            'p-3.5 text-sm data-[icon-only=false]:!px-4': size === 'M',
-            'p-4 text-base data-[icon-only=false]:px-6': size === 'L',
-          },
-          sizeMap[size],
-          className,
-          getClasses(appearence),
+          'group relative w-full transition-[filter] disabled:pointer-events-none',
+          'disabled:grayscale',
         )}
+        data-icon-only={containsIconOnly}
+        disabled={disabled}
+        {...restProps}
       >
-        {children}
-      </span>
-      {appearence !== 'ghost' && (
         <span
           className={clsx(
-            'block rounded-xl border-2 border-black-default bg-black-default',
-            'absolute top-0 z-[1] h-full w-full',
+            'flex items-center justify-center gap-2 rounded-xl font-semibold leading-none',
+            'outline-none transition-[opacity,color,bottom,right,background-color] duration-100',
+            'relative z-[2]',
             {
-              '!bg-white': appearence === 'black' || appearence === 'critical',
+              [clsx(
+                'bottom-1 right-1 group-hover:bottom-0 group-hover:right-0',
+                'active:bottom-0 active:right-0',
+              )]: appearence !== 'ghost',
+              'border-2 bg-yellow-regular !text-black-default': disabled,
+              'aspect-square p-2.5 text-sm': size === 'S',
+              'p-3.5 text-sm data-[icon-only=false]:!px-4': size === 'M',
+              'p-4 text-base data-[icon-only=false]:px-6': size === 'L',
             },
+            sizeMap[size],
+            className,
+            getClasses(appearence),
           )}
-        />
-      )}
-    </button>
+        >
+          {children}
+        </span>
+        {appearence !== 'ghost' && (
+          <span
+            className={clsx(
+              'block rounded-xl border-2 border-black-default bg-black-default',
+              'absolute top-0 z-[1] h-full w-full',
+              {
+                '!bg-white':
+                  appearence === 'black' || appearence === 'critical',
+              },
+            )}
+          />
+        )}
+      </button>
+    </div>
   )
 }
 

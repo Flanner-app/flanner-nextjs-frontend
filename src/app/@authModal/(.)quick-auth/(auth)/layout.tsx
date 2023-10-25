@@ -41,7 +41,6 @@ const AuthModalLayout = ({ children }: { children: ReactNode }) => {
       isOpen={authMeta.isAuthModalOpen}
       close={() => setAuthMeta({ isAuthModalOpen: false })}
       className="flex flex-col shadow-2xl sm:max-h-[80vh] sm:!max-w-3xl"
-      showCloseBtn={false}
     >
       {children}
     </Modal>
