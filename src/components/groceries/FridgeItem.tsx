@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { X } from 'react-feather'
 import { FridgeItemType } from './Fridge'
 import FridgeItemModal from './FridgeItemModal'
@@ -37,6 +37,7 @@ const FridgeItem = ({
   onDelete,
 }: FridgeItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const count = `${quantity} ${units}`
 
@@ -59,6 +60,10 @@ const FridgeItem = ({
     // todo: item delete logic (DB)
     onDelete(itemId)
   }
+
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
 
   return (
     <>
@@ -90,7 +95,7 @@ const FridgeItem = ({
         <div
           className={clsx(
             'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-            randomColorsMap[randomColorNumber],
+            isLoaded && randomColorsMap[randomColorNumber],
           )}
         />
       </div>
