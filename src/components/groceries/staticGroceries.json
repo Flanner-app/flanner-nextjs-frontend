@@ -1,194 +1,242 @@
 [
     {
         "label": "apples",
-        "icon": "🍎"
+        "icon": "🍎",
+        "id": "200bb319-87e3-4921-aa37-29800f381770"
     },
     {
         "label": "bananas",
-        "icon": "🍌"
+        "icon": "🍌",
+        "id": "cad9710c-1412-4089-aff6-d57ea0a69dea"
     },
     {
         "label": "cherry",
-        "icon": "🍒"
+        "icon": "🍒",
+        "id": "e4d035cc-f091-4543-8f53-3cee465ae195"
     },
     {
         "label": "coconut",
-        "icon": "🥥"
+        "icon": "🥥",
+        "id": "97bed19b-2544-4eba-bfa0-8203e68ba186"
     },
     {
         "label": "eggs",
-        "icon": "🥚"
+        "icon": "🥚",
+        "id": "e8bb990b-d549-44f4-8a17-4e5f1c8d9add"
     },
     {
         "label": "grapes",
-        "icon": "🍇"
+        "icon": "🍇",
+        "id": "2c2c4284-25b8-4a2c-ab61-44a9c00a482a"
     },
     {
         "label": "lemons",
-        "icon": "🍋"
+        "icon": "🍋",
+        "id": "cb9c1465-d87b-45a2-8587-6e61ba6bd2aa"
     },
     {
         "label": "peach",
-        "icon": "🍑"
+        "icon": "🍑",
+        "id": "7cea676c-4ce3-4c9b-8ad5-66239027c059"
     },
     {
         "label": "spinach",
-        "icon": "🥬"
+        "icon": "🥬",
+        "id": "5ae62468-24a1-4352-bd74-4193a5bc281a"
     },
     {
         "label": "watermelon",
-        "icon": "🍉"
+        "icon": "🍉",
+        "id": "46a118b8-2d55-4bb6-b6df-9d0d7e570e46"
     },
     {
         "label": "avocado",
-        "icon": "🥑"
+        "icon": "🥑",
+        "id": "9978bf8c-d839-4556-bf42-3a0038d277b4"
     },
     {
         "label": "bell peppers",
-        "icon": "🫑"
+        "icon": "🫑",
+        "id": "e96a6583-e4fe-490e-bdf9-4d6b444857f0"
     },
     {
         "label": "broccoli",
-        "icon": "🥦"
+        "icon": "🥦",
+        "id": "20b2b4f9-de32-46c0-a969-558ea235791d"
     },
     {
         "label": "carrots",
-        "icon": "🥕"
+        "icon": "🥕",
+        "id": "422e7b19-0324-4769-99fb-a24f1e9ad53e"
     },
     {
         "label": "corn",
-        "icon": "🌽"
+        "icon": "🌽",
+        "id": "bbae5101-306f-4925-afef-0b0329fe126a"
     },
     {
         "label": "cucumber",
-        "icon": "🥒"
+        "icon": "🥒",
+        "id": "6f610e2d-a0bc-49fb-bd39-c4ef557d7db9"
     },
     {
         "label": "eggplant",
-        "icon": "🍆"
+        "icon": "🍆",
+        "id": "447de08b-eb5c-4c33-b245-f2651c38df2a"
     },
     {
         "label": "mushrooms",
-        "icon": "🍄"
+        "icon": "🍄",
+        "id": "2e88c00c-02fe-4f6c-9774-78a624acabaa"
     },
     {
         "label": "onions",
-        "icon": "🧅"
+        "icon": "🧅",
+        "id": "68fcffe1-e2cf-4a64-a2a0-406a4293c529"
     },
     {
         "label": "pepper",
-        "icon": "🌶️"
+        "icon": "🌶️",
+        "id": "1c57fca4-7661-48e3-a186-23f90eba1738"
     },
     {
         "label": "potatoes",
-        "icon": "🥔"
+        "icon": "🥔",
+        "id": "05b51228-b3cf-442a-951c-c6c7c25e4362"
     },
     {
         "label": "tomatoes",
-        "icon": "🍅"
+        "icon": "🍅",
+        "id": "43a391a5-c95d-4e24-8f0f-db6592612558"
     },
     {
         "label": "bacon",
-        "icon": "🥓"
+        "icon": "🥓",
+        "id": "15821464-b5a6-4fea-a6c9-649d3174b2b6"
     },
     {
         "label": "beef",
-        "icon": "🥩"
+        "icon": "🥩",
+        "id": "6c9bce45-49dd-4386-b4f1-fe86f788e705"
     },
     {
         "label": "chicken",
-        "icon": "🐔"
+        "icon": "🐔",
+        "id": "e0e27f93-3e34-41e5-b97b-d669f566f67d"
     },
     {
         "label": "chicken legs",
-        "icon": "🍗"
+        "icon": "🍗",
+        "id": "8ab8b15d-a3c1-4fe1-8830-22c2f61d3768"
     },
     {
         "label": "crab",
-        "icon": "🦀"
+        "icon": "🦀",
+        "id": "eca3defc-1713-4f0c-a76b-39b7576ecb7b"
     },
     {
         "label": "fish",
-        "icon": "🐟"
+        "icon": "🐟",
+        "id": "260de043-7f68-4b25-aac8-a816b249272d"
     },
     {
         "label": "lobster",
-        "icon": "🦞"
+        "icon": "🦞",
+        "id": "065f9ad7-d6d3-4088-8762-afd9d848d369"
     },
     {
         "label": "pork",
-        "icon": "🐖"
+        "icon": "🐖",
+        "id": "05002017-d541-4e34-b490-18f252fd7b99"
     },
     {
         "label": "shrimp",
-        "icon": "🦐"
+        "icon": "🦐",
+        "id": "a2d5e854-c187-4de6-a330-cbad7d8a70a3"
     },
     {
         "label": "squid",
-        "icon": "🦑"
+        "icon": "🦑",
+        "id": "070e0194-c472-470c-9a7c-97b4c6ac6eed"
     },
     {
         "label": "turkey",
-        "icon": "🦃"
+        "icon": "🦃",
+        "id": "cb10b7c9-c474-4fda-b66e-3da5c564f14c"
     },
     {
         "label": "bread",
-        "icon": "🥖"
+        "icon": "🥖",
+        "id": "357ab6f3-ed27-434d-8b22-d955d90f84dc"
     },
     {
         "label": "cheese",
-        "icon": "🧀"
+        "icon": "🧀",
+        "id": "9851dfbe-3426-4529-8e79-dd6b645f926a"
     },
     {
         "label": "herbs",
-        "icon": "🌿"
+        "icon": "🌿",
+        "id": "8171e4a5-6d78-49b1-bc88-8866c19fbdf4"
     },
     {
         "label": "olive oil",
-        "icon": "🫒"
+        "icon": "🫒",
+        "id": "942608e3-427c-4d96-951f-162056a1fcbe"
     },
     {
         "label": "rice",
-        "icon": "🍚"
+        "icon": "🍚",
+        "id": "7c4b8d25-cb02-4bf5-93b9-1a1682b0d3a5"
     },
     {
         "label": "salt",
-        "icon": "🧂"
+        "icon": "🧂",
+        "id": "1aea33a6-bb96-464b-9b73-4d144831dd55"
     },
     {
         "label": "spaghetti",
-        "icon": "🍝"
+        "icon": "🍝",
+        "id": "d4fe2219-be2d-4e83-bfe2-87de96a2d76c"
     },
     {
         "label": "wine",
-        "icon": "🍷"
+        "icon": "🍷",
+        "id": "5b0515e6-46ad-4b14-8db1-2deb30157737"
     },
     {
         "label": "chestnut",
-        "icon": "🌰"
+        "icon": "🌰",
+        "id": "a3693e8c-35a7-48e5-a9a1-04db306c0ab8"
     },
     {
         "label": "almonds",
-        "icon": "🥜"
+        "icon": "🥜",
+        "id": "3933598c-1d84-4ced-b8da-2223431b1e12"
     },
     {
         "label": "kiwi",
-        "icon": "🥝"
+        "icon": "🥝",
+        "id": "a6e95b0f-e1b6-4453-b53b-4bf45a4d6f78"
     },
     {
         "label": "limes",
-        "icon": "🍈"
+        "icon": "🍈",
+        "id": "e54d6af4-ca07-4759-9d2b-295f565b073b"
     },
     {
         "label": "mango",
-        "icon": "🥭"
+        "icon": "🥭",
+        "id": "804bc799-4988-4d11-a00a-bce1f7e72a77"
     },
     {
         "label": "peanuts",
-        "icon": "🥜"
+        "icon": "🥜",
+        "id": "7c9090a9-db34-438c-ba62-1fc25c52d0f7"
     },
     {
         "label": "pear",
-        "icon": "🍐"
+        "icon": "🍐",
+        "id": "4db43017-ca25-4b52-a51b-871bde491a80"
     }
 ]

@@ -60,7 +60,13 @@ const Button = ({
   }
 
   return (
-    <div className={clsx('group pl-1 pt-1', wrapperClassName)}>
+    <div
+      className={clsx(
+        'group',
+        { 'pl-1 pt-1': appearence !== 'ghost' },
+        wrapperClassName,
+      )}
+    >
       <button
         className={clsx(
           'group relative w-full transition-[filter] disabled:pointer-events-none',

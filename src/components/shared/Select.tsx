@@ -49,7 +49,7 @@ const Select = ({
             as="div"
             className={clsx(
               'rounded-xl bg-white shadow-sm transition-colors',
-              'h-14 px-4 hover:bg-white/75 active:bg-white',
+              'h-14 pl-4 pr-2 hover:bg-white/75 active:bg-white',
               'border-2 border-black-default',
               'box-border flex cursor-pointer items-center justify-between gap-2',
               open && 'bg-white',
@@ -81,7 +81,7 @@ const Select = ({
             isOpen={open}
             close={() => openBtnRef.current?.click()}
             showCloseBtn={false}
-            className="max-h-96 py-6"
+            className="aspect-square max-h-400 py-6"
           >
             <Listbox.Options className="flex h-full flex-col gap-4">
               <div className="flex items-center justify-between gap-4 px-6">

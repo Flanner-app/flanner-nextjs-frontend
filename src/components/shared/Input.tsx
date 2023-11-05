@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { ChangeEvent, InputHTMLAttributes, useMemo } from 'react'
 
 export type InputProps = {
-  label: string
+  label?: string
   placeholder: string
   type?: 'regular' | 'number'
   decimalCount?: number
@@ -63,9 +63,11 @@ const Input = ({
 
   return (
     <div className={wrapperClassName}>
-      <span className="mb-2 inline-block font-medium leading-none">
-        {label}
-      </span>
+      {label && (
+        <span className="mb-2 inline-block font-medium leading-none">
+          {label}
+        </span>
+      )}
       <label
         className={clsx(
           'block rounded-xl bg-white transition-colors',

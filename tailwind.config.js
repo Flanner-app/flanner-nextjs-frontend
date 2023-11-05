@@ -71,6 +71,7 @@ module.exports = {
       }),
       maxHeight: (theme) => ({
         ...theme('spacing'),
+        400: '400px',
         600: '600px',
       }),
       boxShadow: {
