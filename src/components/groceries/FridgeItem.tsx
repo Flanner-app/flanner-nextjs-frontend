@@ -1,10 +1,11 @@
 'use client'
 
 import clsx from 'clsx'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { X } from 'react-feather'
 import { FridgeItemType } from './Fridge'
 import FridgeItemModal from './FridgeItemModal'
+import { getRandomBgColor } from '@/utils/colors'
 
 type FridgeItemProps = {
   onUpdate: (
@@ -14,18 +15,6 @@ type FridgeItemProps = {
   ) => void
   onDelete: (id: string) => void
 } & FridgeItemType
-
-const randomColorsMap: { [key: number]: string } = {
-  0: 'bg-tones-yellow',
-  1: 'bg-tones-coral',
-  2: 'bg-tones-rose',
-  3: 'bg-tones-lavender',
-  4: 'bg-tones-babyblue',
-  5: 'bg-tones-powderBlue',
-  6: 'bg-tones-mint',
-  7: 'bg-tones-white',
-  8: 'bg-yellow-regular',
-}
 
 const FridgeItem = ({
   id,
@@ -40,12 +29,6 @@ const FridgeItem = ({
   const [isLoaded, setIsLoaded] = useState(false)
 
   const count = `${quantity} ${units}`
-
-  const randomColorNumber = useMemo(() => {
-    const min = 1
-    const max = 9
-    return Math.floor(Math.random() * (max - min + 1))
-  }, [])
 
   const updateItem = (
     quantityArg: string,
@@ -95,7 +78,7 @@ const FridgeItem = ({
         <div
           className={clsx(
             'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-            isLoaded && randomColorsMap[randomColorNumber],
+            isLoaded && getRandomBgColor(),
           )}
         />
       </div>
