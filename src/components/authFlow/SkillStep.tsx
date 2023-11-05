@@ -37,7 +37,8 @@ const SkillStepContent = () => {
 
       <div
         className={clsx(
-          'mt-6 grid h-fit grid-cols-1 gap-4 overflow-y-auto px-6 xs:grid-cols-2 md:grid-cols-3',
+          'mt-6 grid h-fit grid-cols-1 gap-4 overflow-y-auto px-6 pt-1.5',
+          'xs:grid-cols-2 md:grid-cols-3',
           scrollbarClasses,
         )}
       >

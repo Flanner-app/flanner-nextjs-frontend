@@ -3,9 +3,9 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { X } from 'react-feather'
+import { getRandomBgColor } from '@/utils/colors'
 import { FridgeItemType } from './Fridge'
 import FridgeItemModal from './FridgeItemModal'
-import { getRandomBgColor } from '@/utils/colors'
 
 type FridgeItemProps = {
   onUpdate: (
