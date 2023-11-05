@@ -37,13 +37,13 @@ const FridgeSidebar = () => {
   return (
     <div
       className={clsx(
-        'h-full border-l-2 border-black-regular p-4 shadow-sm',
-        'flex w-full flex-col justify-between gap-4 bg-yellow-dark lg:max-w-md',
+        'h-full border-l-2 border-black-regular p-6 shadow-sm',
+        'flex w-full flex-col justify-between gap-6 bg-yellow-dark lg:max-w-md',
         'md:max-w-80',
       )}
     >
       <Fridge itemList={mockItems} />
-      <Button appearence="black" size="L">
+      <Button appearence="yellow" size="L">
         Generate recipes!
       </Button>
     </div>

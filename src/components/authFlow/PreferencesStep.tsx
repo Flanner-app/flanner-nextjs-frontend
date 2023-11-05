@@ -88,15 +88,15 @@ const PreferencesAuthStep = () => {
           value={otherPreferences}
           onChange={(e) => setOtherPreferences(e.target.value)}
           onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
-          className="mt-6 md:w-1/2"
+          wrapperClassName="mt-6 md:w-1/2"
         />
       </div>
 
-      <div className="flex flex-col gap-3 p-3 sm:flex-row sm:p-6 md:mt-12">
+      <div className="mb-0 mt-auto flex flex-col gap-3 p-3 sm:flex-row sm:p-6">
         <Button
           size="M"
           appearence="black"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           onClick={() => router.back()}
         >
           <ArrowLeft size={20} />
@@ -107,9 +107,9 @@ const PreferencesAuthStep = () => {
           appearence={
             selectedPreferences.length !== 0 || otherPreferences
               ? 'yellow'
-              : 'outline'
+              : 'white'
           }
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           onClick={handleRedirect}
         >
           {selectedPreferences.length !== 0 || otherPreferences ? (

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { ChangeEvent, InputHTMLAttributes, useMemo } from 'react'
 
 export type InputProps = {
-  label: string
+  label?: string
   placeholder: string
   type?: 'regular' | 'number'
   decimalCount?: number
@@ -63,31 +63,34 @@ const Input = ({
 
   return (
     <div className={wrapperClassName}>
+      {label && (
+        <span className="mb-2 inline-block font-medium leading-none">
+          {label}
+        </span>
+      )}
       <label
         className={clsx(
-          'block rounded-xl bg-white shadow-sm transition-colors',
-          'px-4 py-2 hover:bg-white/75 hover:focus-within:bg-white',
-          'min-h-14 active:bg-white',
-          'box-border cursor-text',
+          'block rounded-xl bg-white transition-colors',
+          'flex items-center border-2 border-black-default',
+          'box-border h-14 cursor-text px-4',
+          'hover:bg-white/75 hover:focus-within:bg-white active:bg-white',
           error && 'border border-utility-error/50',
           className,
         )}
       >
-        <div className="flex h-full flex-col gap-1.5">
-          <span className="inline-block text-xs leading-none">{label}</span>
-          <input
-            type="text"
-            className={clsx(
-              'block w-full p-0 text-black-default placeholder-black-hover/50',
-              'h-5 bg-transparent text-sm leading-none outline-none focus:ring-0',
-            )}
-            inputMode={getInputMode}
-            placeholder={placeholder}
-            value={value}
-            onChange={handleChange}
-            {...inputProps}
-          />
-        </div>
+        <input
+          type="text"
+          className={clsx(
+            'block w-full p-0 text-black-default placeholder-black-hover/50',
+            'h-full bg-transparent leading-none outline-none focus:ring-0',
+            'placeholder:font-medium',
+          )}
+          inputMode={getInputMode}
+          placeholder={placeholder}
+          value={value}
+          onChange={handleChange}
+          {...inputProps}
+        />
       </label>
       {!!error && (
         <span className="pl-2 text-xs text-utility-error">{error}</span>

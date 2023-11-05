@@ -67,7 +67,8 @@ const AppliancesStepContent = () => {
 
       <div
         className={clsx(
-          'mt-6 grid h-fit grid-cols-1 gap-4 overflow-y-auto px-6 xs:grid-cols-2 md:grid-cols-3',
+          'mt-6 grid h-fit grid-cols-1 gap-4 overflow-y-auto px-6 pt-1.5',
+          'xs:grid-cols-2 md:grid-cols-3',
           scrollbarClasses,
         )}
       >
@@ -88,7 +89,7 @@ const AppliancesStepContent = () => {
         <Button
           size="M"
           appearence="black"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           onClick={() => router.back()}
         >
           <ArrowLeft size={20} />
@@ -97,7 +98,7 @@ const AppliancesStepContent = () => {
         <Button
           size="M"
           appearence="yellow"
-          className="sm:w-1/2"
+          wrapperClassName="sm:w-1/2"
           disabled={selectedAppliances.length === 0}
           onClick={handleRedirect}
         >

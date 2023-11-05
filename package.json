@@ -25,6 +25,7 @@
     "react-feather": "^2.0.10",
     "standard-version": "^9.5.0",
     "typescript": "5.1.6",
+    "uuid": "^9.0.1",
     "zustand": "^4.4.1"
   },
   "devDependencies": {
@@ -37,6 +38,7 @@
     "@storybook/nextjs": "^7.0.21",
     "@storybook/react": "^7.0.21",
     "@storybook/testing-library": "0.0.14-next.2",
+    "@types/uuid": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "autoprefixer": "^10.4.14",

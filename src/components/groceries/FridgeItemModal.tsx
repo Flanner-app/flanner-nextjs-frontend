@@ -91,7 +91,7 @@ const FridgeItemModal = ({
         <Button
           size="M"
           appearence="critical"
-          className="w-full"
+          wrapperClassName="w-full"
           onClick={() => deleteItem(itemId)}
         >
           <Trash size={20} />
@@ -100,7 +100,7 @@ const FridgeItemModal = ({
         <Button
           size="M"
           appearence="black"
-          className="w-full"
+          wrapperClassName="w-full"
           onClick={() => {
             updateItem(data.quantity, data.units)
             close()

@@ -57,7 +57,7 @@ const Modal = ({
               <Dialog.Panel
                 className={clsx(
                   'min-h-full w-full overflow-hidden bg-yellow-dark backdrop-blur-md sm:min-h-40',
-                  'h-full bg-opacity-70 sm:max-w-lg sm:rounded-3xl',
+                  'h-full border-2 border-black-regular bg-opacity-70 sm:max-w-lg sm:rounded-xl',
                   { 'p-6': paddings === 'regular' },
                   className,
                 )}
@@ -79,7 +79,9 @@ const Modal = ({
                       appearence="ghost"
                       containsIconOnly
                       onClick={close}
-                      className={clsx(!title && 'absolute right-6 top-6 z-10')}
+                      wrapperClassName={clsx(
+                        !title && '!absolute right-6 top-6 z-10',
+                      )}
                     >
                       <X size={16} />
                     </Button>

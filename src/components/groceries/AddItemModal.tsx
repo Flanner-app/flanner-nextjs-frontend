@@ -3,7 +3,8 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { Plus, Trash, X } from 'react-feather'
-import AddItemAutocomplete from './AddItemAutocomplete'
+import { v4 as uuidv4 } from 'uuid'
+import AddItemAutocomplete, { AutocompleteValue } from './AddItemAutocomplete'
 import { FridgeItemType } from './Fridge'
 import { measurements } from './FridgeItemModal'
 import Button from '../shared/Button'
@@ -29,10 +30,6 @@ type AddItemModalProps = {
   onAddItems: (itemList: FridgeItemType[]) => void
 }
 
-const getRandomId = () => {
-  return (Date.now() + Math.random()).toString()
-}
-
 const scrollbarClasses = [
   'scrollbar-track-transparent',
   'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
@@ -41,14 +38,14 @@ const scrollbarClasses = [
 
 const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
   const [items, setItems] = useState<FridgeItemType[]>([
-    { id: getRandomId(), label: '', icon: '', units: 'items', quantity: 1 },
+    { id: uuidv4(), label: '', icon: '', units: 'items', quantity: 1 },
   ])
   const [disableSave, setDisableSave] = useState(true)
 
   const onClose = () => {
     close()
     setItems([
-      { id: getRandomId(), label: '', icon: '', units: 'items', quantity: 1 },
+      { id: uuidv4(), label: '', icon: '', units: 'items', quantity: 1 },
     ])
   }
 
@@ -56,7 +53,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
     setItems((prevState) => [
       ...prevState,
       {
-        id: getRandomId(),
+        id: uuidv4(),
         label: '',
         icon: '',
         units: 'items',
@@ -68,13 +65,13 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
   const editItem = (
     index: number,
     property: keyof GroceryItem,
-    value: string | number | { label: string; icon: string },
+    value: string | number | AutocompleteValue,
   ) => {
     const updatedItems = [...items]
     let editedItem
 
     if (property === 'label') {
-      const typedValue = value as { label: string; icon: string }
+      const typedValue = value as AutocompleteValue
       editedItem = {
         ...updatedItems[index],
         label: typedValue.label,
@@ -142,28 +139,28 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
       >
         {items.map((item, index) => (
           <div
-            className="flex items-center gap-2 px-2 py-4 first:pt-0 sm:py-4 md:px-6"
+            className="flex items-start gap-4 px-4 py-4 first:pt-0 sm:items-end sm:py-4 md:px-6"
             key={item.id}
           >
-            <span className="pointer-events-none select-none text-4xl">
+            <div className="pointer-events-none mb-2 mt-9 select-none text-4xl sm:mt-0 sm:block">
               {item.icon || '❔'}
-            </span>
-            <div className="flex w-full items-start gap-5 sm:items-center">
+            </div>
+            <div className="flex w-full items-start gap-4 sm:items-end">
               <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-4">
                 <AddItemAutocomplete
-                  label="Select item"
-                  placeholder="Type it in!"
-                  name={'grocery input ' + index}
-                  onChange={(value) => editItem(index, 'label', value)}
-                  value={{ label: item.label, icon: item.icon }}
-                  openToTop={index > 1}
+                  label="Select an item"
+                  onSelect={(value) => editItem(index, 'label', value)}
+                  selectedValue={{
+                    id: item.id,
+                    label: item.label,
+                    icon: item.icon,
+                  }}
                 />
                 <Select
                   label="Measure in"
                   name="add item units select"
                   value={item.units}
                   valueList={measurements}
-                  openToTop={index > 1}
                   onChange={(value) => editItem(index, 'units', value)}
                 />
                 <Input
@@ -178,6 +175,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
                 appearence="ghost"
                 size="S"
                 onClick={() => removeItem(index)}
+                className="mt-9 sm:mb-2 sm:mt-0"
               >
                 <Trash size={16} />
               </Button>
@@ -187,7 +185,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
       </div>
       <div className="flex gap-2 px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-6">
         <Button
-          className="w-1/2"
+          wrapperClassName="w-1/2"
           appearence="yellow"
           size="M"
           onClick={onAddItem}
@@ -196,7 +194,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
           Add more
         </Button>
         <Button
-          className="w-1/2"
+          wrapperClassName="w-1/2"
           appearence="black"
           size="M"
           onClick={onSave}
