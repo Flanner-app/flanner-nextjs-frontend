@@ -23,6 +23,7 @@ type Story = StoryObj<typeof Tag>
 
 export const RegularBlogTag: Story = {
   args: {
+    type: 'regular',
     children: 'Skills',
   },
 }

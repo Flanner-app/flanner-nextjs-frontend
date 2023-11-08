@@ -24,7 +24,7 @@ const SelectionCard = ({
           'z-[2] rounded-lg border-2 border-black-regular bg-yellow-dark p-3 pb-0',
           'aspect-square min-h-40 min-w-40 cursor-pointer',
           'relative flex flex-col justify-between gap-4 bg-contain bg-bottom bg-no-repeat',
-          'group-hover:-translate-x-[5px] group-hover:-translate-y-[5px]',
+          'group-hover:-translate-x-1.5 group-hover:-translate-y-1.5',
           'transition-transform duration-100',
           'sm:min-w-52',
           { 'bg-tones-rose': isSelected },
