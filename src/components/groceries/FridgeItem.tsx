@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { X } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
 import { FridgeItemType } from './Fridge'
@@ -26,7 +26,6 @@ const FridgeItem = ({
   onDelete,
 }: FridgeItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
 
   const count = `${quantity} ${units}`
 
@@ -44,10 +43,6 @@ const FridgeItem = ({
     onDelete(itemId)
   }
 
-  useEffect(() => {
-    setIsLoaded(true)
-  }, [])
-
   return (
     <>
       <div className="group relative">
@@ -55,9 +50,9 @@ const FridgeItem = ({
           className={clsx(
             'z-[2] w-fit rounded-xl border-2 border-black-regular bg-yellow-dark p-3',
             'flex aspect-square w-full flex-col items-center justify-between gap-2',
-            'relative cursor-pointer text-center leading-none transition-colors',
+            'relative cursor-pointer text-center leading-none',
             'group-hover:-translate-x-1 group-hover:-translate-y-1',
-            'transition-transform duration-100',
+            'transition-[transform,colors] duration-100',
           )}
           onClick={() => setIsModalOpen(true)}
         >
@@ -78,7 +73,7 @@ const FridgeItem = ({
         <div
           className={clsx(
             'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-            isLoaded && getRandomBgColor(),
+            getRandomBgColor(),
           )}
         />
       </div>

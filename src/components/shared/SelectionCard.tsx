@@ -1,7 +1,4 @@
-'use client'
-
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
 import { Check } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
 
@@ -20,12 +17,6 @@ const SelectionCard = ({
   onChange,
   className,
 }: SelectionCardProps) => {
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    setIsLoaded(true)
-  }, [])
-
   return (
     <div className="group relative">
       <div
@@ -33,7 +24,7 @@ const SelectionCard = ({
           'z-[2] rounded-lg border-2 border-black-regular bg-yellow-dark p-3 pb-0',
           'aspect-square min-h-40 min-w-40 cursor-pointer',
           'relative flex flex-col justify-between gap-4 bg-contain bg-bottom bg-no-repeat',
-          'group-hover:-translate-x-1.5 group-hover:-translate-y-1.5',
+          'group-hover:-translate-x-[5px] group-hover:-translate-y-[5px]',
           'transition-transform duration-100',
           'sm:min-w-52',
           { 'bg-tones-rose': isSelected },
@@ -80,7 +71,7 @@ const SelectionCard = ({
       <div
         className={clsx(
           'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-          isLoaded && getRandomBgColor(),
+          getRandomBgColor(),
         )}
       />
     </div>

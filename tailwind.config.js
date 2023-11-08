@@ -2,9 +2,15 @@
 
 import scrollbar from 'tailwind-scrollbar'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import { generateRandomBgColorsSafelist } from './src/utils/colors'
+
+const generateSafelist = () => {
+  return [...generateRandomBgColorsSafelist()]
+}
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  safelist: generateSafelist(),
   theme: {
     colors: {
       white: '#FFFFFF',
