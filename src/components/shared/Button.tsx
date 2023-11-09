@@ -2,7 +2,14 @@ import clsx from 'clsx'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type ButtonProps = {
-  appearence: 'yellow' | 'black' | 'white' | 'outline' | 'critical' | 'ghost'
+  appearence:
+    | 'yellow'
+    | 'accent'
+    | 'black'
+    | 'white'
+    | 'outline'
+    | 'critical'
+    | 'ghost'
   size: 'S' | 'M' | 'L'
   className?: string
   wrapperClassName?: string
@@ -24,6 +31,11 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
     //     'hover:bg-black-hover hover:border-black-hover hover:text-white active:bg-black-regular',
     //     'active:text-white',
     //   ]
+    case 'accent':
+      return [
+        'bg-accent-green text-black active:bg-accent-green/80',
+        'border-2 border-black-regular',
+      ]
     case 'black':
       return 'bg-black-regular text-white active:bg-black-hover'
     case 'white':
@@ -105,7 +117,9 @@ const Button = ({
               'absolute top-0 z-[1] h-full w-full',
               {
                 '!bg-white':
-                  appearence === 'black' || appearence === 'critical',
+                  appearence === 'black' ||
+                  appearence === 'critical' ||
+                  appearence === 'accent',
               },
             )}
           />
