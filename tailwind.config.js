@@ -30,6 +30,10 @@ module.exports = {
         error: '#d0011b',
         success: '#5fb846',
       },
+      accent: {
+        purple: '#C4A1FF',
+        green: '#D0EE30',
+      },
       tones: {
         yellow: '#FDFCDC',
         coral: '#FFE4D3',
@@ -53,6 +57,9 @@ module.exports = {
       '6xl': '2rem', // 32px
       '7xl': '2.125rem', // 34px
       '10xl': '2.5rem', // 40px
+      '13xl': '3rem', // 48px
+      '17xl': '3.75rem', // 60px
+      '19xl': '4.5rem', // 72px
     },
     extend: {
       screens: {
