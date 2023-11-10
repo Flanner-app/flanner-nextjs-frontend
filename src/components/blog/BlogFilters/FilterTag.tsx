@@ -4,15 +4,25 @@ import { ReactNode } from 'react'
 type FilterTagProps = {
   isActive: boolean
   onClick: () => void
+  className?: string
   children: ReactNode
 }
 
-const FilterTag = ({ isActive, onClick, children }: FilterTagProps) => {
+const FilterTag = ({
+  isActive,
+  onClick,
+  className,
+  children,
+}: FilterTagProps) => {
   return (
     <div
-      className={clsx('group relative w-fit transition-transform', {
-        'active:scale-95': isActive,
-      })}
+      className={clsx(
+        'group relative w-fit transition-transform',
+        {
+          'active:scale-95': isActive,
+        },
+        className,
+      )}
       onClick={onClick}
     >
       <div

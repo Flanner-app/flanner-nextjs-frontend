@@ -1,9 +1,13 @@
+import BlogFilters from '@/components/blog/BlogFilters'
 import BlogHero from '@/components/blog/BlogHero'
 
 const BlogPage = () => {
   return (
-    <div className="w-full">
+    <div className="grow overflow-x-hidden">
       <BlogHero />
+      <div className="relative">
+        <BlogFilters />
+      </div>
     </div>
   )
 }

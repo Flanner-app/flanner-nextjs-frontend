@@ -30,6 +30,5 @@ export const blogFilters = [
   'Asian',
   'Italian',
   'Mexican',
-  'Skills',
   'History',
 ]
