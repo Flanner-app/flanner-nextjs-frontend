@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import FilterTag from './FilterTag'
-import { blogFilters } from '@/constants/blog'
-import useEmblaCarousel from 'embla-carousel-react'
 import clsx from 'clsx'
+import useEmblaCarousel from 'embla-carousel-react'
+import { useState } from 'react'
+import { blogFilters } from '@/constants/blog'
+import FilterTag from './FilterTag'
 
 const BlogFilters = () => {
   const [filters, setFilters] = useState<string[]>(['lunch'])
