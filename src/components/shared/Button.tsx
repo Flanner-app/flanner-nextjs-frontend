@@ -48,6 +48,7 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
     case 'ghost':
       return [
         'bg-transparent text-black-regular hover:bg-black-hover',
+        'border-2 border-transparent',
         'hover:text-white active:bg-black-regular active:text-white',
       ]
     default:
@@ -66,9 +67,9 @@ const Button = ({
   ...restProps
 }: ButtonProps) => {
   const sizeMap = {
-    S: 'h-10',
-    M: 'h-12',
-    L: 'h-14',
+    S: 'min-h-10',
+    M: 'min-h-12',
+    L: 'min-h-14',
   }
 
   return (
