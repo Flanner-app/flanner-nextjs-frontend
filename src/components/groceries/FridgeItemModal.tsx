@@ -7,23 +7,24 @@ import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
+import { MeasurementUnits } from '../shared/types/groceries'
 
 type FridgeItemModalProps = {
   itemId: string
   isOpen: boolean
   close: () => void
   quantity: FridgeItemType['quantity']
-  units: FridgeItemType['units']
-  updateItem: (quantity: string, units: FridgeItemType['units']) => void
+  units: MeasurementUnits
+  updateItem: (quantity: string, units: MeasurementUnits) => void
   deleteItem: (id: string) => void
 }
 
 type ItemData = {
   quantity: string
-  units: FridgeItemModalProps['units']
+  units: MeasurementUnits
 }
 
-export const measurements: Array<FridgeItemModalProps['units']> = [
+export const measurements: Array<MeasurementUnits> = [
   'grams',
   'kg',
   'tblsp',
@@ -48,10 +49,10 @@ const FridgeItemModal = ({
   })
 
   const onSelectUnit = (value: string) => {
-    if (measurements.includes(value as FridgeItemType['units'])) {
+    if (measurements.includes(value as MeasurementUnits)) {
       setData((prevData) => ({
         ...prevData,
-        units: value as FridgeItemType['units'],
+        units: value as MeasurementUnits,
       }))
     }
   }

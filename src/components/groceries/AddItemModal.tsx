@@ -11,6 +11,7 @@ import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
+import { MeasurementUnits } from '../shared/types/groceries'
 
 export type SelectionGroceryItem = {
   label: string
@@ -20,7 +21,7 @@ export type SelectionGroceryItem = {
 type GroceryItem = {
   label: string
   icon: string
-  units: FridgeItemType['units']
+  units: MeasurementUnits
   quantity: number
 }
 

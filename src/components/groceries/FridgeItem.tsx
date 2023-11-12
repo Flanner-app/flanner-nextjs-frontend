@@ -6,13 +6,10 @@ import { X } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
 import { FridgeItemType } from './Fridge'
 import FridgeItemModal from './FridgeItemModal'
+import { MeasurementUnits } from '../shared/types/groceries'
 
 type FridgeItemProps = {
-  onUpdate: (
-    id: string,
-    quantity: number,
-    units: FridgeItemProps['units'],
-  ) => void
+  onUpdate: (id: string, quantity: number, units: MeasurementUnits) => void
   onDelete: (id: string) => void
 } & FridgeItemType
 
@@ -29,10 +26,7 @@ const FridgeItem = ({
 
   const count = `${quantity} ${units}`
 
-  const updateItem = (
-    quantityArg: string,
-    unitsArg: FridgeItemProps['units'],
-  ) => {
+  const updateItem = (quantityArg: string, unitsArg: MeasurementUnits) => {
     onUpdate(id, parseFloat(quantityArg), unitsArg)
     // todo: item update logic (DB)
   }

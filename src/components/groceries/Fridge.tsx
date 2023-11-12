@@ -6,6 +6,7 @@ import { Plus } from 'react-feather'
 import AddItemModal from './AddItemModal'
 import FridgeItem from './FridgeItem'
 import Button from '../shared/Button'
+import { MeasurementUnits } from '../shared/types/groceries'
 import Heading from '../shared/typography/Heading'
 
 export type FridgeItemType = {
@@ -13,7 +14,7 @@ export type FridgeItemType = {
   label: string
   icon: string
   quantity: number
-  units: 'grams' | 'kg' | 'tblsp' | 'cup' | 'ml' | 'pieces' | 'items'
+  units: MeasurementUnits
 }
 
 const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
@@ -23,7 +24,7 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
   const updateItem = (
     id: string,
     quantity: number,
-    units: FridgeItemType['units'],
+    units: MeasurementUnits,
   ) => {
     const newItems = items.map((item) => {
       if (item.id === id) {
