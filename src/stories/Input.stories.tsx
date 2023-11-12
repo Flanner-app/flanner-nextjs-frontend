@@ -5,10 +5,8 @@ import Input, { InputProps } from '@/components/shared/Input'
 const meta: Meta<typeof Input> = {
   title: 'Basic components/Input',
   component: Input,
-  // this component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
   parameters: {
-    // more on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
   decorators: [
