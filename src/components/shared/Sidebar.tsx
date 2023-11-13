@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <div
       className={clsx(
-        'h-full border-r-2 border-black-regular p-4 shadow-sm',
+        'h-full border-r-2 border-black-regular px-4 py-3 shadow-sm',
         'flex flex-col justify-between bg-yellow-dark',
         isOpen ? 'w-64' : 'w-auto',
       )}

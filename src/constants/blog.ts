@@ -18,7 +18,7 @@ export const blogFilters = [
   'Party',
   'Holiday',
   'Quick and Easy',
-  'Skills',
+  // 'Skills',
   'Vegeterian',
   'Vegan',
   'Gluten-Free',
@@ -30,5 +30,5 @@ export const blogFilters = [
   'Asian',
   'Italian',
   'Mexican',
-  'History',
+  // 'History',
 ]

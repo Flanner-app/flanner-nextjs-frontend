@@ -22,7 +22,7 @@ const IngredientCard = ({
     <div
       className={clsx(
         'rounded-lg border-2 border-black-default p-2',
-        'flex flex-col items-center gap-1 bg-tones-rose',
+        'flex flex-col items-center justify-between gap-1 bg-tones-rose',
         className,
       )}
     >
