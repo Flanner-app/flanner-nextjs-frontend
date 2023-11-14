@@ -1,22 +1,23 @@
-'use client'
-
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useState } from 'react'
 import { ChevronsLeft, LogIn, LogOut } from 'react-feather'
 import { useAuth } from '@/context/AuthContext'
 import Button from './Button'
 
-const Sidebar = () => {
-  const { user, logOut } = useAuth()
+type SidebarProps = {
+  isOpen: boolean
+  toggle: () => void
+}
 
-  const [isOpen, setIsOpen] = useState(false)
+const Sidebar = ({ isOpen, toggle }: SidebarProps) => {
+  const { user, logOut } = useAuth()
 
   return (
     <div
       className={clsx(
         'h-full border-r-2 border-black-regular px-4 py-3 shadow-sm',
-        'flex flex-col justify-between bg-yellow-dark',
+        'hidden flex-col justify-between bg-yellow-dark lg:flex',
+        'fixed left-0 z-20',
         isOpen ? 'w-64' : 'w-auto',
       )}
     >
@@ -31,12 +32,7 @@ const Sidebar = () => {
             Flanner
           </h1>
         )}
-        <Button
-          size="S"
-          appearence="ghost"
-          onClick={() => setIsOpen((prev) => !prev)}
-          containsIconOnly
-        >
+        <Button size="S" appearence="ghost" onClick={toggle} containsIconOnly>
           <ChevronsLeft
             size={20}
             className={clsx(

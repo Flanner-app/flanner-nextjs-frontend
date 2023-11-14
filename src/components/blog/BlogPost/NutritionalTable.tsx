@@ -28,7 +28,7 @@ const NutritionalTable = ({
   const getRecommended = (value: number, recommendedAmount: number | null) => {
     if (!recommendedAmount) return
     const percentage = (value / recommendedAmount) * 100
-    return `${percentage}%`
+    return `${Math.round(percentage)}%`
   }
 
   return (
@@ -90,10 +90,9 @@ const NutritionalTable = ({
                 saturatedFat.quantity,
                 saturatedFat.dailyRecommended,
               )}
-              %
             </td>
           </tr>
-          <tr className="border-b border-black-default">
+          <tr className="flex border-b border-black-default">
             <td className="pl-6">
               <span className="mr-1.5 inline-block whitespace-nowrap">
                 <span className="italic">Trans</span> Fat
@@ -198,12 +197,12 @@ const NutritionalTable = ({
             </tr>
           ))}
           <tr className="mt-1 flex gap-1">
-            <span className="leading-tight">*</span>
-            <p className="font-poppins text-xs leading-tight">
+            <td className="leading-tight">*</td>
+            <td className="font-poppins text-xs leading-tight">
               The daily value (DV) tells you how much a nutrient in a serving of
               food contributes to a daily diet. 2,000 calories a day is used for
               general nutrition advice.
-            </p>
+            </td>
           </tr>
         </tbody>
       </table>
