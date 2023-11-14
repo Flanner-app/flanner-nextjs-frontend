@@ -13,6 +13,7 @@ const Tag = ({ type = 'regular', className, children }: TagProps) => {
     <div
       className={clsx(
         'w-fit whitespace-nowrap rounded-md px-3 py-1.5 text-center text-sm font-medium',
+        'leading-none',
         {
           [getRandomBgColor({ bright: true })]: type === 'regular',
           'flex items-center gap-1 bg-white bg-opacity-70 backdrop-blur-md':

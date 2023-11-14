@@ -20,7 +20,7 @@ const BlogPostHeader = ({ title }: BlogPostHeaderProps) => {
         'w-full border-b-2 border-black-regular px-4 py-2',
         'flex items-center justify-between gap-6',
         'bg-yellow-dark/90 backdrop-blur-md',
-        'sticky top-0',
+        'sticky top-0 z-20',
       )}
     >
       <div className="flex items-center gap-4">

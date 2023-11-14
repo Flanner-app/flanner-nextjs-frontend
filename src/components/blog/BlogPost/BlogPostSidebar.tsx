@@ -7,7 +7,7 @@ import IngredientCard from '@/components/shared/IngredientCard'
 import Heading from '@/components/shared/typography/Heading'
 import Tag from '../Tag'
 
-const PLACEHOLDER: any = [
+export const PLACEHOLDER_INGREDIENT: any = [
   { id: uuidv4(), label: 'Chopped Kimchi', measurement: 'grams', quantity: 40 },
   {
     id: uuidv4(),
@@ -62,8 +62,8 @@ const BlogPostSidebar = () => {
   return (
     <div
       className={clsx(
-        'sticky right-0 top-0 h-full w-80 border-l-2 border-black-default bg-yellow-dark',
-        'flex shrink-0 flex-col',
+        'fixed right-0 top-0 h-full w-80 border-l-2 border-black-default bg-yellow-dark',
+        'hidden shrink-0 flex-col lg:flex xl:w-full xl:max-w-sm',
       )}
     >
       <div className="relative aspect-video min-h-56 w-full border-b-2 border-black-default">
@@ -103,7 +103,7 @@ const BlogPostSidebar = () => {
           scrollbarClasses,
         )}
       >
-        {PLACEHOLDER.map((item: any) => (
+        {PLACEHOLDER_INGREDIENT.map((item: any) => (
           <IngredientCard
             key={item.id}
             label={item.label}
@@ -111,7 +111,7 @@ const BlogPostSidebar = () => {
             measurement={item.measurement}
             quantity={item.quantity}
             className={clsx(
-              PLACEHOLDER.length % TWO !== 0 && 'last:col-span-2',
+              PLACEHOLDER_INGREDIENT.length % TWO !== 0 && 'last:col-span-2',
             )}
           />
         ))}

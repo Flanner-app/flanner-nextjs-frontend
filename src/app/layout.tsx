@@ -8,7 +8,7 @@ import './globals.css'
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
 })
 const rubik = Rubik({
   subsets: ['latin'],
@@ -28,7 +28,7 @@ export default function Layout({
   authModal: React.ReactNode
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="min-h-full">
       <body
         className={clsx(
           'h-full bg-yellow-light font-poppins',

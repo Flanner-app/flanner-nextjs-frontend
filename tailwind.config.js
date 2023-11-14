@@ -87,6 +87,10 @@ module.exports = {
         400: '400px',
         600: '600px',
       }),
+      borderWidth: {
+        6: '6px',
+        12: '12px',
+      },
       boxShadow: {
         outlined: '0 0 10px 2px rgba(0,0,0,0.1)',
         brutalism: '3px 3px 0px 0px rgba(0,0,0,1)',
