@@ -10,6 +10,7 @@ import BlogPostHeader from './BlogPostHeader'
 import { PLACEHOLDER_INGREDIENT } from './BlogPostSidebar'
 import NutritionalTable from './NutritionalTable'
 import RecipeStep from './RecipeStep'
+import BlogCard from '../BlogCard'
 import Tag from '../Tag'
 
 const FIVE = 5
@@ -252,17 +253,54 @@ const BlogPost = () => {
             <p className="text-lg">{step.text}</p>
           </div>
         ))}
-        <div className="mb-6 flex items-center gap-4">
-          <RecipeStep step={PLACEHOLDER.steps.length} className="shrink-0" />
-          <Heading as="h3" type="headline">
-            Enjoy!
-          </Heading>
+        <div className="mb-10">
+          <div className="mb-4 flex items-center gap-4">
+            <RecipeStep step={PLACEHOLDER.steps.length} className="shrink-0" />
+            <Heading as="h3" type="headline">
+              Enjoy!
+            </Heading>
+          </div>
+          <p className="mb-4">{PLACEHOLDER.finishingText}</p>
+          <NutritionalTable
+            servings={PLACEHOLDER.servings}
+            {...PLACEHOLDER.nutritionalInfo}
+          />
         </div>
-
-        <NutritionalTable
-          servings={PLACEHOLDER.servings}
-          {...PLACEHOLDER.nutritionalInfo}
-        />
+        <div>
+          <Heading as="h2" type="display" className="mb-4">
+            Similar Recipes
+          </Heading>
+          <div className="grid items-center gap-4 sm:grid-cols-2 2xl:grid-cols-4">
+            <BlogCard
+              title="Similar post"
+              tags={['Asian']}
+              imgSrc="/images/fridge-placeholder.webp"
+              viewsAmount={1350}
+              likesAmount={150}
+            />
+            <BlogCard
+              title="Similar post"
+              tags={['Asian']}
+              imgSrc="/images/fridge-placeholder.webp"
+              viewsAmount={1350}
+              likesAmount={150}
+            />
+            <BlogCard
+              title="Similar post"
+              tags={['Asian']}
+              imgSrc="/images/fridge-placeholder.webp"
+              viewsAmount={1350}
+              likesAmount={150}
+            />
+            <BlogCard
+              title="Similar post"
+              tags={['Asian']}
+              imgSrc="/images/fridge-placeholder.webp"
+              viewsAmount={1350}
+              likesAmount={150}
+            />
+          </div>
+        </div>
       </div>
     </>
   )

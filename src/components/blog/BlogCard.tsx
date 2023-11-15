@@ -25,7 +25,7 @@ const BlogCard = ({
     <Link href="/" className="group relative">
       <div
         className={clsx(
-          'block overflow-hidden rounded-2xl border-2 border-black-default',
+          'block overflow-hidden rounded-xl border-2 border-black-default',
           'group-hover:-translate-x-1.5 group-hover:-translate-y-1.5',
           'relative z-[2] transition-[transform,colors] duration-100',
           'bg-yellow-dark',
