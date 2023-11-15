@@ -55,6 +55,7 @@ const BlogHero = () => {
             width={340}
             height={340}
             alt="benefits"
+            className="pointer-events-none"
           />
         </div>
       </div>

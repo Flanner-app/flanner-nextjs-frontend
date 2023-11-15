@@ -1,5 +1,6 @@
 import BlogFilters from '@/components/blog/BlogFilters'
 import BlogHero from '@/components/blog/BlogHero'
+import BlogPageContent from '@/components/blog/BlogPageContent'
 
 const BlogPage = () => {
   return (
@@ -8,6 +9,7 @@ const BlogPage = () => {
       <div className="relative">
         <BlogFilters />
       </div>
+      <BlogPageContent />
     </div>
   )
 }

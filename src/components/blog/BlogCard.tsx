@@ -7,6 +7,7 @@ import { formatNumberToSmall } from '@/utils/numbers'
 import Tag from './Tag'
 
 type BlogCardProps = {
+  href: string
   title: string
   tags: string[]
   imgSrc: string
@@ -15,6 +16,7 @@ type BlogCardProps = {
 }
 
 const BlogCard = ({
+  href,
   title,
   tags,
   imgSrc,
@@ -22,7 +24,7 @@ const BlogCard = ({
   likesAmount,
 }: BlogCardProps) => {
   return (
-    <Link href="/" className="group relative">
+    <Link href={href} className="group relative">
       <div
         className={clsx(
           'block overflow-hidden rounded-xl border-2 border-black-default',

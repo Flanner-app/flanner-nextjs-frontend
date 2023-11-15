@@ -272,6 +272,7 @@ const BlogPost = () => {
           </Heading>
           <div className="grid items-center gap-4 sm:grid-cols-2 2xl:grid-cols-4">
             <BlogCard
+              href="/blog/1"
               title="Similar post"
               tags={['Asian']}
               imgSrc="/images/fridge-placeholder.webp"
@@ -279,6 +280,7 @@ const BlogPost = () => {
               likesAmount={150}
             />
             <BlogCard
+              href="/blog/1"
               title="Similar post"
               tags={['Asian']}
               imgSrc="/images/fridge-placeholder.webp"
@@ -286,6 +288,7 @@ const BlogPost = () => {
               likesAmount={150}
             />
             <BlogCard
+              href="/blog/1"
               title="Similar post"
               tags={['Asian']}
               imgSrc="/images/fridge-placeholder.webp"
@@ -293,6 +296,7 @@ const BlogPost = () => {
               likesAmount={150}
             />
             <BlogCard
+              href="/blog/1"
               title="Similar post"
               tags={['Asian']}
               imgSrc="/images/fridge-placeholder.webp"
