@@ -1,50 +1,57 @@
-export type MicroNutrient = {
+import { MeasurementUnits } from './groceries'
+
+export type Nutrient = {
   label: string
   quantity: number
-  measuredIn: 'mcg' | 'mg'
+  measuredIn: 'mcg' | 'mg' | 'IU' | 'grams'
   dailyRecommended: number
-}
-
-type MacroNutrient = {
-  quantity: number
-  dailyRecommended: number | null
 }
 
 export type NutritionTable = {
   servingSize: string | number
   servedIn: string
   calories: number
-  totalFat: MacroNutrient
-  saturatedFat: MacroNutrient
-  transFat: MacroNutrient
-  cholesterol: MacroNutrient
-  sodium: MacroNutrient
-  totalCarbs: MacroNutrient
-  fibers: MacroNutrient
-  totalSugars: MacroNutrient
-  addedSugars: MacroNutrient
-  protein: MacroNutrient
-  micros: {
-    vitaminA?: MicroNutrient
-    vitaminC?: MicroNutrient
-    vitaminD?: MicroNutrient
-    vitaminE?: MicroNutrient
-    vitaminK?: MicroNutrient
-    thiamin?: MicroNutrient
-    riboflavin?: MicroNutrient
-    niacin?: MicroNutrient
-    vitaminB6?: MicroNutrient
-    folate?: MicroNutrient
-    vitaminB12?: MicroNutrient
-    pantothenicAcid?: MicroNutrient
-    calcium?: MicroNutrient
-    iron?: MicroNutrient
-    magnesium?: MicroNutrient
-    phosphorus?: MicroNutrient
-    potassium?: MicroNutrient
-    zinc?: MicroNutrient
-    copper?: MicroNutrient
-    manganese?: MicroNutrient
-    selenium?: MicroNutrient
+  macros: {
+    totalFat: Nutrient
+    saturatedFat: Nutrient
+    transFat: Nutrient
+    cholesterol: Nutrient
+    sodium: Nutrient
+    totalCarbs: Nutrient
+    fibers: Nutrient
+    totalSugars: Nutrient
+    addedSugars: Nutrient
+    protein: Nutrient
   }
+  micros: {
+    vitaminA?: Nutrient
+    vitaminC?: Nutrient
+    vitaminD?: Nutrient
+    vitaminE?: Nutrient
+    vitaminK?: Nutrient
+    thiamin?: Nutrient
+    riboflavin?: Nutrient
+    niacin?: Nutrient
+    vitaminB6?: Nutrient
+    folate?: Nutrient
+    vitaminB12?: Nutrient
+    pantothenicAcid?: Nutrient
+    calcium?: Nutrient
+    iron?: Nutrient
+    magnesium?: Nutrient
+    phosphorus?: Nutrient
+    potassium?: Nutrient
+    zinc?: Nutrient
+    copper?: Nutrient
+    manganese?: Nutrient
+    selenium?: Nutrient
+  }
+}
+
+export type Ingredient = {
+  id: string
+  label: string
+  measurement: MeasurementUnits
+  quantity: number
+  iconSrc: string
 }

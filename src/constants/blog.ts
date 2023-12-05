@@ -31,4 +31,6 @@ export const blogFilters = [
   'Italian',
   'Mexican',
   // 'History',
-]
+] as const
+
+export type BlogFilterType = (typeof blogFilters)[number]

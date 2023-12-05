@@ -4,5 +4,7 @@ export type MeasurementUnits =
   | 'tblsp'
   | 'cup'
   | 'ml'
+  | 'piece'
   | 'pieces'
   | 'items'
+  | 'item'
