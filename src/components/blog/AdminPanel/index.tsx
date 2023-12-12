@@ -3,19 +3,21 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { BlogFilterType, blogFilters } from '@/constants/blog'
 import { validMimeTypes } from '@/constants/file'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import { Ingredient, NutritionTable } from '@/components/shared/types/recipes'
 import Heading from '@/components/shared/typography/Heading'
+import CookingSteps from './CookingSteps'
 import IngredientsSection from './IngredientsSection'
 import FilterTag from '../BlogFilters/FilterTag'
-import { BlogPost } from '../BlogPost'
+import { BlogPost, RecipeStep } from '../BlogPost'
 
 const DEFAULT_FORM_DATA: BlogPost = {
   title: '',
-  banner: '',
+  coverSrc: '',
   numberOfLikes: 0,
   numberOfViews: 0,
   tags: [],
@@ -302,6 +304,93 @@ const AdminPanel = () => {
     setFormData((prev) => ({ ...prev, ingredients: newIngredients }))
   }
 
+  const onAddStep = () => {
+    setFormData((prev) => ({
+      ...prev,
+      steps: [
+        ...prev.steps,
+        {
+          _id: uuidv4(),
+          title: '',
+          ingredients: [],
+          imgSrc: '',
+          text: '',
+        },
+      ],
+    }))
+  }
+
+  const onDeleteStep = (id: string) => {
+    const newSteps = formData.steps.filter((item) => item._id !== id)
+    setFormData((prev) => ({
+      ...prev,
+      steps: newSteps,
+    }))
+  }
+
+  const onStepEdit = (
+    id: string,
+    field: keyof RecipeStep,
+    value: RecipeStep[typeof field],
+  ) => {
+    const data = formData.steps.map((item) => {
+      if (item._id === id) {
+        return {
+          ...item,
+          [field]: value,
+        }
+      }
+      return item
+    })
+    setFormData((prev) => ({
+      ...prev,
+      steps: data,
+    }))
+  }
+
+  const onCoverUpload = async (file: File | undefined) => {
+    if (file) {
+      const fileFormData = new FormData()
+      fileFormData.append('file', file)
+
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/blogPost/cover`,
+          {
+            method: 'POST',
+            body: fileFormData,
+          },
+        ).then((response) => response.json())
+
+        setFormData((prev) => ({
+          ...prev,
+          coverSrc: res.coverSrc,
+        }))
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
+
+  const onIconDelete = async () => {
+    const [, filename] = formData.coverSrc.split('/media/')
+
+    try {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/ingredients/icon/${filename}`,
+        {
+          method: 'DELETE',
+        },
+      )
+      setFormData((prev) => ({
+        ...prev,
+        coverSrc: '',
+      }))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div className="p-6">
       <div
@@ -310,18 +399,33 @@ const AdminPanel = () => {
           'relative mx-auto mb-4 bg-black-default/20',
         )}
       >
-        {formData.banner && (
-          <Image fill src={formData.banner} className="object-cover" alt="" />
+        {formData.coverSrc && (
+          <Image fill src={formData.coverSrc} className="object-cover" alt="" />
         )}
       </div>
       <input
         type="file"
-        className="invisible absolute h-0 w-0"
+        className="invisible absolute z-10 h-0 w-0"
         accept={validMimeTypes.join(', ')}
         ref={fileInputRef}
+        onChange={(e) => {
+          onCoverUpload(e.target.files?.[0])
+          e.target.files = null
+        }}
       />
-      <Button size="M" appearence="yellow" wrapperClassName="w-40">
-        Upload image
+      <Button
+        size="M"
+        appearence="yellow"
+        wrapperClassName="w-40"
+        onClick={() => {
+          if (formData.coverSrc) {
+            onIconDelete()
+          } else {
+            fileInputRef.current?.click()
+          }
+        }}
+      >
+        {formData.coverSrc ? 'Remove cover' : 'Upload image'}
       </Button>
 
       <IngredientsSection
@@ -408,6 +512,13 @@ const AdminPanel = () => {
             </FilterTag>
           ))}
         </div>
+
+        <CookingSteps
+          ingredients={formData.ingredients}
+          onAddStep={onAddStep}
+          onDeleteStep={onDeleteStep}
+          onStepEdit={onStepEdit}
+        />
 
         <Input
           label="Calories"
