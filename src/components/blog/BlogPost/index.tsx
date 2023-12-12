@@ -17,11 +17,11 @@ const FIVE = 5
 const SIX = 6
 const TWO = 2
 
-type BlogPostProps = {
+export type BlogPost = {
   title: string
   banner: string
-  numberOfLikes: number
-  numberOfViews: number
+  numberOfLikes?: number
+  numberOfViews?: number
   tags: Array<string>
   totalCookingTime: string
   servings: number
@@ -30,7 +30,7 @@ type BlogPostProps = {
   prerequisites: string
   finishingText: string
   steps: Array<{
-    id: string
+    _id: string
     title: string
     ingredients: any
     imgSrc: string
@@ -38,7 +38,7 @@ type BlogPostProps = {
   }>
 }
 
-const PLACEHOLDER: BlogPostProps = {
+const PLACEHOLDER: BlogPost = {
   title: 'Savor the Spice: Mastering Homemade Kimchi Dumplings',
   banner: '/images/fridge-placeholder.webp',
   numberOfLikes: 1354,
@@ -50,16 +50,68 @@ const PLACEHOLDER: BlogPostProps = {
     servingSize: 1,
     servedIn: 'bowl',
     calories: 153,
-    totalFat: { quantity: 12, dailyRecommended: 150 },
-    saturatedFat: { quantity: 120, dailyRecommended: 350 },
-    transFat: { quantity: 3, dailyRecommended: null },
-    cholesterol: { quantity: 12, dailyRecommended: 50 },
-    sodium: { quantity: 122, dailyRecommended: 170 },
-    totalCarbs: { quantity: 12, dailyRecommended: 30 },
-    fibers: { quantity: 2, dailyRecommended: 10 },
-    totalSugars: { quantity: 2, dailyRecommended: null },
-    addedSugars: { quantity: 12, dailyRecommended: 15 },
-    protein: { quantity: 1, dailyRecommended: null },
+    macros: {
+      totalFat: {
+        label: 'Total Fat',
+        quantity: 12,
+        measuredIn: 'grams',
+        dailyRecommended: 150,
+      },
+      saturatedFat: {
+        label: 'Saturated Fat',
+        quantity: 120,
+        measuredIn: 'grams',
+        dailyRecommended: 350,
+      },
+      transFat: {
+        label: 'Trans',
+        quantity: 3,
+        measuredIn: 'grams',
+        dailyRecommended: 5,
+      },
+      cholesterol: {
+        label: 'Cholesterol',
+        quantity: 12,
+        measuredIn: 'grams',
+        dailyRecommended: 50,
+      },
+      sodium: {
+        label: 'Sodium',
+        quantity: 122,
+        measuredIn: 'grams',
+        dailyRecommended: 170,
+      },
+      totalCarbs: {
+        label: 'Total Carbs',
+        quantity: 12,
+        measuredIn: 'grams',
+        dailyRecommended: 30,
+      },
+      fibers: {
+        label: 'Fibers',
+        quantity: 2,
+        measuredIn: 'grams',
+        dailyRecommended: 10,
+      },
+      totalSugars: {
+        label: 'Total Sugars',
+        quantity: 2,
+        measuredIn: 'grams',
+        dailyRecommended: 5,
+      },
+      addedSugars: {
+        label: 'Added Sugars',
+        quantity: 12,
+        measuredIn: 'grams',
+        dailyRecommended: 15,
+      },
+      protein: {
+        label: 'Protein',
+        quantity: 1,
+        measuredIn: 'grams',
+        dailyRecommended: 5,
+      },
+    },
     micros: {
       vitaminA: {
         label: 'Vitamin A',
@@ -88,7 +140,7 @@ const PLACEHOLDER: BlogPostProps = {
     'This is a finishin text, it probably will say something like this dish is very tasty bla-bla',
   steps: [
     {
-      id: uuidv4(),
+      _id: uuidv4(),
       title:
         'Cook it Cook it Cook it Cook it Cook it Cook it Cook it Cook it Cook it ',
       ingredients: PLACEHOLDER_INGREDIENT.slice(0, SIX),
@@ -98,28 +150,28 @@ const PLACEHOLDER: BlogPostProps = {
       Some ultra long text with no purpose to it`,
     },
     {
-      id: uuidv4(),
+      _id: uuidv4(),
       title: 'Cook it',
       ingredients: PLACEHOLDER_INGREDIENT.slice(0, FIVE),
       imgSrc: '/images/fridge-placeholder.webp',
       text: 'text',
     },
     {
-      id: uuidv4(),
+      _id: uuidv4(),
       title: 'Cook it',
       ingredients: PLACEHOLDER_INGREDIENT.slice(0, FIVE),
       imgSrc: '/images/fridge-placeholder.webp',
       text: 'text',
     },
     {
-      id: uuidv4(),
+      _id: uuidv4(),
       title: 'Cook it',
       ingredients: PLACEHOLDER_INGREDIENT.slice(0, FIVE),
       imgSrc: '/images/fridge-placeholder.webp',
       text: 'text',
     },
     {
-      id: uuidv4(),
+      _id: uuidv4(),
       title: 'Cook it',
       ingredients: PLACEHOLDER_INGREDIENT.slice(0, FIVE),
       imgSrc: '/images/fridge-placeholder.webp',
@@ -140,11 +192,13 @@ const BlogPost = () => {
       >
         <div className="absolute bottom-2 right-2 z-10 flex items-center gap-2 p-2">
           <Tag type="info">
-            {formatNumberToSmall(PLACEHOLDER.numberOfViews)}
+            {PLACEHOLDER.numberOfViews &&
+              formatNumberToSmall(PLACEHOLDER.numberOfViews)}
             <Eye size={16} />
           </Tag>
           <Tag type="info">
-            {formatNumberToSmall(PLACEHOLDER.numberOfLikes)}
+            {PLACEHOLDER.numberOfLikes &&
+              formatNumberToSmall(PLACEHOLDER.numberOfLikes)}
             <Heart size={16} />
           </Tag>
         </div>
@@ -196,7 +250,7 @@ const BlogPost = () => {
             {/* todo: add a checkbox */}
             {PLACEHOLDER.ingredients.map((item: any) => (
               <IngredientCard
-                key={item.id}
+                key={item._id}
                 label={item.label}
                 iconSrc="/images/cards/appliances/grill.webp"
                 measurement={item.measurement}
@@ -210,7 +264,7 @@ const BlogPost = () => {
           </div>
         </div>
         {PLACEHOLDER.steps.map((step, i) => (
-          <div key={step.id} className="mb-16">
+          <div key={step._id} className="mb-16">
             <div className="mb-6 flex items-center gap-4">
               <RecipeStep step={i + 1} className="shrink-0" />
               <Heading as="h3" type="headline">
@@ -241,7 +295,7 @@ const BlogPost = () => {
               >
                 {step.ingredients.map((ingredient: any) => (
                   <IngredientCard
-                    key={ingredient.id}
+                    key={ingredient._id}
                     label={ingredient.label}
                     iconSrc="/images/cards/appliances/grill.webp"
                     measurement={ingredient.measurement}

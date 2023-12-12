@@ -7,18 +7,11 @@ import AddItemModal from './AddItemModal'
 import FridgeItem from './FridgeItem'
 import Button from '../shared/Button'
 import { MeasurementUnits } from '../shared/types/groceries'
+import { Ingredient } from '../shared/types/recipes'
 import Heading from '../shared/typography/Heading'
 
-export type FridgeItemType = {
-  id: string
-  label: string
-  icon: string
-  quantity: number
-  units: MeasurementUnits
-}
-
-const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
-  const [items, setItems] = useState<Array<FridgeItemType>>(itemList)
+const Fridge = ({ itemList }: { itemList: Ingredient[] }) => {
+  const [items, setItems] = useState<Array<Ingredient>>(itemList)
   const [showAddItem, setShowAddItem] = useState(false)
 
   const updateItem = (
@@ -27,7 +20,7 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
     units: MeasurementUnits,
   ) => {
     const newItems = items.map((item) => {
-      if (item.id === id) {
+      if (item._id === id) {
         return {
           ...item,
           quantity: quantity,
@@ -39,11 +32,11 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
   }
 
   const deleteItem = (id: string) => {
-    const newItems = items.filter((item) => item.id !== id)
+    const newItems = items.filter((item) => item._id !== id)
     setItems(newItems)
   }
 
-  const onAddItems = (newItems: FridgeItemType[]) => {
+  const onAddItems = (newItems: Ingredient[]) => {
     setItems((prevState) => [...prevState, ...newItems])
   }
 
@@ -72,12 +65,12 @@ const Fridge = ({ itemList }: { itemList: FridgeItemType[] }) => {
         <div className="grid grid-cols-3 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <FridgeItem
-              key={item.id}
-              id={item.id}
+              key={item._id}
+              _id={item._id}
               label={item.label}
-              icon={item.icon}
+              iconSrc={item.iconSrc}
               quantity={item.quantity}
-              units={item.units}
+              measurement={item.measurement}
               onUpdate={updateItem}
               onDelete={deleteItem}
             />

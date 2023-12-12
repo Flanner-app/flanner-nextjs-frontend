@@ -2,54 +2,45 @@
 
 import { useState } from 'react'
 import { Trash } from 'react-feather'
-import { FridgeItemType } from './Fridge'
+import { MEASUREMENTS } from '@/constants/recipe'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
 import { MeasurementUnits } from '../shared/types/groceries'
+import { Ingredient } from '../shared/types/recipes'
 
 type FridgeItemModalProps = {
   itemId: string
   isOpen: boolean
   close: () => void
-  quantity: FridgeItemType['quantity']
-  units: MeasurementUnits
+  quantity: Ingredient['quantity']
+  measurement: MeasurementUnits
   updateItem: (quantity: string, units: MeasurementUnits) => void
-  deleteItem: (id: string) => void
+  deleteItem: (_id: string) => void
 }
 
 type ItemData = {
   quantity: string
-  units: MeasurementUnits
+  measurement: MeasurementUnits
 }
-
-export const measurements: Array<MeasurementUnits> = [
-  'grams',
-  'kg',
-  'tblsp',
-  'cup',
-  'ml',
-  'pieces',
-  'items',
-]
 
 const FridgeItemModal = ({
   itemId,
   isOpen,
   close,
   quantity,
-  units,
+  measurement,
   updateItem,
   deleteItem,
 }: FridgeItemModalProps) => {
   const [data, setData] = useState<ItemData>({
     quantity: quantity.toString(),
-    units: units,
+    measurement: measurement,
   })
 
   const onSelectUnit = (value: string) => {
-    if (measurements.includes(value as MeasurementUnits)) {
+    if (MEASUREMENTS.includes(value as MeasurementUnits)) {
       setData((prevData) => ({
         ...prevData,
         units: value as MeasurementUnits,
@@ -83,8 +74,8 @@ const FridgeItemModal = ({
         <Select
           name="Measurement select"
           label="Measure in"
-          value={data.units}
-          valueList={measurements}
+          value={data.measurement}
+          valueList={MEASUREMENTS}
           onChange={onSelectUnit}
         />
       </div>
@@ -103,7 +94,7 @@ const FridgeItemModal = ({
           appearence="black"
           wrapperClassName="w-full"
           onClick={() => {
-            updateItem(data.quantity, data.units)
+            updateItem(data.quantity, data.measurement)
             close()
           }}
         >

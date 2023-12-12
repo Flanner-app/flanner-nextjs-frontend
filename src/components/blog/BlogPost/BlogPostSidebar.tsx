@@ -2,58 +2,119 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { Clock, Eye, Heart } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
+import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { formatNumberToSmall } from '@/utils/numbers'
 import IngredientCard from '@/components/shared/IngredientCard'
+import { Ingredient } from '@/components/shared/types/recipes'
 import Heading from '@/components/shared/typography/Heading'
 import Tag from '../Tag'
 
-export const PLACEHOLDER_INGREDIENT: any = [
-  { id: uuidv4(), label: 'Chopped Kimchi', measurement: 'grams', quantity: 40 },
+export const PLACEHOLDER_INGREDIENT: Array<Ingredient> = [
   {
-    id: uuidv4(),
+    _id: uuidv4(),
+    label: 'Chopped Kimchi',
+    measurement: 'grams',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
     label: 'Ground pork or tofu',
     measurement: 'grams',
     quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
   },
   {
-    id: uuidv4(),
+    _id: uuidv4(),
     label: 'Garlic and ginger, minced',
     measurement: 'pieces',
     quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
   },
-  { id: uuidv4(), label: 'Green onions', measurement: 'piece', quantity: 40 },
-  { id: uuidv4(), label: 'Soy sauce', measurement: 'ml.', quantity: 40 },
-  { id: uuidv4(), label: 'Sesame oil', measurement: 'ml.', quantity: 40 },
-  { id: uuidv4(), label: 'Sugar', measurement: 'grams', quantity: 40 },
   {
-    id: uuidv4(),
+    _id: uuidv4(),
+    label: 'Green onions',
+    measurement: 'piece',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Soy sauce',
+    measurement: 'ml',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Sesame oil',
+    measurement: 'ml',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Sugar',
+    measurement: 'grams',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
     label: 'Salt and pepper to taste',
     measurement: 'grams',
     quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
   },
   {
-    id: uuidv4(),
+    _id: uuidv4(),
     label: 'Ground pork or tofu',
     measurement: 'grams',
     quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
   },
   {
-    id: uuidv4(),
+    _id: uuidv4(),
     label: 'Garlic and ginger, minced',
     measurement: 'pieces',
     quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
   },
-  { id: uuidv4(), label: 'Green onions', measurement: 'piece', quantity: 40 },
-  { id: uuidv4(), label: 'Soy sauce', measurement: 'ml.', quantity: 40 },
-  { id: uuidv4(), label: 'Sesame oil', measurement: 'ml.', quantity: 40 },
-  { id: uuidv4(), label: 'Sugar', measurement: 'grams', quantity: 40 },
-  { id: uuidv4(), label: 'Sugar', measurement: 'grams', quantity: 40 },
-]
-
-const scrollbarClasses = [
-  'scrollbar-track-transparent',
-  'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
-  'scrollbar-w-1 scrollbar',
+  {
+    _id: uuidv4(),
+    label: 'Green onions',
+    measurement: 'piece',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Soy sauce',
+    measurement: 'ml',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Sesame oil',
+    measurement: 'ml',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Sugar',
+    measurement: 'grams',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
+  {
+    _id: uuidv4(),
+    label: 'Sugar',
+    measurement: 'grams',
+    quantity: 40,
+    iconSrc: '/images/cards/appliances/grill.webp',
+  },
 ]
 
 const BlogPostSidebar = () => {
@@ -100,12 +161,12 @@ const BlogPostSidebar = () => {
       <div
         className={clsx(
           'grid grid-cols-2 flex-wrap gap-3 overflow-auto p-3',
-          scrollbarClasses,
+          SCROLLBAR_CLASSES,
         )}
       >
         {PLACEHOLDER_INGREDIENT.map((item: any) => (
           <IngredientCard
-            key={item.id}
+            key={item._id}
             label={item.label}
             iconSrc="/images/cards/appliances/grill.webp"
             measurement={item.measurement}

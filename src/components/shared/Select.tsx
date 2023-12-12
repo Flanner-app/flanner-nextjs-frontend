@@ -48,9 +48,9 @@ const Select = ({
           <Listbox.Button
             as="div"
             className={clsx(
-              'rounded-xl bg-white shadow-sm transition-colors',
+              'rounded-xl bg-white transition-colors',
               'h-14 pl-4 pr-2 hover:bg-white/75 active:bg-white',
-              'border-2 border-black-default',
+              'border-2 border-black-default shadow-brutalism',
               'box-border flex cursor-pointer items-center justify-between gap-2',
               open && 'bg-white',
               className,

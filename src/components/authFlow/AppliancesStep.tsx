@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ArrowLeft, ChevronRight } from 'react-feather'
+import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import Button from '../shared/Button'
 import SelectionCard from '../shared/SelectionCard'
 
@@ -28,12 +29,6 @@ const APPLIANCES = [
     imgSrc: '/images/cards/appliances/waffle-maker.webp',
   },
   { label: 'Juicer', imgSrc: '/images/cards/appliances/juicer.webp' },
-]
-
-const scrollbarClasses = [
-  'scrollbar-track-transparent',
-  'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
-  'scrollbar-w-1 scrollbar',
 ]
 
 const AppliancesStepContent = () => {
@@ -69,7 +64,7 @@ const AppliancesStepContent = () => {
         className={clsx(
           'mt-6 grid h-fit grid-cols-1 gap-4 overflow-y-auto px-6 pt-1.5',
           'xs:grid-cols-2 md:grid-cols-3',
-          scrollbarClasses,
+          SCROLLBAR_CLASSES,
         )}
       >
         {APPLIANCES.map((item) => (
@@ -84,7 +79,6 @@ const AppliancesStepContent = () => {
           </div>
         ))}
       </div>
-      <div className="grid max-h-full grid-cols-1 gap-4 px-6 xs:grid-cols-2 md:grid-cols-3"></div>
       <div className="mb-0 mt-auto flex flex-col gap-3 p-3 sm:flex-row sm:p-6">
         <Button
           size="M"

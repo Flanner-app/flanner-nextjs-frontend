@@ -1,35 +1,36 @@
 import clsx from 'clsx'
-import Fridge, { FridgeItemType } from './Fridge'
+import Fridge from './Fridge'
 import Button from '../shared/Button'
+import { Ingredient } from '../shared/types/recipes'
 
-const mockItems: Array<FridgeItemType> = [
+const mockItems: Array<Ingredient> = [
   {
-    id: 'sdfsdf',
+    _id: 'sdfsdf',
     label: 'Watermelon',
-    icon: '🥥',
+    iconSrc: '🥥',
     quantity: 10,
-    units: 'items',
+    measurement: 'items',
   },
   {
-    id: 'sdfsdfff',
+    _id: 'sdfsdfff',
     label: 'Watermelon',
-    icon: '🥥',
+    iconSrc: '🥥',
     quantity: 10,
-    units: 'items',
+    measurement: 'items',
   },
   {
-    id: 'sdkiidffff',
+    _id: 'sdkiidffff',
     label: 'Watermelon',
-    icon: '🥥',
+    iconSrc: '🥥',
     quantity: 10,
-    units: 'items',
+    measurement: 'items',
   },
   {
-    id: 'sdfPuicCenalffff',
+    _id: 'sdfPuicCenalffff',
     label: 'Watermelon',
-    icon: '🥥',
+    iconSrc: '🥥',
     quantity: 10,
-    units: 'items',
+    measurement: 'items',
   },
 ]
 

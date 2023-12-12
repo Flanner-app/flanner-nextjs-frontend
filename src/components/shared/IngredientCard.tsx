@@ -1,15 +1,11 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import { MeasurementUnits } from './types/groceries'
+import { Ingredient } from './types/recipes'
 import Tag from '../blog/Tag'
 
 type IngredientCard = {
-  label: string
-  iconSrc: string
-  measurement: MeasurementUnits
-  quantity: number
   className?: string
-}
+} & Ingredient
 
 const IngredientCard = ({
   label,
@@ -17,7 +13,7 @@ const IngredientCard = ({
   measurement,
   quantity,
   className,
-}: IngredientCard) => {
+}: Omit<IngredientCard, '_id'>) => {
   return (
     <div
       className={clsx(

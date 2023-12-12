@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ArrowLeft, ChevronRight } from 'react-feather'
+import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import Button from '../shared/Button'
 import Checkbox from '../shared/Checkbox'
 import Input from '../shared/Input'
@@ -20,12 +21,6 @@ const PREFERENCES = [
   'Pescetarian',
   'Low-Sodium',
   'Lactose intolerant',
-]
-
-const scrollbarClasses = [
-  'scrollbar-track-transparent',
-  'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
-  'scrollbar-w-1 scrollbar',
 ]
 
 const PreferencesAuthStep = () => {
@@ -67,7 +62,7 @@ const PreferencesAuthStep = () => {
         className={clsx(
           'mt-6 grid h-fit grid-cols-1 gap-6 overflow-y-auto px-6 py-1',
           'sm:grid-cols-2 md:gap-4',
-          scrollbarClasses,
+          SCROLLBAR_CLASSES,
         )}
       >
         {PREFERENCES.map((item) => (

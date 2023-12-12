@@ -4,30 +4,30 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { X } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
-import { FridgeItemType } from './Fridge'
 import FridgeItemModal from './FridgeItemModal'
 import { MeasurementUnits } from '../shared/types/groceries'
+import { Ingredient } from '../shared/types/recipes'
 
 type FridgeItemProps = {
-  onUpdate: (id: string, quantity: number, units: MeasurementUnits) => void
-  onDelete: (id: string) => void
-} & FridgeItemType
+  onUpdate: (_id: string, quantity: number, units: MeasurementUnits) => void
+  onDelete: (_id: string) => void
+} & Ingredient
 
 const FridgeItem = ({
-  id,
+  _id,
   label,
-  icon,
+  iconSrc,
   quantity,
-  units,
+  measurement,
   onUpdate,
   onDelete,
 }: FridgeItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const count = `${quantity} ${units}`
+  const count = `${quantity} ${measurement}`
 
   const updateItem = (quantityArg: string, unitsArg: MeasurementUnits) => {
-    onUpdate(id, parseFloat(quantityArg), unitsArg)
+    onUpdate(_id, parseFloat(quantityArg), unitsArg)
     // todo: item update logic (DB)
   }
 
@@ -53,12 +53,12 @@ const FridgeItem = ({
           <div className="absolute right-1 top-1">
             <div
               className="cursor-pointer rounded-full p-1 transition-colors hover:bg-white"
-              onClick={(e) => deleteItem(id, e)}
+              onClick={(e) => deleteItem(_id, e)}
             >
               <X size={12} />
             </div>
           </div>
-          <div className="text-5xl">{icon}</div>
+          <div className="text-5xl">{iconSrc}</div>
           <span className="rounded-md bg-white/50 p-1 text-sm font-bold capitalize leading-none">
             {label}
           </span>
@@ -72,11 +72,11 @@ const FridgeItem = ({
         />
       </div>
       <FridgeItemModal
-        itemId={id}
+        itemId={_id}
         isOpen={isModalOpen}
         close={() => setIsModalOpen(false)}
         quantity={quantity}
-        units={units}
+        measurement={measurement}
         updateItem={updateItem}
         deleteItem={deleteItem}
       />

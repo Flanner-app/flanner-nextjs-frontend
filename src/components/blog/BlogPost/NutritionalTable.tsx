@@ -1,8 +1,5 @@
 import clsx from 'clsx'
-import {
-  MicroNutrient,
-  NutritionTable,
-} from '@/components/shared/types/recipes'
+import { Nutrient, NutritionTable } from '@/components/shared/types/recipes'
 
 type NutritionTableProps = {
   servings: number
@@ -13,16 +10,18 @@ const NutritionalTable = ({
   servingSize,
   servedIn,
   calories,
-  totalFat,
-  saturatedFat,
-  transFat,
-  cholesterol,
-  sodium,
-  totalCarbs,
-  fibers,
-  totalSugars,
-  addedSugars,
-  protein,
+  macros: {
+    totalFat,
+    saturatedFat,
+    transFat,
+    cholesterol,
+    sodium,
+    totalCarbs,
+    fibers,
+    totalSugars,
+    addedSugars,
+    protein,
+  },
   micros,
 }: NutritionTableProps) => {
   const getRecommended = (value: number, recommendedAmount: number | null) => {
@@ -177,7 +176,7 @@ const NutritionalTable = ({
             </td>
           </tr>
 
-          {Object.values(micros).map((item: MicroNutrient) => (
+          {Object.values(micros).map((item: Nutrient) => (
             <tr
               key={item.label}
               className="flex items-center justify-between border-b border-black-default"

@@ -49,7 +49,7 @@ export type NutritionTable = {
 }
 
 export type Ingredient = {
-  id: string
+  _id: string
   label: string
   measurement: MeasurementUnits
   quantity: number

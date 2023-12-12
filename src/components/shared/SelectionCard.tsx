@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { ReactNode } from 'react'
 import { Check } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
 
@@ -8,6 +9,7 @@ type SelectionCardProps = {
   isSelected: boolean
   onChange: () => void
   className?: string
+  decorator?: ReactNode
 }
 
 const SelectionCard = ({
@@ -16,6 +18,7 @@ const SelectionCard = ({
   isSelected,
   onChange,
   className,
+  decorator,
 }: SelectionCardProps) => {
   return (
     <div className="group relative">
@@ -67,6 +70,7 @@ const SelectionCard = ({
           className="relative mx-auto h-full w-full max-w-10/12 bg-contain bg-bottom bg-no-repeat"
           style={{ backgroundImage: `url(${imgSrc})` }}
         />
+        {decorator && <div className="mx-auto mb-2">{decorator}</div>}
       </div>
       <div
         className={clsx(
