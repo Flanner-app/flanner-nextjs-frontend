@@ -6,7 +6,7 @@ const RecipeStepNumber = ({ number, className }: RecipeStepProps) => {
   return (
     <div
       className={clsx(
-        'h-16 w-16 rounded-xl border-2 border-black-default',
+        'h-16 w-16 shrink-0 rounded-xl border-2 border-black-default',
         'flex items-center justify-center bg-white shadow-brutalism',
         className,
       )}

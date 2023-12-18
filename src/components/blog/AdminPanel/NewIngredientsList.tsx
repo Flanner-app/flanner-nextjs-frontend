@@ -5,10 +5,10 @@ import { Plus, Trash, X } from 'react-feather'
 import { validMimeTypes } from '@/constants/file'
 import { MEASUREMENTS } from '@/constants/recipe'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
+import { Ingredient } from '@/types/recipes'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import Select from '@/components/shared/Select'
-import { Ingredient } from '@/components/shared/types/recipes'
 
 type NewIngredientsListProps = {
   items: Array<Ingredient>
@@ -37,12 +37,10 @@ const NewIngredientsList = ({ items, setItems }: NewIngredientsListProps) => {
     }
     updatedItems[index] = editedItem
     setItems(updatedItems)
-    console.log(updatedItems)
   }
 
   const onItemDelete = (id: string) => {
     const newItems = items.filter((item) => item._id !== id)
-    console.log(newItems)
     setItems(newItems)
   }
 
@@ -51,12 +49,12 @@ const NewIngredientsList = ({ items, setItems }: NewIngredientsListProps) => {
       const formData = new FormData()
       formData.append('file', file)
 
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/ingredients/icon`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`, {
         method: 'POST',
         body: formData,
       })
         .then((result) => result.json())
-        .then((icon) => editItem(index, 'iconSrc', icon.iconSrc))
+        .then((icon) => editItem(index, 'iconSrc', icon.src))
         .catch((err) => console.log(err))
     }
   }
@@ -64,12 +62,9 @@ const NewIngredientsList = ({ items, setItems }: NewIngredientsListProps) => {
   const onIconDelete = async (index: number, src: string) => {
     const [, filename] = src.split('/media/')
 
-    await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/ingredients/icon/${filename}`,
-      {
-        method: 'DELETE',
-      },
-    )
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media/${filename}`, {
+      method: 'DELETE',
+    })
       .then(() => editItem(index, 'iconSrc', ''))
       .catch((err) => console.log(err))
   }

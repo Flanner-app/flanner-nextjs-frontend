@@ -5,9 +5,9 @@ import { useState } from 'react'
 import { Plus } from 'react-feather'
 import AddItemModal from './AddItemModal'
 import FridgeItem from './FridgeItem'
+import { MeasurementUnits } from '../../types/groceries'
+import { Ingredient } from '../../types/recipes'
 import Button from '../shared/Button'
-import { MeasurementUnits } from '../shared/types/groceries'
-import { Ingredient } from '../shared/types/recipes'
 import Heading from '../shared/typography/Heading'
 
 const Fridge = ({ itemList }: { itemList: Ingredient[] }) => {

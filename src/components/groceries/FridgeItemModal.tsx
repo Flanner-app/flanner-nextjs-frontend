@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import { Trash } from 'react-feather'
 import { MEASUREMENTS } from '@/constants/recipe'
+import { MeasurementUnits } from '../../types/groceries'
+import { Ingredient } from '../../types/recipes'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
-import { MeasurementUnits } from '../shared/types/groceries'
-import { Ingredient } from '../shared/types/recipes'
 
 type FridgeItemModalProps = {
   itemId: string

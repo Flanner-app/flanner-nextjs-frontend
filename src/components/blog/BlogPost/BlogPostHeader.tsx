@@ -12,8 +12,6 @@ type BlogPostHeaderProps = {
 
 const BlogPostHeader = ({ title }: BlogPostHeaderProps) => {
   const router = useRouter()
-  console.log(title)
-
   return (
     <div
       className={clsx(

@@ -3,9 +3,9 @@ import Image from 'next/image'
 import { Clock, Eye, Heart } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
+import { Ingredient } from '@/types/recipes'
 import { formatNumberToSmall } from '@/utils/numbers'
 import IngredientCard from '@/components/shared/IngredientCard'
-import { Ingredient } from '@/components/shared/types/recipes'
 import Heading from '@/components/shared/typography/Heading'
 import Tag from '../Tag'
 
@@ -164,7 +164,7 @@ const BlogPostSidebar = () => {
           SCROLLBAR_CLASSES,
         )}
       >
-        {PLACEHOLDER_INGREDIENT.map((item: any) => (
+        {PLACEHOLDER_INGREDIENT.map((item) => (
           <IngredientCard
             key={item._id}
             label={item.label}

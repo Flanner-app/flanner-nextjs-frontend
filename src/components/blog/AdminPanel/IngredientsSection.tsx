@@ -4,10 +4,10 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { Plus, Star } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
+import { Ingredient } from '@/types/recipes'
 import Button from '@/components/shared/Button'
 import IngredientCard from '@/components/shared/IngredientCard'
 import Modal from '@/components/shared/Modal'
-import { Ingredient } from '@/components/shared/types/recipes'
 import Heading from '@/components/shared/typography/Heading'
 import IngredientList from './IngredientList'
 import NewIngredientsList from './NewIngredientsList'
@@ -41,8 +41,26 @@ const IngredientsSection = ({
     ])
   }
 
+  const onSave = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/ingredients/create`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(items),
+        },
+      ).then((ingr) => ingr.json())
+      onAddIngredients(res.data)
+      setIsModalOpen(false)
+      setItems([])
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
-    <div className="my-10">
+    <>
       <div
         className={clsx(
           'min-h-80 rounded-lg border-2 border-black-default p-2 shadow-brutalism',
@@ -52,7 +70,7 @@ const IngredientsSection = ({
         <Modal
           isOpen={isModalOpen}
           close={() => setIsModalOpen(false)}
-          className="max-h-[800px] w-full p-6 sm:max-w-screen-md"
+          className="max-h-800 w-full p-6 sm:max-w-screen-md"
         >
           <div className="flex h-full flex-col">
             <div className="flex items-center gap-2">
@@ -95,11 +113,7 @@ const IngredientsSection = ({
                 appearence="yellow"
                 size="M"
                 wrapperClassName="w-full"
-                onClick={() => {
-                  onAddIngredients(items)
-                  setIsModalOpen(false)
-                  setItems([])
-                }}
+                onClick={onSave}
                 disabled={
                   items.length === 0 ||
                   items.some(
@@ -136,7 +150,7 @@ const IngredientsSection = ({
       >
         Add ingredients
       </Button>
-    </div>
+    </>
   )
 }
 

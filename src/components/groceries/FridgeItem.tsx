@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { X } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
 import FridgeItemModal from './FridgeItemModal'
-import { MeasurementUnits } from '../shared/types/groceries'
-import { Ingredient } from '../shared/types/recipes'
+import { MeasurementUnits } from '../../types/groceries'
+import { Ingredient } from '../../types/recipes'
 
 type FridgeItemProps = {
   onUpdate: (_id: string, quantity: number, units: MeasurementUnits) => void

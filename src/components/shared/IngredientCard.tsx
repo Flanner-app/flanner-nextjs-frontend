@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import { Ingredient } from './types/recipes'
+import { Ingredient } from '../../types/recipes'
 import Tag from '../blog/Tag'
 
 type IngredientCard = {

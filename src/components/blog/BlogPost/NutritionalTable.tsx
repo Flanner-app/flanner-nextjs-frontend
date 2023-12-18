@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { Nutrient, NutritionTable } from '@/components/shared/types/recipes'
+import { Nutrient, NutritionTable } from '@/types/recipes'
 
 type NutritionTableProps = {
   servings: number

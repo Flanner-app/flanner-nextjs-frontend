@@ -1,4 +1,4 @@
-import { MeasurementUnits } from '@/components/shared/types/groceries'
+import { MeasurementUnits } from '@/types/groceries'
 
 export const MEASUREMENTS: Array<MeasurementUnits> = [
   'grams',

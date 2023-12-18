@@ -7,11 +7,11 @@ import { v4 as uuidv4 } from 'uuid'
 import { MEASUREMENTS } from '@/constants/recipe'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import AddItemAutocomplete, { AutocompleteValue } from './AddItemAutocomplete'
+import { Ingredient } from '../../types/recipes'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
-import { Ingredient } from '../shared/types/recipes'
 
 export type SelectionGroceryItem = {
   label: string
