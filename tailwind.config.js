@@ -90,6 +90,7 @@ module.exports = {
         ...theme('spacing'),
         400: '400px',
         600: '600px',
+        800: '800px',
       }),
       borderWidth: {
         6: '6px',
