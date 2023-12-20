@@ -3,10 +3,10 @@
 import clsx from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useState } from 'react'
-import { blogFilters } from '@/constants/blog'
+import { Tag } from '@/types/tag'
 import FilterTag from './FilterTag'
 
-const BlogFilters = () => {
+const BlogFilters = ({ tags }: { tags: Array<Tag> }) => {
   const [filters, setFilters] = useState<string[]>(['lunch'])
 
   const [emblaRef] = useEmblaCarousel({
@@ -26,14 +26,14 @@ const BlogFilters = () => {
   return (
     <div className="overflow-x-hidden" ref={emblaRef}>
       <div className="flex items-center gap-2 py-2 pl-2">
-        {blogFilters.map((filter, i) => (
+        {tags.map((filter, i) => (
           <FilterTag
-            key={filter}
-            isActive={filters.includes(filter)}
-            onClick={() => toggleFilter(filter)}
-            className={clsx({ 'mr-2': i === blogFilters.length - 1 })}
+            key={filter._id}
+            isActive={filters.includes(filter._id)}
+            onClick={() => toggleFilter(filter._id)}
+            className={clsx({ 'mr-2': i === tags.length - 1 })}
           >
-            {filter}
+            {filter.label}
           </FilterTag>
         ))}
       </div>

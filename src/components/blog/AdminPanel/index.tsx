@@ -5,9 +5,9 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { X } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
-import { BlogFilterType, blogFilters } from '@/constants/blog'
 import { validMimeTypes } from '@/constants/file'
 import { Ingredient, NutritionTable } from '@/types/recipes'
+import { Tag } from '@/types/tag'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import Heading from '@/components/shared/typography/Heading'
@@ -233,18 +233,16 @@ const DEFAULT_FORM_DATA: BlogPost = {
   ],
 }
 
-const AdminPanel = () => {
+const AdminPanel = ({ tags }: { tags: Array<Tag> }) => {
   const [formData, setFormData] = useState<BlogPost>(DEFAULT_FORM_DATA)
 
-  const toggleTags = (tag: BlogFilterType) => {
-    let newTags: BlogFilterType[]
+  const toggleTags = (tag: string) => {
+    let newTags: Array<string>
 
     if (formData.tags.includes(tag)) {
-      newTags = [...formData.tags].filter(
-        (item) => item !== tag,
-      ) as BlogFilterType[]
+      newTags = [...formData.tags].filter((item) => item !== tag)
     } else {
-      newTags = [...formData.tags, tag] as BlogFilterType[]
+      newTags = [...formData.tags, tag]
     }
 
     setFormData((prevState) => ({ ...prevState, tags: newTags }))
@@ -560,13 +558,13 @@ const AdminPanel = () => {
       <div className="my-5 h-0.5 w-full bg-black-default/20" />
 
       <div className="flex flex-wrap items-center gap-2">
-        {blogFilters.map((item) => (
+        {tags.map((item) => (
           <FilterTag
-            key={item}
-            onClick={() => toggleTags(item)}
-            isActive={formData.tags.includes(item)}
+            key={item._id}
+            onClick={() => toggleTags(item._id)}
+            isActive={formData.tags.includes(item._id)}
           >
-            {item}
+            {item.label}
           </FilterTag>
         ))}
       </div>
