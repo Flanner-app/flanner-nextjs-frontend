@@ -295,6 +295,34 @@ const AdminPanel = () => {
     }))
   }
 
+  const onDeleteIngredient = (id: string) => {
+    const newIngredients = formData.ingredients.filter(
+      (item) => item._id !== id,
+    )
+    setFormData((prev) => ({
+      ...prev,
+      ingredients: newIngredients,
+    }))
+  }
+
+  const onDeleteStepIngredient = (id: string) => {
+    const stepIndex = formData.steps.findIndex((item) => item._id === id)
+    const newIngredients = formData.steps.map((item, i) => {
+      if (i === stepIndex) {
+        return {
+          ...item,
+          ingredients: item.ingredients.filter((ingr) => ingr._id === id),
+        }
+      }
+      return item
+    })
+
+    setFormData((prev) => ({
+      ...prev,
+      steps: newIngredients,
+    }))
+  }
+
   const onIngredientSelect = (ingredient: Ingredient) => {
     let newIngredients: Array<Ingredient> = []
     if (
@@ -436,7 +464,7 @@ const AdminPanel = () => {
           </>
         ) : (
           <>
-            <span className="font-rubik text-6xl font-bold">
+            <span className="p-2 text-center font-rubik text-xl font-bold sm:text-6xl">
               Add cover (click me)
             </span>
             <input
@@ -458,6 +486,7 @@ const AdminPanel = () => {
         ingredientsList={formData.ingredients}
         onItemSelect={onIngredientSelect}
         onAddIngredients={onAddIngredients}
+        onDeleteIngredient={onDeleteIngredient}
       />
 
       <div className="my-5 h-0.5 w-full bg-black-default/20" />
@@ -471,7 +500,7 @@ const AdminPanel = () => {
         }}
         wrapperClassName="w-full"
       />
-      <div className="flex items-center gap-4 pt-4">
+      <div className="flex flex-col items-center gap-4 pt-4 sm:flex-row">
         <Input
           label="Cooking Time"
           placeholder="30 min"
@@ -499,7 +528,7 @@ const AdminPanel = () => {
         />
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
         <Input
           label="Prerequisites"
           placeholder="Very tasty, bla bla"
@@ -511,7 +540,7 @@ const AdminPanel = () => {
               prerequisites: e.target.value,
             }))
           }}
-          wrapperClassName="w-full mt-4"
+          wrapperClassName="w-full"
         />
         <Input
           label="Finishing Text"
@@ -524,7 +553,7 @@ const AdminPanel = () => {
               finishingText: e.target.value,
             }))
           }}
-          wrapperClassName="w-full mt-4"
+          wrapperClassName="w-full"
         />
       </div>
 
@@ -550,6 +579,7 @@ const AdminPanel = () => {
         onAddStep={onAddStep}
         onDeleteStep={onDeleteStep}
         onStepEdit={onStepEdit}
+        onDeleteIngredient={onDeleteStepIngredient}
       />
 
       <div className="my-5 h-0.5 w-full bg-black-default/20" />
@@ -619,6 +649,14 @@ const AdminPanel = () => {
           />
         ))}
       </div>
+
+      <Button
+        appearence="yellow"
+        size="L"
+        wrapperClassName="mt-10 w-60 mx-auto"
+      >
+        Create a recipe
+      </Button>
     </div>
   )
 }

@@ -16,12 +16,14 @@ type IngredientsSectionProps = {
   ingredientsList: Array<Ingredient>
   onItemSelect: (ingredient: Ingredient) => void
   onAddIngredients: (ingredients: Array<Ingredient>) => void
+  onDeleteIngredient: (id: string) => void
 }
 
 const IngredientsSection = ({
   ingredientsList,
   onItemSelect,
   onAddIngredients,
+  onDeleteIngredient,
 }: IngredientsSectionProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [items, setItems] = useState<Ingredient[]>([])
@@ -64,7 +66,8 @@ const IngredientsSection = ({
       <div
         className={clsx(
           'min-h-80 rounded-lg border-2 border-black-default p-2 shadow-brutalism',
-          'mb-4 flex flex-wrap items-center gap-2 bg-tones-lavender',
+          'mb-4 bg-tones-lavender',
+          { 'flex items-center justify-center': ingredientsList.length === 0 },
         )}
       >
         <Modal
@@ -127,19 +130,22 @@ const IngredientsSection = ({
           </div>
         </Modal>
         {ingredientsList.length === 0 && (
-          <span className="mx-auto block text-center font-rubik text-6xl font-bold">
+          <div className="p-2 text-center font-rubik text-xl font-bold sm:text-6xl">
             No Ingredients selected
-          </span>
+          </div>
         )}
-        {ingredientsList.map((item) => (
-          <IngredientCard
-            key={item._id}
-            label={item.label}
-            measurement={item.measurement}
-            quantity={item.quantity}
-            iconSrc={item.iconSrc}
-          />
-        ))}
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+          {ingredientsList.map((item) => (
+            <IngredientCard
+              key={item._id}
+              label={item.label}
+              measurement={item.measurement}
+              quantity={item.quantity}
+              iconSrc={item.iconSrc}
+              onDelete={() => onDeleteIngredient(item._id)}
+            />
+          ))}
+        </div>
       </div>
 
       <Button

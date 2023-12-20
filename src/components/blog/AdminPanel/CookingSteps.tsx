@@ -23,6 +23,7 @@ type CookingStepsProps = {
     field: keyof RecipeStep,
     value: RecipeStep[typeof field],
   ) => void
+  onDeleteIngredient: (id: string) => void
 }
 
 const CookingSteps = ({
@@ -31,6 +32,7 @@ const CookingSteps = ({
   onAddStep,
   onDeleteStep,
   onStepEdit,
+  onDeleteIngredient,
 }: CookingStepsProps) => {
   const onCoverUpload = async (file: File | undefined, id: string) => {
     if (file) {
@@ -121,7 +123,7 @@ const CookingSteps = ({
               </>
             ) : (
               <>
-                <span className="font-rubik text-6xl font-bold">
+                <span className="p-2 text-center font-rubik text-xl font-bold sm:text-6xl">
                   Add image (click me)
                 </span>
                 <input
@@ -144,6 +146,7 @@ const CookingSteps = ({
             onIngredientSelect={(ingredient) =>
               onStepEdit(step._id, 'ingredients', [ingredient])
             }
+            onDeleteIngredient={onDeleteIngredient}
           />
 
           <Input

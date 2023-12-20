@@ -35,7 +35,7 @@ const Sidebar = () => {
       <div
         className={clsx(
           'h-full border-r-2 border-black-regular px-4 py-3 shadow-sm',
-          'hidden flex-col justify-between bg-yellow-dark lg:flex',
+          'hidden flex-col justify-between bg-yellow-dark md:flex',
           'fixed left-0 z-50 transition-[width]',
           isOpen ? 'w-64' : 'w-21.5',
         )}

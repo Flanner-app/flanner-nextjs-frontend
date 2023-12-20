@@ -8,7 +8,7 @@ export default function SidebarLayout({
   return (
     <div className="flex h-full">
       <Sidebar />
-      <div className="w-full pl-21.5">{children}</div>
+      <div className="w-full md:pl-21.5">{children}</div>
       {/* <FridgeSidebar /> */}
     </div>
   )

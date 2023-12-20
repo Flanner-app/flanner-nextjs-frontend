@@ -18,6 +18,7 @@ type StepIngredientsProps = {
   ingredientsFormData: Array<Ingredient>
   ingredients: Array<Ingredient>
   onIngredientSelect: (item: Ingredient) => void
+  onDeleteIngredient: (id: string) => void
 }
 
 const TWO = 2
@@ -27,6 +28,7 @@ const StepIngredients = ({
   ingredientsFormData,
   ingredients,
   onIngredientSelect,
+  onDeleteIngredient,
 }: StepIngredientsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -61,6 +63,7 @@ const StepIngredients = ({
               className={clsx(
                 step.ingredients.length % TWO !== 0 && 'last:col-span-2',
               )}
+              onDelete={() => onDeleteIngredient(step._id)}
             />
           ))}
         </div>
