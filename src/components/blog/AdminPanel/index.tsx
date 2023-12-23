@@ -2,10 +2,12 @@
 
 import clsx from 'clsx'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { X } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
 import { validMimeTypes } from '@/constants/file'
+import { BlogPost } from '@/constants/recipe'
 import { Ingredient, NutritionTable } from '@/types/recipes'
 import { Tag } from '@/types/tag'
 import Button from '@/components/shared/Button'
@@ -14,7 +16,7 @@ import Heading from '@/components/shared/typography/Heading'
 import CookingSteps from './CookingSteps'
 import IngredientsSection from './IngredientsSection'
 import FilterTag from '../BlogFilters/FilterTag'
-import { BlogPost, RecipeStep } from '../BlogPost'
+import { RecipeStep } from '../BlogPost'
 
 const DEFAULT_FORM_DATA: BlogPost = {
   title: '',
@@ -236,6 +238,8 @@ const DEFAULT_FORM_DATA: BlogPost = {
 const AdminPanel = ({ tags }: { tags: Array<Tag> }) => {
   const [formData, setFormData] = useState<BlogPost>(DEFAULT_FORM_DATA)
 
+  const router = useRouter()
+
   const toggleTags = (tag: string) => {
     let newTags: Array<string>
 
@@ -427,6 +431,24 @@ const AdminPanel = ({ tags }: { tags: Array<Tag> }) => {
       }))
     } catch (err) {
       console.log(err)
+    }
+  }
+
+  const createBlogPost = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/blogPost/create`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        },
+      ).then((response) => response.json())
+
+      router.push(`/blog/${res.data}`)
+    } catch (error) {
+      // todo: add errors handling and loading on post creation
+      console.log(error)
     }
   }
 
@@ -652,6 +674,7 @@ const AdminPanel = ({ tags }: { tags: Array<Tag> }) => {
         appearence="yellow"
         size="L"
         wrapperClassName="mt-10 w-60 mx-auto"
+        onClick={createBlogPost}
       >
         Create a recipe
       </Button>

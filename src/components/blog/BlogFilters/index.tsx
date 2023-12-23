@@ -7,7 +7,7 @@ import { Tag } from '@/types/tag'
 import FilterTag from './FilterTag'
 
 const BlogFilters = ({ tags }: { tags: Array<Tag> }) => {
-  const [filters, setFilters] = useState<string[]>(['lunch'])
+  const [filters, setFilters] = useState<string[]>([])
 
   const [emblaRef] = useEmblaCarousel({
     dragFree: true,
@@ -22,6 +22,8 @@ const BlogFilters = ({ tags }: { tags: Array<Tag> }) => {
 
     setFilters((prev) => [...prev, filter])
   }
+
+  if (!tags.length) return
 
   return (
     <div className="overflow-x-hidden" ref={emblaRef}>

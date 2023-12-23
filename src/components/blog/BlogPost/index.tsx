@@ -2,7 +2,8 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { Clock, Eye, Heart } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
-import { Ingredient, NutritionTable } from '@/types/recipes'
+import { BlogPost } from '@/constants/recipe'
+import { Ingredient } from '@/types/recipes'
 import { formatNumberToSmall } from '@/utils/numbers'
 import IngredientCard from '@/components/shared/IngredientCard'
 import Heading from '@/components/shared/typography/Heading'
@@ -24,21 +25,6 @@ export type RecipeStep = {
   ingredients: Array<Ingredient>
   imgSrc: string
   text: string
-}
-
-export type BlogPost = {
-  title: string
-  coverSrc: string
-  numberOfLikes?: number
-  numberOfViews?: number
-  tags: Array<string>
-  totalCookingTime: string
-  servings: number
-  nutritionalInfo: NutritionTable
-  ingredients: Array<Ingredient>
-  prerequisites: string
-  finishingText: string
-  steps: Array<RecipeStep>
 }
 
 const PLACEHOLDER: BlogPost = {
