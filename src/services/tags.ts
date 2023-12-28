@@ -1,4 +1,4 @@
-import { Tag } from '@/types/tag'
+import { Tag } from '@/types/recipes'
 
 export const getAllTags = async (): Promise<Array<Tag> | null> => {
   try {

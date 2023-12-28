@@ -16,8 +16,7 @@ const Tag = ({ type = 'regular', className, children }: TagProps) => {
         'leading-none',
         {
           [getRandomBgColor({ bright: true })]: type === 'regular',
-          'flex items-center gap-1 bg-white bg-opacity-70 backdrop-blur-md':
-            type === 'info',
+          'flex items-center gap-1 bg-white backdrop-blur-md': type === 'info',
         },
         className,
       )}

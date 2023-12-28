@@ -55,3 +55,62 @@ export type Ingredient = {
   quantity: number
   iconSrc: string
 }
+
+export type Tag = {
+  _id: string
+  label:
+    | 'Beginner'
+    | 'Intermediate'
+    | 'Advanced'
+    | 'Breakfast'
+    | 'Lunch'
+    | 'Dinner'
+    | 'Snacks'
+    | 'Dessert'
+    | 'One-Pot'
+    | 'Spicy'
+    | 'Summer'
+    | 'Fall'
+    | 'Winter'
+    | 'Spring'
+    | 'Comfort Food'
+    | 'Healthy'
+    | 'Party'
+    | 'Holiday'
+    | 'Quick and Easy'
+    | 'Vegeterian'
+    | 'Vegan'
+    | 'Gluten-Free'
+    | 'Grilled'
+    | 'Baked'
+    | 'Fried'
+    | 'Steamed'
+    | 'Slow Cooked'
+    | 'Asian'
+    | 'Italian'
+    | 'Mexican'
+}
+
+export type RecipeStep = {
+  _id: string
+  title: string
+  ingredients: Array<Ingredient>
+  imgSrc: string
+  text: string
+}
+
+export type BlogPost = {
+  _id: string
+  title: string
+  coverSrc: string
+  numberOfLikes?: number
+  numberOfViews?: number
+  tags: Array<Tag>
+  totalCookingTime: string
+  servings: number
+  nutritionalInfo: NutritionTable
+  ingredients: Array<Ingredient>
+  prerequisites: string
+  finishingText: string
+  steps: Array<RecipeStep>
+}

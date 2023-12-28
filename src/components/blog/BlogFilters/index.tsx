@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useState } from 'react'
-import { Tag } from '@/types/tag'
+import { Tag } from '@/types/recipes'
 import FilterTag from './FilterTag'
 
 const BlogFilters = ({ tags }: { tags: Array<Tag> }) => {

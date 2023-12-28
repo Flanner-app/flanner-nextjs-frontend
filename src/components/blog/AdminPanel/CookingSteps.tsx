@@ -4,13 +4,11 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { Trash, X } from 'react-feather'
 import { validMimeTypes } from '@/constants/file'
-import { Ingredient } from '@/types/recipes'
+import { Ingredient, RecipeStep as RecipeStepType } from '@/types/recipes'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import Heading from '@/components/shared/typography/Heading'
 import StepIngredients from './StepIngredients'
-import { RecipeStep as RecipeStepType } from '../BlogPost'
-import RecipeStep from '../BlogPost/RecipeStep'
 import RecipeStepNumber from '../BlogPost/RecipeStepNumber'
 
 type CookingStepsProps = {
@@ -20,8 +18,8 @@ type CookingStepsProps = {
   onDeleteStep: (id: string) => void
   onStepEdit: (
     id: string,
-    field: keyof RecipeStep,
-    value: RecipeStep[typeof field],
+    field: keyof RecipeStepType,
+    value: RecipeStepType[typeof field],
   ) => void
   onDeleteIngredient: (id: string) => void
 }

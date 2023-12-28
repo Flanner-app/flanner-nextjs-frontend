@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import Image from 'next/image'
+import { RecipeStep } from '@/types/recipes'
 import RecipeStepNumber from './RecipeStepNumber'
 import IngredientCard from '../../shared/IngredientCard'
 import Heading from '../../shared/typography/Heading'
-import { RecipeStep } from '.'
 
 type RecipeStepProps = {
   step: RecipeStep

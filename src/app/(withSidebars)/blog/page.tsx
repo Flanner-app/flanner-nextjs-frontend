@@ -5,6 +5,10 @@ import BlogPageContent from '@/components/blog/BlogPageContent'
 
 const BlogPage = async () => {
   const tags = await getAllTags()
+  const posts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogPost`).then(
+    (res) => res.json(),
+  )
+  console.log(posts)
 
   return (
     <div className="grow overflow-x-hidden">
@@ -12,7 +16,7 @@ const BlogPage = async () => {
       <div className="relative">
         <BlogFilters tags={tags || []} />
       </div>
-      <BlogPageContent />
+      <BlogPageContent posts={posts.data || []} />
     </div>
   )
 }

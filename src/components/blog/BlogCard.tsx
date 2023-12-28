@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Eye, Heart } from 'react-feather'
+import { Clock, Eye, Heart } from 'react-feather'
+import { Tag as TagType } from '@/types/recipes'
 import { getRandomBgColor } from '@/utils/colors'
 import { formatNumberToSmall } from '@/utils/numbers'
 import Tag from './Tag'
@@ -9,10 +10,11 @@ import Tag from './Tag'
 type BlogCardProps = {
   href: string
   title: string
-  tags: string[]
+  tags: Array<TagType>
   imgSrc: string
-  viewsAmount: number
-  likesAmount: number
+  viewsAmount?: number
+  likesAmount?: number
+  totalCookingTime: string
 }
 
 const BlogCard = ({
@@ -22,6 +24,7 @@ const BlogCard = ({
   imgSrc,
   viewsAmount,
   likesAmount,
+  totalCookingTime,
 }: BlogCardProps) => {
   return (
     <Link href={href} className="group relative">
@@ -33,23 +36,38 @@ const BlogCard = ({
           'bg-yellow-dark',
         )}
       >
+        <Tag
+          type="info"
+          className={clsx(
+            'inline border-2 border-black-default bg-yellow-regular shadow-brutalism',
+            'absolute left-3 top-3 z-20',
+          )}
+        >
+          <Clock size={16} />
+          {totalCookingTime}
+        </Tag>
+        <div className="absolute right-3 top-3 z-20 flex items-center gap-3">
+          <Tag type="info">
+            <Eye size={14} />
+            {formatNumberToSmall(viewsAmount || 0)}
+          </Tag>
+          <Tag type="info">
+            <Heart size={14} />
+            {formatNumberToSmall(likesAmount || 0)}
+          </Tag>
+        </div>
         <div
           className={clsx(
             'relative aspect-[4/3] max-h-96 w-full border-b-2 border-black-default',
-            'after:absolute after:z-10 after:h-1/2 after:w-full after:bg-gradient-to-b',
-            'after:from-black-default/30 after:to-transparent',
           )}
         >
-          <div className="absolute right-3 top-3 z-20 flex items-center gap-3">
-            <Tag type="info">
-              <Eye size={14} />
-              {formatNumberToSmall(viewsAmount)}
-            </Tag>
-            <Tag type="info">
-              <Heart size={14} />
-              {formatNumberToSmall(likesAmount)}
-            </Tag>
-          </div>
+          <div
+            className={clsx(
+              'absolute z-10 h-1/2 w-full bg-gradient-to-b',
+              'from-black-default/30 to-transparent',
+            )}
+          />
+
           <Image
             src={imgSrc}
             sizes="768px"
@@ -59,12 +77,12 @@ const BlogCard = ({
           />
         </div>
         <div className="px-4 py-3">
-          <h3 className="mb-4 font-rubik text-lg font-medium leading-tight">
+          <h3 className="mb-2 font-rubik text-lg font-medium leading-tight">
             {title}
           </h3>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="mb-2 flex flex-wrap items-center gap-2">
             {tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
+              <Tag key={tag._id}>{tag.label}</Tag>
             ))}
           </div>
         </div>

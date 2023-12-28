@@ -7,18 +7,22 @@ import { useState } from 'react'
 import { X } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
 import { validMimeTypes } from '@/constants/file'
-import { BlogPost } from '@/constants/recipe'
-import { Ingredient, NutritionTable } from '@/types/recipes'
-import { Tag } from '@/types/tag'
+import {
+  Ingredient,
+  NutritionTable,
+  Tag,
+  BlogPost,
+  RecipeStep,
+} from '@/types/recipes'
 import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import Heading from '@/components/shared/typography/Heading'
 import CookingSteps from './CookingSteps'
 import IngredientsSection from './IngredientsSection'
 import FilterTag from '../BlogFilters/FilterTag'
-import { RecipeStep } from '../BlogPost'
 
 const DEFAULT_FORM_DATA: BlogPost = {
+  _id: uuidv4(),
   title: '',
   coverSrc: '',
   numberOfLikes: 0,
@@ -240,11 +244,11 @@ const AdminPanel = ({ tags }: { tags: Array<Tag> }) => {
 
   const router = useRouter()
 
-  const toggleTags = (tag: string) => {
-    let newTags: Array<string>
+  const toggleTags = (tag: Tag) => {
+    let newTags: Array<Tag>
 
-    if (formData.tags.includes(tag)) {
-      newTags = [...formData.tags].filter((item) => item !== tag)
+    if (formData.tags.some((item) => item._id === tag._id)) {
+      newTags = [...formData.tags].filter((item) => item._id !== tag._id)
     } else {
       newTags = [...formData.tags, tag]
     }
@@ -579,17 +583,19 @@ const AdminPanel = ({ tags }: { tags: Array<Tag> }) => {
 
       <div className="my-5 h-0.5 w-full bg-black-default/20" />
 
-      <div className="flex flex-wrap items-center gap-2">
-        {tags.map((item) => (
-          <FilterTag
-            key={item._id}
-            onClick={() => toggleTags(item._id)}
-            isActive={formData.tags.includes(item._id)}
-          >
-            {item.label}
-          </FilterTag>
-        ))}
-      </div>
+      {tags && (
+        <div className="flex flex-wrap items-center gap-2">
+          {tags.map((item) => (
+            <FilterTag
+              key={item._id}
+              onClick={() => toggleTags(item)}
+              isActive={formData.tags.some((tag) => tag._id === item._id)}
+            >
+              {item.label}
+            </FilterTag>
+          ))}
+        </div>
+      )}
 
       <div className="my-5 h-0.5 w-full bg-black-default/20" />
 
