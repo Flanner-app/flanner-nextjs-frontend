@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import { Trash } from 'react-feather'
-import { FridgeItemType } from './Fridge'
+import { MEASUREMENTS } from '@/constants/recipe'
+import { MeasurementUnits } from '../../types/groceries'
+import { Ingredient } from '../../types/recipes'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
@@ -12,46 +14,36 @@ type FridgeItemModalProps = {
   itemId: string
   isOpen: boolean
   close: () => void
-  quantity: FridgeItemType['quantity']
-  units: FridgeItemType['units']
-  updateItem: (quantity: string, units: FridgeItemType['units']) => void
-  deleteItem: (id: string) => void
+  quantity: Ingredient['quantity']
+  measurement: MeasurementUnits
+  updateItem: (quantity: string, units: MeasurementUnits) => void
+  deleteItem: (_id: string) => void
 }
 
 type ItemData = {
   quantity: string
-  units: FridgeItemModalProps['units']
+  measurement: MeasurementUnits
 }
-
-export const measurements: Array<FridgeItemModalProps['units']> = [
-  'grams',
-  'kg',
-  'tblsp',
-  'cup',
-  'ml',
-  'pieces',
-  'items',
-]
 
 const FridgeItemModal = ({
   itemId,
   isOpen,
   close,
   quantity,
-  units,
+  measurement,
   updateItem,
   deleteItem,
 }: FridgeItemModalProps) => {
   const [data, setData] = useState<ItemData>({
     quantity: quantity.toString(),
-    units: units,
+    measurement: measurement,
   })
 
   const onSelectUnit = (value: string) => {
-    if (measurements.includes(value as FridgeItemType['units'])) {
+    if (MEASUREMENTS.includes(value as MeasurementUnits)) {
       setData((prevData) => ({
         ...prevData,
-        units: value as FridgeItemType['units'],
+        units: value as MeasurementUnits,
       }))
     }
   }
@@ -82,8 +74,8 @@ const FridgeItemModal = ({
         <Select
           name="Measurement select"
           label="Measure in"
-          value={data.units}
-          valueList={measurements}
+          value={data.measurement}
+          valueList={MEASUREMENTS}
           onChange={onSelectUnit}
         />
       </div>
@@ -102,7 +94,7 @@ const FridgeItemModal = ({
           appearence="black"
           wrapperClassName="w-full"
           onClick={() => {
-            updateItem(data.quantity, data.units)
+            updateItem(data.quantity, data.measurement)
             close()
           }}
         >

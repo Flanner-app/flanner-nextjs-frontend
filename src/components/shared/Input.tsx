@@ -10,9 +10,13 @@ export type InputProps = {
   decimalCount?: number
   error?: string
   value: string
+  rows?: number
   className?: string
   wrapperClassName?: string
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'value'>
+} & Omit<
+  InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
+  'value' | 'rows'
+>
 
 const isNumberStringValid = (str: string, decimalCount = 0) => {
   if (!str) return true
@@ -35,6 +39,7 @@ const Input = ({
   error,
   value,
   className,
+  rows,
   wrapperClassName,
   onChange,
   ...inputProps
@@ -46,7 +51,9 @@ const Input = ({
     return 'text'
   }, [type])
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     e.preventDefault()
     e.stopPropagation()
 
@@ -61,6 +68,8 @@ const Input = ({
     onChange?.(e)
   }
 
+  const TextField = rows ? 'textarea' : 'input'
+
   return (
     <div className={wrapperClassName}>
       {label && (
@@ -72,21 +81,27 @@ const Input = ({
         className={clsx(
           'block rounded-xl bg-white transition-colors',
           'flex items-center border-2 border-black-default',
-          'box-border h-14 cursor-text px-4',
+          'box-border cursor-text shadow-brutalism',
           'hover:bg-white/75 hover:focus-within:bg-white active:bg-white',
-          error && 'border border-utility-error/50',
+          {
+            'h-14 px-4': !rows,
+            'p-4': rows,
+            'border border-utility-error/50': error,
+          },
           className,
         )}
       >
-        <input
+        <TextField
           type="text"
           className={clsx(
             'block w-full p-0 text-black-default placeholder-black-hover/50',
             'h-full bg-transparent leading-none outline-none focus:ring-0',
             'placeholder:font-medium',
+            { 'resize-none leading-tight': rows },
           )}
           inputMode={getInputMode}
           placeholder={placeholder}
+          rows={rows}
           value={value}
           onChange={handleChange}
           {...inputProps}

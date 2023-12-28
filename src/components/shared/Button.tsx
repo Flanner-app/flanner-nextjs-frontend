@@ -2,7 +2,14 @@ import clsx from 'clsx'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 type ButtonProps = {
-  appearence: 'yellow' | 'black' | 'white' | 'outline' | 'critical' | 'ghost'
+  appearence:
+    | 'yellow'
+    | 'accent'
+    | 'black'
+    | 'white'
+    | 'outline'
+    | 'critical'
+    | 'ghost'
   size: 'S' | 'M' | 'L'
   className?: string
   wrapperClassName?: string
@@ -24,6 +31,11 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
     //     'hover:bg-black-hover hover:border-black-hover hover:text-white active:bg-black-regular',
     //     'active:text-white',
     //   ]
+    case 'accent':
+      return [
+        'bg-accent-green text-black active:bg-accent-green/80',
+        'border-2 border-black-regular',
+      ]
     case 'black':
       return 'bg-black-regular text-white active:bg-black-hover'
     case 'white':
@@ -36,6 +48,7 @@ const getClasses = (appearence: ButtonProps['appearence']) => {
     case 'ghost':
       return [
         'bg-transparent text-black-regular hover:bg-black-hover',
+        'border-2 border-transparent',
         'hover:text-white active:bg-black-regular active:text-white',
       ]
     default:
@@ -54,9 +67,9 @@ const Button = ({
   ...restProps
 }: ButtonProps) => {
   const sizeMap = {
-    S: 'h-10',
-    M: 'h-12',
-    L: 'h-14',
+    S: 'min-h-10',
+    M: 'min-h-12',
+    L: 'min-h-14',
   }
 
   return (
@@ -69,7 +82,7 @@ const Button = ({
     >
       <button
         className={clsx(
-          'group relative w-full transition-[filter] disabled:pointer-events-none',
+          'relative w-full transition-[filter] disabled:pointer-events-none',
           'disabled:grayscale',
         )}
         data-icon-only={containsIconOnly}
@@ -105,7 +118,9 @@ const Button = ({
               'absolute top-0 z-[1] h-full w-full',
               {
                 '!bg-white':
-                  appearence === 'black' || appearence === 'critical',
+                  appearence === 'black' ||
+                  appearence === 'critical' ||
+                  appearence === 'accent',
               },
             )}
           />

@@ -1,16 +1,23 @@
 'use client'
 
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
-import { Check, ChevronDown, X } from 'react-feather'
-import { v4 as uuidv4 } from 'uuid'
-import staticGroceries from './staticGroceries.json'
+import {
+  // useEffect,
+  useState,
+} from 'react'
+import {
+  // Check,
+  ChevronDown,
+  X,
+} from 'react-feather'
+// import { v4 as uuidv4 } from 'uuid'
+// import staticGroceries from './staticGroceries.json'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Heading from '../shared/typography/Heading'
 
-export type AutocompleteValue = { id: string; label: string; icon: string }
+export type AutocompleteValue = { _id: string; label: string; icon: string }
 
 type AddItemAutocompleteProps = {
   onSelect: (value: AutocompleteValue) => void
@@ -25,24 +32,24 @@ const scrollbarClasses = [
 ]
 
 const AddItemAutocomplete = ({
-  onSelect,
+  // onSelect,
   selectedValue,
   label,
 }: AddItemAutocompleteProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const [groceryList, setGroceryList] = useState(staticGroceries)
+  // const [groceryList, setGroceryList] = useState(staticGroceries)
 
-  useEffect(() => {
-    if (query === '') {
-      setGroceryList(staticGroceries)
-    } else {
-      const newItems = staticGroceries.filter((item) =>
-        item.label.toLowerCase().includes(query.toLocaleLowerCase()),
-      )
-      setGroceryList(newItems)
-    }
-  }, [query])
+  // useEffect(() => {
+  //   if (query === '') {
+  //     setGroceryList(staticGroceries)
+  //   } else {
+  //     const newItems = staticGroceries.filter((item) =>
+  //       item.label.toLowerCase().includes(query.toLocaleLowerCase()),
+  //     )
+  //     setGroceryList(newItems)
+  //   }
+  // }, [query])
 
   return (
     <div>
@@ -114,9 +121,9 @@ const AddItemAutocomplete = ({
           </div>
 
           <ul className={clsx('h-full overflow-y-auto px-6', scrollbarClasses)}>
-            {groceryList.map((item) => (
+            {/* {groceryList.map((item) => (
               <li
-                key={item.id}
+                key={item._id}
                 className={clsx(
                   'cursor-pointer px-2 py-1 font-medium hover:bg-yellow-light',
                   'mb-1 flex items-center justify-between rounded-lg',
@@ -147,14 +154,14 @@ const AddItemAutocomplete = ({
                 appearence="yellow"
                 size="M"
                 onClick={() => {
-                  onSelect({ id: uuidv4(), label: query, icon: '❔' })
+                  onSelect({ _id: uuidv4(), label: query, icon: '❔' })
                   setIsOpen(false)
                   setQuery('')
                 }}
               >
                 Add {query}
               </Button>
-            )}
+            )} */}
           </ul>
         </div>
       </Modal>

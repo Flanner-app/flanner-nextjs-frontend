@@ -1,0 +1,12 @@
+.heroHeading, .heroBenefits {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  text-shadow: 4px 4px #000000;
+}
+
+@media screen and (max-width: 640px) {
+  .heroHeading,
+  .heroBenefits {
+    text-shadow: 3px 3px #000000;
+  }
+}

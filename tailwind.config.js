@@ -2,9 +2,15 @@
 
 import scrollbar from 'tailwind-scrollbar'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import { generateRandomBgColorsSafelist } from './src/utils/colors'
+
+const generateSafelist = () => {
+  return [...generateRandomBgColorsSafelist()]
+}
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  safelist: generateSafelist(),
   theme: {
     colors: {
       white: '#FFFFFF',
@@ -23,6 +29,10 @@ module.exports = {
       utility: {
         error: '#d0011b',
         success: '#5fb846',
+      },
+      accent: {
+        purple: '#C4A1FF',
+        green: '#D0EE30',
       },
       tones: {
         yellow: '#FDFCDC',
@@ -47,6 +57,9 @@ module.exports = {
       '6xl': '2rem', // 32px
       '7xl': '2.125rem', // 34px
       '10xl': '2.5rem', // 40px
+      '13xl': '3rem', // 48px
+      '17xl': '3.75rem', // 60px
+      '19xl': '4.5rem', // 72px
     },
     extend: {
       screens: {
@@ -58,7 +71,11 @@ module.exports = {
       },
       spacing: {
         4.5: '1.125rem',
+        21.5: '5.375rem',
       },
+      width: (theme) => ({
+        ...theme('spacing'),
+      }),
       minWidth: (theme) => ({
         ...theme('spacing'),
       }),
@@ -73,7 +90,12 @@ module.exports = {
         ...theme('spacing'),
         400: '400px',
         600: '600px',
+        800: '800px',
       }),
+      borderWidth: {
+        6: '6px',
+        12: '12px',
+      },
       boxShadow: {
         outlined: '0 0 10px 2px rgba(0,0,0,0.1)',
         brutalism: '3px 3px 0px 0px rgba(0,0,0,1)',

@@ -26,7 +26,9 @@ const preview: Preview = {
       defaultTheme: 'light',
     }),
     (Story) => (
-      <Story />
+      <div className="bg-yellow-light">
+        <Story />
+      </div>
     )
   ],
 }

@@ -1,40 +1,33 @@
 'use client'
 
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { X } from 'react-feather'
 import { getRandomBgColor } from '@/utils/colors'
-import { FridgeItemType } from './Fridge'
 import FridgeItemModal from './FridgeItemModal'
+import { MeasurementUnits } from '../../types/groceries'
+import { Ingredient } from '../../types/recipes'
 
 type FridgeItemProps = {
-  onUpdate: (
-    id: string,
-    quantity: number,
-    units: FridgeItemProps['units'],
-  ) => void
-  onDelete: (id: string) => void
-} & FridgeItemType
+  onUpdate: (_id: string, quantity: number, units: MeasurementUnits) => void
+  onDelete: (_id: string) => void
+} & Ingredient
 
 const FridgeItem = ({
-  id,
+  _id,
   label,
-  icon,
+  iconSrc,
   quantity,
-  units,
+  measurement,
   onUpdate,
   onDelete,
 }: FridgeItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
 
-  const count = `${quantity} ${units}`
+  const count = `${quantity} ${measurement}`
 
-  const updateItem = (
-    quantityArg: string,
-    unitsArg: FridgeItemProps['units'],
-  ) => {
-    onUpdate(id, parseFloat(quantityArg), unitsArg)
+  const updateItem = (quantityArg: string, unitsArg: MeasurementUnits) => {
+    onUpdate(_id, parseFloat(quantityArg), unitsArg)
     // todo: item update logic (DB)
   }
 
@@ -44,10 +37,6 @@ const FridgeItem = ({
     onDelete(itemId)
   }
 
-  useEffect(() => {
-    setIsLoaded(true)
-  }, [])
-
   return (
     <>
       <div className="group relative">
@@ -55,21 +44,21 @@ const FridgeItem = ({
           className={clsx(
             'z-[2] w-fit rounded-xl border-2 border-black-regular bg-yellow-dark p-3',
             'flex aspect-square w-full flex-col items-center justify-between gap-2',
-            'relative cursor-pointer text-center leading-none transition-colors',
+            'relative cursor-pointer text-center leading-none',
             'group-hover:-translate-x-1 group-hover:-translate-y-1',
-            'transition-transform duration-100',
+            'transition-[transform,colors] duration-100',
           )}
           onClick={() => setIsModalOpen(true)}
         >
           <div className="absolute right-1 top-1">
             <div
               className="cursor-pointer rounded-full p-1 transition-colors hover:bg-white"
-              onClick={(e) => deleteItem(id, e)}
+              onClick={(e) => deleteItem(_id, e)}
             >
               <X size={12} />
             </div>
           </div>
-          <div className="text-5xl">{icon}</div>
+          <div className="text-5xl">{iconSrc}</div>
           <span className="rounded-md bg-white/50 p-1 text-sm font-bold capitalize leading-none">
             {label}
           </span>
@@ -78,16 +67,16 @@ const FridgeItem = ({
         <div
           className={clsx(
             'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-            isLoaded && getRandomBgColor(),
+            getRandomBgColor(),
           )}
         />
       </div>
       <FridgeItemModal
-        itemId={id}
+        itemId={_id}
         isOpen={isModalOpen}
         close={() => setIsModalOpen(false)}
         quantity={quantity}
-        units={units}
+        measurement={measurement}
         updateItem={updateItem}
         deleteItem={deleteItem}
       />

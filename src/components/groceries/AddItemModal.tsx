@@ -4,9 +4,10 @@ import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { Plus, Trash, X } from 'react-feather'
 import { v4 as uuidv4 } from 'uuid'
+import { MEASUREMENTS } from '@/constants/recipe'
+import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import AddItemAutocomplete, { AutocompleteValue } from './AddItemAutocomplete'
-import { FridgeItemType } from './Fridge'
-import { measurements } from './FridgeItemModal'
+import { Ingredient } from '../../types/recipes'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
@@ -17,35 +18,34 @@ export type SelectionGroceryItem = {
   icon: string
 }
 
-type GroceryItem = {
-  label: string
-  icon: string
-  units: FridgeItemType['units']
-  quantity: number
-}
-
 type AddItemModalProps = {
   isOpen: boolean
   close: () => void
-  onAddItems: (itemList: FridgeItemType[]) => void
+  onAddItems: (itemList: Ingredient[]) => void
 }
 
-const scrollbarClasses = [
-  'scrollbar-track-transparent',
-  'scrollbar-thumb-black-hover/50 scrollbar-thumb-rounded-md',
-  'scrollbar-w-1 scrollbar',
-]
-
 const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
-  const [items, setItems] = useState<FridgeItemType[]>([
-    { id: uuidv4(), label: '', icon: '', units: 'items', quantity: 1 },
+  const [items, setItems] = useState<Ingredient[]>([
+    {
+      _id: uuidv4(),
+      label: '',
+      iconSrc: '',
+      measurement: 'items',
+      quantity: 1,
+    },
   ])
   const [disableSave, setDisableSave] = useState(true)
 
   const onClose = () => {
     close()
     setItems([
-      { id: uuidv4(), label: '', icon: '', units: 'items', quantity: 1 },
+      {
+        _id: uuidv4(),
+        label: '',
+        iconSrc: '',
+        measurement: 'items',
+        quantity: 1,
+      },
     ])
   }
 
@@ -53,10 +53,10 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
     setItems((prevState) => [
       ...prevState,
       {
-        id: uuidv4(),
+        _id: uuidv4(),
         label: '',
-        icon: '',
-        units: 'items',
+        iconSrc: '',
+        measurement: 'items',
         quantity: 1,
       },
     ])
@@ -64,7 +64,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
 
   const editItem = (
     index: number,
-    property: keyof GroceryItem,
+    property: keyof Ingredient,
     value: string | number | AutocompleteValue,
   ) => {
     const updatedItems = [...items]
@@ -75,7 +75,7 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
       editedItem = {
         ...updatedItems[index],
         label: typedValue.label,
-        icon: typedValue.icon,
+        iconSrc: typedValue.icon,
       }
     } else if (property === 'quantity') {
       editedItem = {
@@ -134,16 +134,16 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
         className={clsx(
           'mt-6 flex h-full flex-col overflow-y-auto',
           'divide-y divide-black-default/10',
-          scrollbarClasses,
+          SCROLLBAR_CLASSES,
         )}
       >
         {items.map((item, index) => (
           <div
             className="flex items-start gap-4 px-4 py-4 first:pt-0 sm:items-end sm:py-4 md:px-6"
-            key={item.id}
+            key={item._id}
           >
             <div className="pointer-events-none mb-2 mt-9 select-none text-4xl sm:mt-0 sm:block">
-              {item.icon || '❔'}
+              {item.iconSrc || '❔'}
             </div>
             <div className="flex w-full items-start gap-4 sm:items-end">
               <div className="grid w-full grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-4">
@@ -151,17 +151,17 @@ const AddItemModal = ({ isOpen, close, onAddItems }: AddItemModalProps) => {
                   label="Select an item"
                   onSelect={(value) => editItem(index, 'label', value)}
                   selectedValue={{
-                    id: item.id,
+                    _id: item._id,
                     label: item.label,
-                    icon: item.icon,
+                    icon: item.iconSrc,
                   }}
                 />
                 <Select
                   label="Measure in"
                   name="add item units select"
-                  value={item.units}
-                  valueList={measurements}
-                  onChange={(value) => editItem(index, 'units', value)}
+                  value={item.measurement}
+                  valueList={MEASUREMENTS}
+                  onChange={(value) => editItem(index, 'measurement', value)}
                 />
                 <Input
                   label="Quantity"

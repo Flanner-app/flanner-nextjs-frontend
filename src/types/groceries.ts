@@ -1,0 +1,10 @@
+export type MeasurementUnits =
+  | 'grams'
+  | 'kg'
+  | 'tblsp'
+  | 'cup'
+  | 'ml'
+  | 'piece'
+  | 'pieces'
+  | 'items'
+  | 'item'

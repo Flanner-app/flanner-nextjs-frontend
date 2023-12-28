@@ -1,76 +1,97 @@
 'use client'
 
+import { Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { ChevronsLeft, LogIn, LogOut } from 'react-feather'
 import { useAuth } from '@/context/AuthContext'
 import Button from './Button'
 
 const Sidebar = () => {
-  const { user, logOut } = useAuth()
-
   const [isOpen, setIsOpen] = useState(false)
 
+  const { user, logOut } = useAuth()
+
   return (
-    <div
-      className={clsx(
-        'h-full border-r-2 border-black-regular p-4 shadow-sm',
-        'flex flex-col justify-between bg-yellow-dark',
-        isOpen ? 'w-64' : 'w-auto',
-      )}
-    >
+    <>
+      <Transition
+        unmount
+        as={Fragment}
+        show={isOpen}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-20"
+        leave="transition-opacity duration-150"
+        leaveFrom="opacity-20"
+        leaveTo="opacity-0"
+      >
+        <div
+          className="fixed inset-0 z-40 h-full w-full bg-black-default"
+          onClick={() => setIsOpen(false)}
+        />
+      </Transition>
+
       <div
         className={clsx(
-          'flex items-center',
-          isOpen ? 'justify-between' : 'justify-center',
+          'h-full border-r-2 border-black-regular px-4 py-3 shadow-sm',
+          'hidden flex-col justify-between bg-yellow-dark md:flex',
+          'fixed left-0 z-50 transition-[width]',
+          isOpen ? 'w-64' : 'w-21.5',
         )}
       >
-        {isOpen && (
-          <h1 className="font-rubik text-10xl font-extrabold leading-none">
-            Flanner
-          </h1>
-        )}
-        <Button
-          size="S"
-          appearence="ghost"
-          onClick={() => setIsOpen((prev) => !prev)}
-          containsIconOnly
+        <div
+          className={clsx(
+            'flex items-center',
+            isOpen ? 'justify-between' : 'justify-center',
+          )}
         >
-          <ChevronsLeft
-            size={20}
-            className={clsx(
-              'transform transition-transform',
-              !isOpen && 'rotate-180',
-            )}
-          />
-        </Button>
-      </div>
-      {user ? (
-        <Button
-          size="M"
-          appearence="black"
-          wrapperClassName="w-full"
-          containsIconOnly={!isOpen}
-          onClick={logOut}
-        >
-          <LogOut size={20} />
-          {isOpen && <>Logout</>}
-        </Button>
-      ) : (
-        <Link href="/quick-auth">
+          {isOpen && (
+            <h1 className="font-rubik text-10xl font-extrabold leading-none">
+              Flanner
+            </h1>
+          )}
+          <Button
+            size="S"
+            appearence="ghost"
+            onClick={() => setIsOpen((prev) => !prev)}
+            containsIconOnly
+          >
+            <ChevronsLeft
+              size={20}
+              className={clsx(
+                'transform transition-transform',
+                !isOpen && 'rotate-180',
+              )}
+            />
+          </Button>
+        </div>
+        {user ? (
           <Button
             size="M"
             appearence="black"
             wrapperClassName="w-full"
             containsIconOnly={!isOpen}
+            onClick={logOut}
           >
-            <LogIn size={20} />
-            {isOpen && <>Login</>}
+            <LogOut size={20} />
+            {isOpen && <>Logout</>}
           </Button>
-        </Link>
-      )}
-    </div>
+        ) : (
+          <Link href="/quick-auth">
+            <Button
+              size="M"
+              appearence="black"
+              wrapperClassName="w-full"
+              containsIconOnly={!isOpen}
+            >
+              <LogIn size={20} />
+              {isOpen && <>Login</>}
+            </Button>
+          </Link>
+        )}
+      </div>
+    </>
   )
 }
 

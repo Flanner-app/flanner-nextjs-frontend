@@ -1,4 +1,3 @@
-import FridgeSidebar from '@/components/groceries/FridgeSidebar'
 import Sidebar from '@/components/shared/Sidebar'
 
 export default function SidebarLayout({
@@ -8,7 +7,9 @@ export default function SidebarLayout({
 }) {
   return (
     <div className="flex h-full">
-      <Sidebar /> {children} <FridgeSidebar />
+      <Sidebar />
+      <div className="w-full md:pl-21.5">{children}</div>
+      {/* <FridgeSidebar /> */}
     </div>
   )
 }
