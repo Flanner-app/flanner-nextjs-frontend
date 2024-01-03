@@ -8,7 +8,6 @@ const BlogPage = async () => {
   const posts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogPost`).then(
     (res) => res.json(),
   )
-  console.log(posts)
 
   return (
     <div className="grow overflow-x-hidden">

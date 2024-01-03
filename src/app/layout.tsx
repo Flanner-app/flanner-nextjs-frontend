@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Poppins, Rubik } from 'next/font/google'
-import { AuthContextProvider } from '@/context/AuthContext'
+import AuthProvider from '@/context/AuthProvider'
 
 import './globals.css'
 
@@ -36,10 +36,10 @@ export default function Layout({
           rubik.variable,
         )}
       >
-        <AuthContextProvider>
+        <AuthProvider>
           {children}
           {authModal}
-        </AuthContextProvider>
+        </AuthProvider>
       </body>
     </html>
   )

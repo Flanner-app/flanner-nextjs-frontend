@@ -3,15 +3,15 @@
 import { Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { signOut } from 'next-auth/react'
 import { Fragment, useState } from 'react'
 import { ChevronsLeft, LogIn, LogOut } from 'react-feather'
-import { useAuth } from '@/context/AuthContext'
+import { useUser } from '@/context/AuthProvider'
 import Button from './Button'
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false)
-
-  const { user, logOut } = useAuth()
+  const { user } = useUser()
 
   return (
     <>
@@ -72,7 +72,7 @@ const Sidebar = () => {
             appearence="black"
             wrapperClassName="w-full"
             containsIconOnly={!isOpen}
-            onClick={logOut}
+            onClick={() => signOut()}
           >
             <LogOut size={20} />
             {isOpen && <>Logout</>}

@@ -2,20 +2,10 @@
 
 import clsx from 'clsx'
 import Image from 'next/image'
-import { usePathname, useRouter } from 'next/navigation'
-import { useAuth } from '@/context/AuthContext'
+import { signIn } from 'next-auth/react'
 import Button from '../shared/Button'
 
 const InitialAuthStep = ({ className }: { className?: string }) => {
-  const { signInWithGoogle: googleSignIn } = useAuth()
-
-  const router = useRouter()
-  const pathname = usePathname()
-
-  const signInWithGoogle = async () => {
-    googleSignIn().then(() => router.push(`${pathname}/preferences`))
-  }
-
   return (
     <div className={clsx('p-6', className)}>
       <h3 className="mb-3 max-w-5/6 font-rubik text-6xl font-bold leading-none">
@@ -29,7 +19,7 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
           size="M"
           appearence="white"
           wrapperClassName="w-1/2"
-          onClick={signInWithGoogle}
+          onClick={() => signIn('google')}
         >
           <Image
             width={24}
