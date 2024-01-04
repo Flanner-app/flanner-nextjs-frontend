@@ -1,9 +1,11 @@
+/* eslint-disable no-magic-numbers */
+
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
 export const authOptions: NextAuthOptions = {
   session: {
-    maxAge: 604800, // a week
+    maxAge: 30 * 24 * 60 * 60, // 30 days
     strategy: 'jwt',
   },
   secret: process.env.NEXTAUTH_SECRET,

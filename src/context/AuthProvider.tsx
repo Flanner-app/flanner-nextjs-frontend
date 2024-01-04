@@ -1,8 +1,11 @@
 'use client'
 
+import { Session } from 'next-auth'
 import { SessionProvider, useSession } from 'next-auth/react'
 import {
+  Dispatch,
   ReactNode,
+  SetStateAction,
   createContext,
   useCallback,
   useContext,
@@ -17,33 +20,46 @@ type Props = {
 
 type ContextType = {
   user: User | null
+  setUser: Dispatch<SetStateAction<User | null>>
+  session: Session | null
+  status: 'authenticated' | 'loading' | 'unauthenticated'
 }
 
 const defaultContext: ContextType = {
   user: null,
+  setUser: () => null,
+  session: null,
+  status: 'unauthenticated',
 }
 
-const UserContext = createContext(defaultContext)
+export const UserContext = createContext(defaultContext)
 
 const UserProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(null)
 
-  const { status } = useSession()
+  const { data: session, status } = useSession()
 
   const setCurrentUser = useCallback(async () => {
-    const userRes = await fetch('/api/user').then((res) => res.json())
+    const userRes = await fetch('/api/user')
+      .then((res) => res.json())
+      .catch(() => null)
 
-    setUser(userRes)
+    userRes.data && setUser(userRes.data)
   }, [])
 
   useEffect(() => {
-    if (status === 'authenticated') {
+    if (status === 'authenticated' && !user) {
       setCurrentUser()
+    } else if (status === 'unauthenticated') {
+      setUser(null)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, setCurrentUser])
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ session, status, user, setUser }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 

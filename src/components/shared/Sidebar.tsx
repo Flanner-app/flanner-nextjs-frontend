@@ -66,7 +66,7 @@ const Sidebar = () => {
             />
           </Button>
         </div>
-        {user ? (
+        {/* {user ? (
           <Button
             size="M"
             appearence="black"
@@ -78,7 +78,7 @@ const Sidebar = () => {
             {isOpen && <>Logout</>}
           </Button>
         ) : (
-          <Link href="/quick-auth">
+          <Link href="/auth">
             <Button
               size="M"
               appearence="black"
@@ -89,7 +89,18 @@ const Sidebar = () => {
               {isOpen && <>Login</>}
             </Button>
           </Link>
-        )}
+        )} */}
+        <Link href="/auth">
+          <Button
+            size="M"
+            appearence="black"
+            wrapperClassName="w-full"
+            containsIconOnly={!isOpen}
+          >
+            <LogIn size={20} />
+            {isOpen && <>Login</>}
+          </Button>
+        </Link>
       </div>
     </>
   )

@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { ArrowLeft, ChevronRight } from 'react-feather'
+import { ChevronRight } from 'react-feather'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import Button from '../shared/Button'
 import Checkbox from '../shared/Checkbox'
@@ -87,16 +87,7 @@ const PreferencesAuthStep = () => {
         />
       </div>
 
-      <div className="mb-0 mt-auto flex flex-col gap-3 p-3 sm:flex-row sm:p-6">
-        <Button
-          size="M"
-          appearence="black"
-          wrapperClassName="sm:w-1/2"
-          onClick={() => router.back()}
-        >
-          <ArrowLeft size={20} />
-          Back
-        </Button>
+      <div className="mb-0 mt-auto p-3 sm:p-6">
         <Button
           size="M"
           appearence={
@@ -104,7 +95,7 @@ const PreferencesAuthStep = () => {
               ? 'yellow'
               : 'white'
           }
-          wrapperClassName="sm:w-1/2"
+          wrapperClassName="sm:w-1/2 ml-auto mr-0"
           onClick={handleRedirect}
         >
           {selectedPreferences.length !== 0 || otherPreferences ? (

@@ -20,13 +20,7 @@ export const metadata: Metadata = {
   description: 'The Fridge app',
 }
 
-export default function Layout({
-  children,
-  authModal,
-}: {
-  children: React.ReactNode
-  authModal: React.ReactNode
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="min-h-full">
       <body
@@ -36,10 +30,7 @@ export default function Layout({
           rubik.variable,
         )}
       >
-        <AuthProvider>
-          {children}
-          {authModal}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   )
