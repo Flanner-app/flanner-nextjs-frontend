@@ -1,9 +1,8 @@
 import jwt from 'jsonwebtoken'
-import { type NextApiRequest } from 'next'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: NextRequest) {
   const token = await getToken({
     req: req,
     secret: process.env.NEXTAUTH_SECRET,
@@ -21,6 +20,9 @@ export async function POST(req: NextApiRequest) {
         algorithm: 'HS256',
       },
     )
+
+    const body = await req.json()
+
     const userRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/user/update`,
       {
@@ -29,9 +31,20 @@ export async function POST(req: NextApiRequest) {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${signedToken}`,
         },
-        body: JSON.stringify(req.body),
+        body: JSON.stringify(body),
       },
-    ).then((data) => data.json())
+    )
+      .then((data) => data.json())
+      .catch(() => ({ data: undefined }))
+
+    if (!userRes.data) {
+      return NextResponse.json(
+        {},
+        {
+          status: 404,
+        },
+      )
+    }
 
     return NextResponse.json(userRes, { status: 200 })
   } catch (error) {

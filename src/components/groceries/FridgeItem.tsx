@@ -3,10 +3,10 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 import { X } from 'react-feather'
-import { getRandomBgColor } from '@/utils/colors'
 import FridgeItemModal from './FridgeItemModal'
 import { MeasurementUnits } from '../../types/groceries'
 import { Ingredient } from '../../types/recipes'
+import RandomColorBg from '../shared/RandomColorBg'
 
 type FridgeItemProps = {
   onUpdate: (_id: string, quantity: number, units: MeasurementUnits) => void
@@ -64,12 +64,7 @@ const FridgeItem = ({
           </span>
           <span className="text-xs font-medium leading-none">{count}</span>
         </div>
-        <div
-          className={clsx(
-            'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-            getRandomBgColor(),
-          )}
-        />
+        <RandomColorBg />
       </div>
       <FridgeItemModal
         itemId={_id}

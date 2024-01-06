@@ -2,12 +2,13 @@
 
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { ChevronRight } from 'react-feather'
+import { useEffect, useState } from 'react'
+import { ArrowLeft, ChevronRight } from 'react-feather'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
+import { useUser } from '@/context/AuthProvider'
+import useIsComponentLoaded from '@/hooks/useIsComponentLoaded'
 import Button from '../shared/Button'
 import Checkbox from '../shared/Checkbox'
-import Input from '../shared/Input'
 
 const PREFERENCES = [
   'Low calories',
@@ -25,8 +26,9 @@ const PREFERENCES = [
 
 const PreferencesAuthStep = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([])
-  const [otherPreferences, setOtherPreferences] = useState('')
 
+  const isLoaded = useIsComponentLoaded()
+  const { user, setUser } = useUser()
   const router = useRouter()
 
   const onCheckboxChange = (value: string) => {
@@ -38,9 +40,34 @@ const PreferencesAuthStep = () => {
     }
   }
 
-  const handleRedirect = () => {
-    router.push('appliances')
+  const handleRedirect = async () => {
+    if (
+      user?.preferences?.every((item) => selectedPreferences.includes(item))
+    ) {
+      router.push('/')
+      return
+    }
+    try {
+      const userData = await fetch(
+        process.env.NEXT_PUBLIC_URL + '/api/user/update',
+        {
+          method: 'POST',
+          body: JSON.stringify({ preferences: selectedPreferences }),
+        },
+      ).then((res) => res.json())
+
+      setUser(userData.data)
+    } catch (error) {
+      // todo: add error handling
+      console.log(error)
+      return
+    }
+    router.push('/')
   }
+
+  useEffect(() => {
+    user?.preferences && setSelectedPreferences(user.preferences)
+  }, [user])
 
   return (
     <>
@@ -76,36 +103,26 @@ const PreferencesAuthStep = () => {
           </div>
         ))}
       </div>
-      <div className="mb-4 px-6">
-        <Input
-          label="Other (allergies, intolerances, ...)"
-          placeholder="No peanuts"
-          value={otherPreferences}
-          onChange={(e) => setOtherPreferences(e.target.value)}
-          onBlur={() => setOtherPreferences((prevData) => prevData.trim())}
-          wrapperClassName="mt-6 md:w-1/2"
-        />
-      </div>
 
-      <div className="mb-0 mt-auto p-3 sm:p-6">
+      <div className="mb-0 mt-auto flex flex-col gap-3 p-3 sm:flex-row sm:p-6">
         <Button
           size="M"
-          appearence={
-            selectedPreferences.length !== 0 || otherPreferences
-              ? 'yellow'
-              : 'white'
-          }
-          wrapperClassName="sm:w-1/2 ml-auto mr-0"
-          onClick={handleRedirect}
+          appearence="black"
+          wrapperClassName="sm:w-1/2"
+          onClick={() => router.push('skill')}
         >
-          {selectedPreferences.length !== 0 || otherPreferences ? (
-            <>
-              Continue
-              <ChevronRight size={20} />
-            </>
-          ) : (
-            'Skip'
-          )}
+          <ArrowLeft size={20} />
+          Back
+        </Button>
+        <Button
+          size="M"
+          appearence={selectedPreferences.length !== 0 ? 'yellow' : 'white'}
+          wrapperClassName="sm:w-1/2 sm:ml-auto sm:mr-0"
+          onClick={handleRedirect}
+          disabled={!isLoaded}
+        >
+          {selectedPreferences.length !== 0 ? 'Continue' : 'Skip'}
+          <ChevronRight size={20} />
         </Button>
       </div>
     </>

@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Clock, Eye, Heart } from 'react-feather'
 import { Tag as TagType } from '@/types/recipes'
-import { getRandomBgColor } from '@/utils/colors'
 import { formatNumberToSmall } from '@/utils/numbers'
 import Tag from './Tag'
+import RandomColorBg from '../shared/RandomColorBg'
 
 type BlogCardProps = {
   href: string
@@ -87,12 +87,7 @@ const BlogCard = ({
           </div>
         </div>
       </div>
-      <div
-        className={clsx(
-          'absolute inset-0 z-[1] h-full w-full rounded-2xl border-2 border-black-default',
-          getRandomBgColor(),
-        )}
-      />
+      <RandomColorBg />
     </Link>
   )
 }
