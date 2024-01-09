@@ -1,25 +1,28 @@
 import jwt from 'jsonwebtoken'
-import { NextRequest, NextResponse } from 'next/server'
-import { getToken } from 'next-auth/jwt'
+import { NextResponse } from 'next/server'
+import { getServerSession } from 'next-auth'
 
-export async function GET(req: NextRequest) {
-  const token = await getToken({
-    req: req,
-    secret: process.env.NEXTAUTH_SECRET,
-  })
+export async function GET() {
+  const session = await getServerSession()
 
-  if (!token) {
-    return NextResponse.json({ message: 'No JWT token' }, { status: 403 })
+  if (!session) {
+    return NextResponse.json(
+      { status: 307 },
+      {
+        status: 307,
+      },
+    )
   }
 
   try {
     const signedToken = jwt.sign(
-      { ...token },
+      { ...session.user },
       process.env.NEXTAUTH_SECRET as string,
       {
         algorithm: 'HS256',
       },
     )
+
     const userRes = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/user/login`,
       {
@@ -31,7 +34,10 @@ export async function GET(req: NextRequest) {
       },
     )
       .then((data) => data.json())
-      .catch(() => ({ data: undefined }))
+      .catch((e) => {
+        console.log(e)
+        return { data: undefined }
+      })
 
     if (!userRes.data) {
       return NextResponse.json(
@@ -42,7 +48,7 @@ export async function GET(req: NextRequest) {
       )
     }
 
-    return NextResponse.json(userRes, { status: 200 })
+    return NextResponse.json({ data: userRes.data }, { status: 200 })
   } catch (error) {
     console.log(error)
     return NextResponse.json(error, { status: 500 })
