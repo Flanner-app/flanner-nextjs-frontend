@@ -1,3 +1,4 @@
+import Header from '@/components/shared/Header'
 import Sidebar from '@/components/shared/Sidebar'
 
 export default function SidebarLayout({
@@ -8,7 +9,11 @@ export default function SidebarLayout({
   return (
     <div className="flex h-full">
       <Sidebar />
-      <div className="w-full md:pl-21.5">{children}</div>
+
+      <div className="relative w-full md:pl-21.5">
+        <Header />
+        {children}
+      </div>
       {/* <FridgeSidebar /> */}
     </div>
   )
