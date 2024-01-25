@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Level from '@/components/shared/stats/Level'
+import LevelBar from '@/components/shared/stats/LevelBar'
 
-const meta: Meta<typeof Level> = {
-  title: 'Stats/Level',
-  component: Level,
+const meta: Meta<typeof LevelBar> = {
+  title: 'Stats/LevelBar',
+  component: LevelBar,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -19,8 +19,12 @@ const meta: Meta<typeof Level> = {
 
 export default meta
 
-type Story = StoryObj<typeof Level>
+type Story = StoryObj<typeof LevelBar>
 
 export const LevelBlock: Story = {
-  args: {},
+  args: {
+    level: 15,
+    maxLevelPoints: 100,
+    currentPoints: 0,
+  },
 }
