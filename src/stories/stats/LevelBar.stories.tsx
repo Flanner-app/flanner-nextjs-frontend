@@ -25,6 +25,6 @@ export const LevelBlock: Story = {
   args: {
     level: 15,
     maxLevelPoints: 100,
-    currentPoints: 0,
+    currentPoints: 100,
   },
 }
