@@ -4,17 +4,24 @@ type LevelBarProps = {
   level: number
   maxLevelPoints: number
   currentPoints: number
+  className?: string
 }
 
-const LevelBar = ({ level, maxLevelPoints, currentPoints }: LevelBarProps) => {
+const LevelBar = ({
+  level,
+  maxLevelPoints,
+  currentPoints,
+  className,
+}: LevelBarProps) => {
   const levelPercentage = (currentPoints / maxLevelPoints) * 100
 
   return (
     <div
       className={clsx(
-        'relative w-20 rounded-lg',
+        'relative min-w-20 rounded-lg',
         'border-2 border-black-regular bg-white',
         'h-8 overflow-hidden',
+        className,
       )}
     >
       <div
@@ -41,7 +48,12 @@ const LevelBar = ({ level, maxLevelPoints, currentPoints }: LevelBarProps) => {
         </svg>
       </div>
       <div className="absolute inset-0 z-[3] flex w-full items-center justify-center">
-        <span className="pt-px font-rubik text-sm font-medium leading-none text-black-regular">
+        <span
+          className={clsx(
+            'pt-px font-rubik text-sm font-medium leading-none text-black-regular',
+            'cursor-default select-none',
+          )}
+        >
           {level} Lvl
         </span>
       </div>

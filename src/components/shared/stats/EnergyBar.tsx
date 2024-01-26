@@ -4,17 +4,19 @@ import { Zap } from 'react-feather'
 type EnergyBarProps = {
   currentEnergy: number
   maxEnergy: number
+  className?: string
 }
 
-const EnergyBar = ({ currentEnergy, maxEnergy }: EnergyBarProps) => {
+const EnergyBar = ({ currentEnergy, maxEnergy, className }: EnergyBarProps) => {
   const energyPercentage = (currentEnergy / maxEnergy) * 100
 
   return (
     <div
       className={clsx(
-        'relative w-20 rounded-lg',
+        'relative min-w-20 rounded-lg',
         'border-2 border-black-regular bg-white',
         'h-8 overflow-hidden',
+        className,
       )}
     >
       <div
@@ -42,7 +44,12 @@ const EnergyBar = ({ currentEnergy, maxEnergy }: EnergyBarProps) => {
       </div>
       <div className="absolute inset-0 z-[3] flex w-full items-center justify-center gap-1">
         <Zap size={16} />
-        <span className="pt-px font-rubik text-sm font-medium leading-none text-black-regular">
+        <span
+          className={clsx(
+            'pt-px font-rubik text-sm font-medium leading-none text-black-regular',
+            'cursor-default select-none',
+          )}
+        >
           {currentEnergy}/{maxEnergy}
         </span>
       </div>

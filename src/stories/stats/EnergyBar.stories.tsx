@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import EnergyBar from '@/components/shared/stats/EnergyBar'
 
 const meta: Meta<typeof EnergyBar> = {
-  title: 'Stats/EnergyBar',
+  title: 'Stats/Energy Bar',
   component: EnergyBar,
   tags: ['autodocs'],
   parameters: {

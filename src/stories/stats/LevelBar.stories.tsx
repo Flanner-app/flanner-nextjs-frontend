@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import LevelBar from '@/components/shared/stats/LevelBar'
 
 const meta: Meta<typeof LevelBar> = {
-  title: 'Stats/LevelBar',
+  title: 'Stats/Level Bar',
   component: LevelBar,
   tags: ['autodocs'],
   parameters: {
