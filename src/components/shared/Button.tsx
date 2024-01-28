@@ -10,7 +10,7 @@ type ButtonProps = {
     | 'outline'
     | 'critical'
     | 'ghost'
-  size: 'S' | 'M' | 'L'
+  size: 'XS' | 'S' | 'M' | 'L'
   className?: string
   wrapperClassName?: string
   children: ReactNode
@@ -67,6 +67,7 @@ const Button = ({
   ...restProps
 }: ButtonProps) => {
   const sizeMap = {
+    XS: 'min-h-6',
     S: 'min-h-10',
     M: 'min-h-12',
     L: 'min-h-14',
@@ -98,8 +99,12 @@ const Button = ({
               [clsx(
                 'bottom-1 right-1 group-hover:bottom-0 group-hover:right-0',
                 'active:bottom-0 active:right-0',
-              )]: appearence !== 'ghost',
+              )]: appearence !== 'ghost' && size !== 'XS',
               'border-2 bg-yellow-regular !text-black-default': disabled,
+              [clsx(
+                'bottom-0.5 right-0.5 group-hover:bottom-0 group-hover:right-0',
+                '!rounded-lg p-1.5 text-xs active:bottom-0 active:right-0',
+              )]: appearence !== 'ghost' && size === 'XS',
               'aspect-square p-2.5 text-sm': size === 'S',
               'p-3.5 text-sm data-[icon-only=false]:!px-4': size === 'M',
               'p-4 text-base data-[icon-only=false]:px-6': size === 'L',
@@ -121,6 +126,7 @@ const Button = ({
                   appearence === 'black' ||
                   appearence === 'critical' ||
                   appearence === 'accent',
+                '!rounded-lg': size === 'XS',
               },
             )}
           />
