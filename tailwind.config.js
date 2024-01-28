@@ -33,6 +33,8 @@ module.exports = {
       accent: {
         purple: '#C4A1FF',
         green: '#D0EE30',
+        red: '#FF5E65',
+        blue: '#2FD5EA',
       },
       tones: {
         yellow: '#FDFCDC',
