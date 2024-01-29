@@ -118,6 +118,7 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
           </Heading>
           <div className="grid items-center gap-4 sm:grid-cols-2 2xl:grid-cols-4">
             <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}
@@ -127,6 +128,7 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
               totalCookingTime="30 min"
             />
             <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}
@@ -136,6 +138,7 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
               totalCookingTime="30 min"
             />
             <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}
@@ -145,6 +148,7 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
               totalCookingTime="30 min"
             />
             <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}

@@ -84,7 +84,7 @@ const Button = ({
       <button
         className={clsx(
           'relative w-full transition-[filter] disabled:pointer-events-none',
-          'disabled:grayscale',
+          'outline-none disabled:grayscale',
         )}
         data-icon-only={containsIconOnly}
         disabled={disabled}

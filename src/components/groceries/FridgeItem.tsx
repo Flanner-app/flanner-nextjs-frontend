@@ -42,7 +42,7 @@ const FridgeItem = ({
       <div className="group relative">
         <div
           className={clsx(
-            'z-[2] w-fit rounded-xl border-2 border-black-regular bg-yellow-dark p-3',
+            'z-[2] rounded-xl border-2 border-black-regular bg-yellow-dark p-3',
             'flex aspect-square w-full flex-col items-center justify-between gap-2',
             'relative cursor-pointer text-center leading-none',
             'group-hover:-translate-x-1 group-hover:-translate-y-1',
