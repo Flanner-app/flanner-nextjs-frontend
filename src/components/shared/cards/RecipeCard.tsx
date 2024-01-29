@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { Clock, Eye, Heart } from 'react-feather'
 import { Tag as TagType } from '@/types/recipes'
 import { formatNumberToSmall } from '@/utils/numbers'
-import Tag from './Tag'
-import RandomColorBg from '../shared/RandomColorBg'
+import Tag from '@/components/blog/Tag'
+import RandomColorBg from '../RandomColorBg'
 
-type BlogCardProps = {
+type RecipeCardProps = {
   href: string
   title: string
   tags: Array<TagType>
@@ -15,9 +15,9 @@ type BlogCardProps = {
   viewsAmount?: number
   likesAmount?: number
   totalCookingTime: string
+  showStats?: boolean
 }
-
-const BlogCard = ({
+const RecipeCard = ({
   href,
   title,
   tags,
@@ -25,7 +25,8 @@ const BlogCard = ({
   viewsAmount,
   likesAmount,
   totalCookingTime,
-}: BlogCardProps) => {
+  showStats = false,
+}: RecipeCardProps) => {
   return (
     <Link href={href} className="group relative">
       <div
@@ -46,16 +47,18 @@ const BlogCard = ({
           <Clock size={16} />
           {totalCookingTime}
         </Tag>
-        <div className="absolute right-3 top-3 z-20 flex items-center gap-3">
-          <Tag type="info">
-            <Eye size={14} />
-            {formatNumberToSmall(viewsAmount || 0)}
-          </Tag>
-          <Tag type="info">
-            <Heart size={14} />
-            {formatNumberToSmall(likesAmount || 0)}
-          </Tag>
-        </div>
+        {showStats && (
+          <div className="absolute right-3 top-3 z-20 flex items-center gap-3">
+            <Tag type="info">
+              <Eye size={14} />
+              {formatNumberToSmall(viewsAmount || 0)}
+            </Tag>
+            <Tag type="info">
+              <Heart size={14} />
+              {formatNumberToSmall(likesAmount || 0)}
+            </Tag>
+          </div>
+        )}
         <div
           className={clsx(
             'relative aspect-[4/3] max-h-96 w-full border-b-2 border-black-default',
@@ -92,4 +95,4 @@ const BlogCard = ({
   )
 }
 
-export default BlogCard
+export default RecipeCard
