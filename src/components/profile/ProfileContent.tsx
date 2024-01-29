@@ -1,5 +1,6 @@
 // import { User } from '@/types/user'
 
+import clsx from 'clsx'
 import Link from 'next/link'
 import { ArrowDown, Settings } from 'react-feather'
 import AvatarBlock from './AvatarBlock'
@@ -13,8 +14,13 @@ import Heading from '../shared/typography/Heading'
 
 const ProfileContent = () => {
   return (
-    <div className="relative p-8">
-      <div className="fixed top-22.5 flex w-full max-w-64 flex-col gap-3">
+    <div className="relative p-6 sm:p-8">
+      <div
+        className={clsx(
+          'flex w-full flex-col gap-3 sm:fixed sm:top-22.5 sm:max-w-64',
+          'mx-auto mb-6 max-w-sm sm:mb-0',
+        )}
+      >
         <AvatarBlock />
         <Link href="/profile/settings">
           <Button size="L" appearence="black" wrapperClassName="w-full">
@@ -22,7 +28,7 @@ const ProfileContent = () => {
           </Button>
         </Link>
       </div>
-      <div className="pl-72">
+      <div className="sm:pl-72">
         <Heading as="h1" type="display" className="mb-4">
           Your cooking history
         </Heading>
@@ -38,7 +44,12 @@ const ProfileContent = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div
+          className={clsx(
+            'grid grid-cols-1 gap-4 sm:grid-cols-1',
+            'md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3',
+          )}
+        >
           <RecipeCard
             href="/blog/1"
             title="Similar post"
