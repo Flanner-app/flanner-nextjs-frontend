@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { ReactNode } from 'react'
 import { Check } from 'react-feather'
-import { getRandomBgColor } from '@/utils/colors'
+import RandomColorBg from './RandomColorBg'
 
 type SelectionCardProps = {
   label: string
@@ -72,12 +72,7 @@ const SelectionCard = ({
         />
         {decorator && <div className="mx-auto mb-2">{decorator}</div>}
       </div>
-      <div
-        className={clsx(
-          'absolute inset-0 z-[1] h-full w-full rounded-xl border-2 border-black-default',
-          getRandomBgColor(),
-        )}
-      />
+      <RandomColorBg />
     </div>
   )
 }

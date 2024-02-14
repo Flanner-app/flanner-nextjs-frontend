@@ -33,7 +33,7 @@ const BlogHero = () => {
           >
             with benefits.
           </div>
-          <Link href="/quick-auth" className="block w-fit">
+          <Link href="/auth" className="block w-fit">
             <Button
               size="L"
               appearence="accent"

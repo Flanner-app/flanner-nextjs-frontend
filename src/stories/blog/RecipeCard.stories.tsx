@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import BlogCard from '@/components/blog/BlogCard'
+import RecipeCard from '@/components/shared/cards/RecipeCard'
 
-const meta: Meta<typeof BlogCard> = {
-  title: 'Blog/Blog Card',
-  component: BlogCard,
+const meta: Meta<typeof RecipeCard> = {
+  title: 'Blog/Recipe Card',
+  component: RecipeCard,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -19,9 +19,9 @@ const meta: Meta<typeof BlogCard> = {
 
 export default meta
 
-type Story = StoryObj<typeof BlogCard>
+type Story = StoryObj<typeof RecipeCard>
 
-export const RegularBlogCard: Story = {
+export const RegularRecipeCard: Story = {
   args: {
     title: 'How to hold a knife? Did you know that? Its actually very easy',
     tags: [

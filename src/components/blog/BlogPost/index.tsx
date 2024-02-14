@@ -4,12 +4,12 @@ import { Clock, Eye, Heart } from 'react-feather'
 import { BlogPost } from '@/types/recipes'
 import { formatNumberToSmall } from '@/utils/numbers'
 import IngredientCard from '@/components/shared/IngredientCard'
+import RecipeCard from '@/components/shared/cards/RecipeCard'
 import Heading from '@/components/shared/typography/Heading'
 import BlogPostHeader from './BlogPostHeader'
 import NutritionalTable from './NutritionalTable'
 import RecipeStepContent from './RecipeStep'
 import RecipeStepNumber from './RecipeStepNumber'
-import BlogCard from '../BlogCard'
 import Tag from '../Tag'
 
 const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
@@ -117,7 +117,8 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
             Similar Recipes
           </Heading>
           <div className="grid items-center gap-4 sm:grid-cols-2 2xl:grid-cols-4">
-            <BlogCard
+            <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}
@@ -126,7 +127,8 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
               likesAmount={150}
               totalCookingTime="30 min"
             />
-            <BlogCard
+            <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}
@@ -135,7 +137,8 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
               likesAmount={150}
               totalCookingTime="30 min"
             />
-            <BlogCard
+            <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}
@@ -144,7 +147,8 @@ const BlogPost = ({ blogPost }: { blogPost: BlogPost }) => {
               likesAmount={150}
               totalCookingTime="30 min"
             />
-            <BlogCard
+            <RecipeCard
+              showStats
               href="/blog/1"
               title="Similar post"
               tags={[]}

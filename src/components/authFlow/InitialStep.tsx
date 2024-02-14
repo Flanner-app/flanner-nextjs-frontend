@@ -2,19 +2,34 @@
 
 import clsx from 'clsx'
 import Image from 'next/image'
-import { usePathname, useRouter } from 'next/navigation'
-import { useAuth } from '@/context/AuthContext'
+import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+import { useEffect } from 'react'
+import { useUser } from '@/context/AuthProvider'
 import Button from '../shared/Button'
 
 const InitialAuthStep = ({ className }: { className?: string }) => {
-  const { signInWithGoogle: googleSignIn } = useAuth()
-
+  const { user } = useUser()
   const router = useRouter()
-  const pathname = usePathname()
 
-  const signInWithGoogle = async () => {
-    googleSignIn().then(() => router.push(`${pathname}/preferences`))
-  }
+  useEffect(() => {
+    if (!user) {
+      return
+    }
+    if (!user.appliances || !user.appliances.length) {
+      router.push('/auth/appliances')
+      return
+    }
+    if (!user.skill) {
+      router.push('/auth/skill')
+      return
+    }
+    if (user.preferences === null) {
+      router.push('/auth/preferences')
+      return
+    }
+    router.push('/')
+  }, [router, user])
 
   return (
     <div className={clsx('p-6', className)}>
@@ -29,7 +44,7 @@ const InitialAuthStep = ({ className }: { className?: string }) => {
           size="M"
           appearence="white"
           wrapperClassName="w-1/2"
-          onClick={signInWithGoogle}
+          onClick={() => signIn('google')}
         >
           <Image
             width={24}

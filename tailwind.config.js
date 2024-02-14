@@ -33,6 +33,8 @@ module.exports = {
       accent: {
         purple: '#C4A1FF',
         green: '#D0EE30',
+        red: '#FF5E65',
+        blue: '#2FD5EA',
       },
       tones: {
         yellow: '#FDFCDC',
@@ -72,6 +74,7 @@ module.exports = {
       spacing: {
         4.5: '1.125rem',
         21.5: '5.375rem',
+        22.5: '5.625rem',
       },
       width: (theme) => ({
         ...theme('spacing'),
