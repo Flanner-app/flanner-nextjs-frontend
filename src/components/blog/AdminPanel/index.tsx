@@ -14,8 +14,8 @@ import {
   BlogPost,
   RecipeStep,
 } from '@/types/recipes'
-import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
+import Button from '@/components/shared/buttons/Button'
 import Heading from '@/components/shared/typography/Heading'
 import CookingSteps from './CookingSteps'
 import IngredientsSection from './IngredientsSection'

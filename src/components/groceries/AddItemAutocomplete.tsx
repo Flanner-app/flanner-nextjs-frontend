@@ -12,9 +12,9 @@ import {
 } from 'react-feather'
 // import { v4 as uuidv4 } from 'uuid'
 // import staticGroceries from './staticGroceries.json'
-import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
+import Button from '../shared/buttons/Button'
 import Heading from '../shared/typography/Heading'
 
 export type AutocompleteValue = { _id: string; label: string; icon: string }

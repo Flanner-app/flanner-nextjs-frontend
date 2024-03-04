@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import Image from 'next/image'
-import Link from 'next/link'
 import { ArrowRight } from 'react-feather'
-import Button from '@/components/shared/Button'
+import { urls } from '@/constants/urls'
+import { LinkButton } from '@/components/shared/buttons/LinkButton'
 import styles from './styles.module.css'
 
 const BlogHero = () => {
@@ -33,16 +33,15 @@ const BlogHero = () => {
           >
             with benefits.
           </div>
-          <Link href="/auth" className="block w-fit">
-            <Button
-              size="L"
-              appearence="accent"
-              wrapperClassName="w-fit mt-6 md:mt-10"
-            >
-              Get early user status
-              <ArrowRight size={20} />
-            </Button>
-          </Link>
+          <LinkButton
+            href={urls.auth.base}
+            size="L"
+            appearence="accent"
+            wrapperClassName="block w-fit mt-6 md:mt-10"
+          >
+            Get early user status
+            <ArrowRight size={20} />
+          </LinkButton>
         </div>
         <div
           className={clsx(

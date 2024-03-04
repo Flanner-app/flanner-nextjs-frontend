@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment, ReactNode } from 'react'
 import { X } from 'react-feather'
-import Button from './Button'
+import Button from './buttons/Button'
 
 type ModalProps = {
   isOpen: boolean

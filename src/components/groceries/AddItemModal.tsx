@@ -8,10 +8,10 @@ import { MEASUREMENTS } from '@/constants/recipe'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import AddItemAutocomplete, { AutocompleteValue } from './AddItemAutocomplete'
 import { Ingredient } from '../../types/recipes'
-import Button from '../shared/Button'
 import Input from '../shared/Input'
 import Modal from '../shared/Modal'
 import Select from '../shared/Select'
+import Button from '../shared/buttons/Button'
 
 export type SelectionGroceryItem = {
   label: string

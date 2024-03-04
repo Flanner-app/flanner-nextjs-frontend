@@ -8,7 +8,9 @@ const Header = () => {
         'border-b-2 border-black-regular',
       )}
     >
-      f
+      <h1 className="font-rubik text-10xl font-extrabold leading-none">
+        Flanner
+      </h1>
     </div>
   )
 }

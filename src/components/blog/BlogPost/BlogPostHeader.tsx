@@ -3,7 +3,7 @@
 import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { Bookmark, ChevronLeft, Heart, Link } from 'react-feather'
-import Button from '@/components/shared/Button'
+import Button from '@/components/shared/buttons/Button'
 // import Heading from '@/components/shared/typography/Heading'
 
 type BlogPostHeaderProps = {

@@ -5,9 +5,9 @@ import { useCallback, useState } from 'react'
 import { Search } from 'react-feather'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { Ingredient } from '@/types/recipes'
-import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import SelectionCard from '@/components/shared/SelectionCard'
+import Button from '@/components/shared/buttons/Button'
 import Tag from '../Tag'
 
 type IngredientListProps = {

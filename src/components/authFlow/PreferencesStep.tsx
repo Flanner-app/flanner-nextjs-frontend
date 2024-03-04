@@ -7,8 +7,8 @@ import { ArrowLeft, ChevronRight } from 'react-feather'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { useUser } from '@/context/AuthProvider'
 import useIsComponentLoaded from '@/hooks/useIsComponentLoaded'
-import Button from '../shared/Button'
 import Checkbox from '../shared/Checkbox'
+import Button from '../shared/buttons/Button'
 
 const PREFERENCES = [
   'Low calories',

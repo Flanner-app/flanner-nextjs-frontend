@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { useEffect } from 'react'
 import { useUser } from '@/context/AuthProvider'
-import Button from '../shared/Button'
+import Button from '../shared/buttons/Button'
 
 const InitialAuthStep = ({ className }: { className?: string }) => {
   const { user } = useUser()

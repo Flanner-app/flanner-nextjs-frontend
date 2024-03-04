@@ -8,8 +8,8 @@ import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { useUser } from '@/context/AuthProvider'
 import useIsComponentLoaded from '@/hooks/useIsComponentLoaded'
 import { User } from '@/types/user'
-import Button from '../shared/Button'
 import SelectionCard from '../shared/SelectionCard'
+import Button from '../shared/buttons/Button'
 
 const SKILL_LEVELS = [
   { label: 'Beginner', imgSrc: '/images/cards/skill/beginner.webp' },

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Button from '@/components/shared/Button'
+import { User } from 'react-feather'
+import Button from '@/components/shared/buttons/Button'
 
 const meta: Meta<typeof Button> = {
   title: 'Basic components/Button',
@@ -26,5 +27,16 @@ export const RegularButton: Story = {
     size: 'M',
     appearence: 'yellow',
     children: 'Click me!',
+  },
+}
+
+export const IconOnlyButton: Story = {
+  args: {
+    size: 'M',
+    appearence: 'yellow',
+    children: <User size={20} />,
+    containsIconOnly: true,
+    className: 'w-fit',
+    wrapperClassName: 'w-fit',
   },
 }

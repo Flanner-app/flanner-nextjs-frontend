@@ -6,9 +6,9 @@ import { validMimeTypes } from '@/constants/file'
 import { MEASUREMENTS } from '@/constants/recipe'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { Ingredient } from '@/types/recipes'
-import Button from '@/components/shared/Button'
 import Input from '@/components/shared/Input'
 import Select from '@/components/shared/Select'
+import Button from '@/components/shared/buttons/Button'
 
 type NewIngredientsListProps = {
   items: Array<Ingredient>

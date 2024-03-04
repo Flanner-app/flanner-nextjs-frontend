@@ -7,7 +7,7 @@ import AddItemModal from './AddItemModal'
 import FridgeItem from './FridgeItem'
 import { MeasurementUnits } from '../../types/groceries'
 import { Ingredient } from '../../types/recipes'
-import Button from '../shared/Button'
+import Button from '../shared/buttons/Button'
 import Heading from '../shared/typography/Heading'
 
 const Fridge = ({ itemList }: { itemList: Ingredient[] }) => {

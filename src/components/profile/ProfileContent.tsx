@@ -1,10 +1,10 @@
 // import { User } from '@/types/user'
 
 import clsx from 'clsx'
-import Link from 'next/link'
 import { ArrowDown, Settings } from 'react-feather'
+import { urls } from '@/constants/urls'
 import AvatarBlock from './AvatarBlock'
-import Button from '../shared/Button'
+import { LinkButton } from '../shared/buttons/LinkButton'
 import RecipeCard from '../shared/cards/RecipeCard'
 import Heading from '../shared/typography/Heading'
 
@@ -22,11 +22,14 @@ const ProfileContent = () => {
         )}
       >
         <AvatarBlock />
-        <Link href="/profile/settings">
-          <Button size="L" appearence="black" wrapperClassName="w-full">
-            <Settings size={20} /> Settings
-          </Button>
-        </Link>
+        <LinkButton
+          href={urls.settings}
+          size="L"
+          appearence="black"
+          wrapperClassName="w-full"
+        >
+          <Settings size={20} /> Settings
+        </LinkButton>
       </div>
       <div className="sm:pl-72">
         <Heading as="h1" type="display" className="mb-4">
@@ -37,11 +40,14 @@ const ProfileContent = () => {
             GO
           </span>
           <ArrowDown size={64} />
-          <Link href="/" className="w-full max-w-64">
-            <Button appearence="yellow" size="L">
-              Cook!
-            </Button>
-          </Link>
+          <LinkButton
+            href={urls.home}
+            appearence="yellow"
+            size="L"
+            wrapperClassName="w-full max-w-64"
+          >
+            Cook!
+          </LinkButton>
         </div>
 
         <div

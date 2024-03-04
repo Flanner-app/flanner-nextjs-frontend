@@ -4,8 +4,8 @@ import { Listbox } from '@headlessui/react'
 import clsx from 'clsx'
 import { Fragment, useRef } from 'react'
 import { Check, ChevronDown, X } from 'react-feather'
-import Button from './Button'
 import Modal from './Modal'
+import Button from './buttons/Button'
 import Heading from './typography/Heading'
 
 export type SelectProps = {

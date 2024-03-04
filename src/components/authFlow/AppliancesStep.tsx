@@ -7,8 +7,8 @@ import { ChevronRight } from 'react-feather'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { useUser } from '@/context/AuthProvider'
 import useIsComponentLoaded from '@/hooks/useIsComponentLoaded'
-import Button from '../shared/Button'
 import SelectionCard from '../shared/SelectionCard'
+import Button from '../shared/buttons/Button'
 
 const APPLIANCES = [
   { label: 'Stove', imgSrc: '/images/cards/appliances/stove.webp' },

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Fridge from './Fridge'
 import { Ingredient } from '../../types/recipes'
-import Button from '../shared/Button'
+import Button from '../shared/buttons/Button'
 
 const mockItems: Array<Ingredient> = [
   {
