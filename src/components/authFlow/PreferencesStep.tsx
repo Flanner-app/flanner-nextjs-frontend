@@ -4,25 +4,12 @@ import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ArrowLeft, ChevronRight } from 'react-feather'
+import { PREFERENCES } from '@/constants/settings'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { useUser } from '@/context/AuthProvider'
 import useIsComponentLoaded from '@/hooks/useIsComponentLoaded'
 import Checkbox from '../shared/Checkbox'
 import Button from '../shared/buttons/Button'
-
-const PREFERENCES = [
-  'Low calories',
-  'High calories',
-  'Vegeterian',
-  'Vegan',
-  'Halal',
-  'Gluten-Free',
-  'Low-Fat',
-  'Low-Carb',
-  'Pescetarian',
-  'Low-Sodium',
-  'Lactose intolerant',
-]
 
 const PreferencesAuthStep = () => {
   const [selectedPreferences, setSelectedPreferences] = useState<string[]>([])

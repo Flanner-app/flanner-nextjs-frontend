@@ -23,7 +23,7 @@ const ProfileContent = () => {
       >
         <AvatarBlock />
         <LinkButton
-          href={urls.settings}
+          href={urls.settings.base}
           size="L"
           appearence="black"
           wrapperClassName="w-full"

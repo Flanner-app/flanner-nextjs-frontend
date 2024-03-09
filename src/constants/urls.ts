@@ -7,5 +7,10 @@ export const urls = {
     base: '/profile',
     saved: '/profile/saved',
   },
-  settings: '/settings',
+  settings: {
+    base: '/settings',
+    skills: '/settings/skills',
+    preferences: '/settings/preferences',
+    payments: '/settings/payments',
+  },
 }

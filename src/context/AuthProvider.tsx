@@ -12,6 +12,7 @@ import {
   useEffect,
   useState,
 } from 'react'
+import { getCurrentUser } from '@/services/user'
 import { User } from '@/types/user'
 
 type Props = {
@@ -40,11 +41,9 @@ const UserProvider = ({ children }: Props) => {
   const { data: session, status } = useSession()
 
   const setCurrentUser = useCallback(async () => {
-    const userRes = await fetch('/api/user')
-      .then((res) => res.json())
-      .catch(() => null)
+    const userRes = await getCurrentUser()
 
-    userRes.data && setUser(userRes.data)
+    userRes && setUser(userRes)
   }, [])
 
   useEffect(() => {

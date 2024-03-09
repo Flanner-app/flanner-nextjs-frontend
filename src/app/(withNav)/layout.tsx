@@ -10,7 +10,7 @@ export default function SidebarLayout({
     <div className="flex h-full">
       <Sidebar />
 
-      <div className="relative w-full pt-14 md:pl-21.5">
+      <div className="relative w-full pt-18 md:pl-21.5">
         <Header />
         {children}
       </div>

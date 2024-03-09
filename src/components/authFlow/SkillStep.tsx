@@ -4,18 +4,14 @@ import clsx from 'clsx'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ArrowLeft, ChevronRight } from 'react-feather'
+import { SKILL_LEVELS } from '@/constants/settings'
 import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { useUser } from '@/context/AuthProvider'
 import useIsComponentLoaded from '@/hooks/useIsComponentLoaded'
+import { updateCurrentUser } from '@/services/user'
 import { User } from '@/types/user'
 import SelectionCard from '../shared/SelectionCard'
 import Button from '../shared/buttons/Button'
-
-const SKILL_LEVELS = [
-  { label: 'Beginner', imgSrc: '/images/cards/skill/beginner.webp' },
-  { label: 'Intermediate', imgSrc: '/images/cards/skill/intermediate.webp' },
-  { label: 'Chef', imgSrc: '/images/cards/skill/chef.webp' },
-]
 
 const SkillStepContent = () => {
   const [selectedSkill, setSelectedSkill] = useState<User['skill']>(undefined)
@@ -30,15 +26,9 @@ const SkillStepContent = () => {
       return
     }
     try {
-      const userData = await fetch(
-        process.env.NEXT_PUBLIC_URL + '/api/user/update',
-        {
-          method: 'POST',
-          body: JSON.stringify({ skill: selectedSkill }),
-        },
-      ).then((res) => res.json())
+      const userData = await updateCurrentUser({ skill: selectedSkill })
 
-      setUser(userData.data)
+      setUser(userData)
       router.push('/auth/preferences')
     } catch (error) {
       // todo: add error handling

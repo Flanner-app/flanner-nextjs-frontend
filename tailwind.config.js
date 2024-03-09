@@ -66,6 +66,7 @@ module.exports = {
     extend: {
       screens: {
         xs: '375px',
+        '3xl': '1920px',
       },
       fontFamily: {
         poppins: ['var(--font-poppins)', ...defaultTheme.fontFamily.sans],
@@ -73,8 +74,12 @@ module.exports = {
       },
       spacing: {
         4.5: '1.125rem',
+        18: '4.5rem', // 72px
         21.5: '5.375rem',
         22.5: '5.625rem',
+      },
+      height: {
+        18: '4.5rem', // 72px
       },
       width: (theme) => ({
         ...theme('spacing'),
