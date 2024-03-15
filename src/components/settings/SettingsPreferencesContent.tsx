@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { PREFERENCES } from '@/constants/settings'
-import { SCROLLBAR_CLASSES } from '@/constants/styles'
 import { getCurrentUser, updateCurrentUser } from '@/services/user'
 import { User } from '@/types/user'
 import Checkbox from '../shared/Checkbox'
@@ -47,7 +46,6 @@ const SettingsPreferencesContent = () => {
         className={clsx(
           'mt-6 grid h-fit grid-cols-1 gap-6 overflow-y-auto px-6 py-1',
           'sm:grid-cols-2 md:gap-4',
-          SCROLLBAR_CLASSES,
         )}
       >
         {PREFERENCES.map((item) => (
