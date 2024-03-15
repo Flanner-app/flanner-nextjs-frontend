@@ -27,9 +27,11 @@ const SettingsAppliancesContent = () => {
     }
     await updateCurrentUser({
       appliances: data,
-    }).then((res) => {
-      setSelectedAppliances(res.appliances)
     })
+      .then((res) => {
+        setSelectedAppliances(res.appliances)
+      })
+      .catch((err) => console.log(err))
   }
 
   useEffect(() => {

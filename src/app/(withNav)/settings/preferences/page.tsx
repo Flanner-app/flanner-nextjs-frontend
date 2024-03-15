@@ -1,5 +1,7 @@
+import SettingsPreferencesContent from '@/components/settings/SettingsPreferencesContent'
+
 const PreferencesPage = () => {
-  return null
+  return <SettingsPreferencesContent />
 }
 
 export default PreferencesPage
